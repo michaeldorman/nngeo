@@ -1,0 +1,20 @@
+Package: nngeo
+Type: Package
+Title: k-Nearest Neighbor Calculations for Spatial Data
+Version: 0.1.0
+Authors@R: person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre"))
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description: k-Nearest Neighbor search for projected and un-projected spatial data represented as 'sf' objects. 
+Imports:
+    geosphere,
+    RANN,
+    units
+Depends:
+    R (>= 3.2.3),
+    sf
+License: GPL-2
+LazyData: TRUE
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

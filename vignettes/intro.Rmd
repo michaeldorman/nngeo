@@ -1,0 +1,180 @@
+---
+title: "Introduction to package `nngeo`"
+author: "Michael Dorman"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(nngeo)
+```
+
+## Introduction
+
+This document introduces the `nngeo` package. The `nngeo` package includes functions for spatial join of laters based on *k-nearest neighbor* relation between features. The functions work with spatial layer object defined in package `sf`, namely classes `sfc` and `sf`. 
+
+## Installation
+
+GitHub version -
+
+``` r
+install.packages("devtools")
+devtools::install_github("michaeldorman/nngeo")
+```
+
+## Sample data
+
+The `nngeo` package comes with three sample datasets - 
+
+* `cities`
+* `towns`
+* `water`
+
+```{r, include=FALSE}
+data(cities)
+data(towns)
+data(water)
+```
+
+The `cities` layer is a **point** layer representing the location of the three largest cities in Israel. 
+
+```{r}
+cities
+```
+
+The `towns` layer is another **point** layer, with the location of all towns in Israel whose name begins with the letter A. 
+
+```{r}
+towns
+```
+
+Finally, `water` is an example of a **polygonal** layer. This layer contains four polygons of water bodies in Israel.
+
+```{r}
+water
+```
+
+The following plot shows the configuration of the three layers.
+
+```{r, fig.align='center', fig.width=5, fig.height=5}
+plot(st_geometry(water), col = "lightblue")
+plot(st_geometry(towns), col = "grey", pch = 1, add = TRUE)
+plot(st_geometry(cities), col = "red", pch = 1, add = TRUE)
+```
+
+# Usage examples
+
+The main function in the `nngeo` package is `st_nn`. 
+
+The `st_nn` function accepts two layers, `x` and `y`, and return a list with the same number of elements as `x` features. Each list element `i` is an integer vector with all indices `j` for which `x[i]` and `y[j]` are **nearest neighbors**. 
+
+For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`. 
+
+```{r}
+nn = st_nn(cities, towns[1:5, ])
+nn
+```
+
+The result can be visualized using the `st_connect` function. This function builds a line layer connecting features from two layers `x` and `y` based on the relations defined in the latter list - 
+
+```{r}
+l = st_connect(cities, towns[1:5, ], ids = nn)
+l
+```
+
+The line layer gives a visual demonstration of the nearest neighbors result - 
+
+```{r, fig.align='center', fig.width=5, fig.height=5}
+plot(st_geometry(towns[1:5, ]), col = "darkgrey")
+plot(st_geometry(l), add = TRUE)
+plot(st_geometry(cities), col = "red", add = TRUE)
+```
+
+The `st_nn` can also return the complete logical matrix indicating whether each feature in `x` is a neighbor of `y`, using `sparse=FALSE` - 
+
+```{r}
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE)
+nn
+```
+
+It is also possible to return any **k-nearest** neighbors, such as k=2 - 
+
+```{r}
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2)
+nn
+```
+
+Using `returnDist=TRUE` the distances matrix is also returned, in addition the the ordinary result, with both componenets now comprising a list - 
+
+```{r}
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, returnDist = TRUE)
+nn
+```
+
+Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. 
+
+```{r}
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, returnDist = TRUE, maxdist = 50000)
+nn
+```
+
+Here is another example, finding the 10-nearest neighbor `towns` features for each `cities` feature - 
+
+```{r, fig.align='center', fig.width=5, fig.height=5}
+x = st_nn(cities, towns, k = 10)
+l = st_connect(cities, towns, ids = x)
+plot(st_geometry(towns), col = "darkgrey")
+plot(st_geometry(l), add = TRUE)
+plot(st_geometry(cities), col = "red", add = TRUE)
+```
+
+# Polygons
+
+Nearest neighbor for non-point layers is only implemented for projected CRS. 
+
+For example, we can project the `towns` and `water` layers to UTM - 
+
+```{r}
+towns = st_transform(towns, 32636)
+water = st_transform(water, 32636)
+```
+
+The following code section finds the 20-nearest towns for each water body. 
+
+Note the lines extend from the polygon centroids, yet the calculation itself considers the true shortest distance from the polygon border.
+
+```{r, fig.align='center', fig.width=5, fig.height=5}
+nn = st_nn(water, towns, k = 20)
+l = st_connect(water, towns, ids = nn)
+plot(st_geometry(water), col = "lightblue")
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
+plot(st_geometry(l), add = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

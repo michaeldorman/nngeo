@@ -1,0 +1,22 @@
+.st_nn_pol = function(x, y, k, maxdist) {
+
+  x_features = length(st_geometry(x))
+  maxdist = units::set_units(maxdist, m)
+
+  ids = matrix(NA, nrow = x_features, ncol = k)
+  dist_matrix = matrix(NA, nrow = x_features, ncol = k)
+
+  for(i in 1:x_features) {
+    dists = st_distance(x[i, ], y)[1, ]
+    ids1 = order(dists)[1:k]
+    dists1 = dists[ids1]
+    dists1 = units::set_units(dists1, m)
+    ids1[dists1 > maxdist] = NA
+    dists1[dists1 > maxdist] = NA
+    ids[i, ] = ids1
+    dist_matrix[i, ] = dists1
+  }
+
+  return(list(ids, dist_matrix))
+
+}

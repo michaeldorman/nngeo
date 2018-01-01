@@ -1,0 +1,76 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# nngeo
+
+The goal of `nngeo` is to provide k-nearest neighbor join capabilities for spatial analysis in R. 
+
+## Installation
+
+GitHub version -
+
+``` r
+install.packages("devtools")
+devtools::install_github("michaeldorman/nngeo")
+```
+
+## Usage
+
+Once installed, the library can be loaded as follows.
+
+```{r}
+library(nngeo)
+```
+
+
+## Example
+
+The following code section finds the 10-nearest towns for each water body using function `st_nn`. 
+
+```{r}
+data(towns)
+data(cities)
+nn = st_nn(cities, towns, k = 20)
+nn
+```
+
+The `st_nn` function can also be used to join the two layers, using `st_join` from package `sf`.
+
+```{r}
+nearest_towns = st_join(cities, towns, join = st_nn, k = 3)
+head(nearest_towns)
+```
+
+A helper function `st_connect` can be used to draw lineas according to joined features, for visualization ,network analysis, etc.
+
+```{r, fig.align='center', fig.width=5, fig.height=5, warning=FALSE}
+l = st_connect(cities, towns, ids = nn)
+plot(st_geometry(towns), col = "darkgrey")
+plot(st_geometry(cities), col = "red", add = TRUE)
+plot(st_geometry(l), add = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
