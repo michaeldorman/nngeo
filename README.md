@@ -2,7 +2,7 @@
 nngeo
 =====
 
-The goal of `nngeo` is to provide k-nearest neighbor join capabilities for spatial analysis in R.
+The goal of `nngeo` is to provide **k-nearest neighbor join** capabilities for spatial analysis in R.
 
 Installation
 ------------
@@ -22,13 +22,13 @@ Once installed, the library can be loaded as follows.
 ``` r
 library(nngeo)
 #> Loading required package: sf
-#> Linking to GEOS 3.5.1, GDAL 2.2.1, proj.4 4.9.2, lwgeom 2.3.3 r15473
+#> Linking to GEOS 3.5.1, GDAL 2.2.1, proj.4 4.9.2
 ```
 
 Example
 -------
 
-The following code section finds the 10-nearest towns for each water body using function `st_nn`.
+The following code section finds the 10-nearest towns for each city using function `st_nn`.
 
 ``` r
 data(towns)
@@ -45,7 +45,9 @@ nn
 #>  [1] 69 80 61 68 60 58 30 57 89 56 22  7 24 78 13 84  6  3 59 20
 ```
 
-The `st_nn` function can also be used to join the two layers, using `st_join` from package `sf`.
+By default, the result is a sparse list with the neighbor IDs.
+
+The `st_nn` function can also be used as a **geometry predicate function** when performing spatial join with `sf::st_join`.
 
 ``` r
 nearest_towns = st_join(cities, towns, join = st_nn, k = 3)
@@ -65,7 +67,7 @@ head(nearest_towns)
 #> 2.2  Tel-Aviv  AHI'EZER POINT (34.7817676 32.0852999)
 ```
 
-A helper function `st_connect` can be used to draw lineas according to joined features, for visualization ,network analysis, etc.
+A helper function `st_connect` can be used to draw lines according to joined feature IDs. This may be useful for visualization or for network analysis.
 
 ``` r
 l = st_connect(cities, towns, ids = nn)

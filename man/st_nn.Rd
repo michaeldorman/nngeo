@@ -23,7 +23,12 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE)
 If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j, ]} is a neighbor of \code{x[i]}; if \code{sparse=TRUE} (the default), a sparse list representation of the same matrix is returned, with list element \code{i} a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i, ]}, or \code{integer(0)} in case there are no neighbors. If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element the matrix of distances (in meters) between each pair of detected neighbors.
 }
 \description{
-Nearest Neighbor Search for Simple Features
+The function returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
+The function has three modes of operation -
+\itemize{
+\item{lon-lat / points - Calculation based on \code{sf::st_distance}, which internally uses \code{geosphere::distGeo}}
+\item{projected / points - Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
+}
 }
 \examples{
 data(cities)

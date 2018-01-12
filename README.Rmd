@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # nngeo
 
-The goal of `nngeo` is to provide k-nearest neighbor join capabilities for spatial analysis in R. 
+The goal of `nngeo` is to provide **k-nearest neighbor join** capabilities for spatial analysis in R. 
 
 ## Installation
 
@@ -38,7 +38,7 @@ library(nngeo)
 
 ## Example
 
-The following code section finds the 10-nearest towns for each water body using function `st_nn`. 
+The following code section finds the 10-nearest towns for each city using function `st_nn`. 
 
 ```{r}
 data(towns)
@@ -47,14 +47,16 @@ nn = st_nn(cities, towns, k = 20)
 nn
 ```
 
-The `st_nn` function can also be used to join the two layers, using `st_join` from package `sf`.
+By default, the result is a sparse list with the neighbor IDs.
+
+The `st_nn` function can also be used as a **geometry predicate function** when performing spatial join with `sf::st_join`.
 
 ```{r}
 nearest_towns = st_join(cities, towns, join = st_nn, k = 3)
 head(nearest_towns)
 ```
 
-A helper function `st_connect` can be used to draw lineas according to joined features, for visualization ,network analysis, etc.
+A helper function `st_connect` can be used to draw lines according to joined feature IDs. This may be useful for visualization or for network analysis. 
 
 ```{r, fig.align='center', fig.width=5, fig.height=5, warning=FALSE}
 l = st_connect(cities, towns, ids = nn)

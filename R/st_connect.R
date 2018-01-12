@@ -20,14 +20,21 @@
 #' plot(st_geometry(towns), col = "darkgrey")
 #' plot(st_geometry(l), add = TRUE)
 #' plot(st_geometry(cities), col = "red", add = TRUE)
-
+#'
+#' # Nearest 'city' per 'town', search radius of 50 km
+#' cities = st_transform(cities, 32636)
+#' towns = st_transform(towns, 32636)
+#' l = st_connect(towns, cities, maxdist = 30000)
+#' plot(st_geometry(towns), col = "darkgrey")
+#' plot(st_geometry(l), add = TRUE)
+#' plot(st_buffer(st_geometry(cities), units::set_units(30, km)), border = "red", add = TRUE)
 
 
 st_connect = function(x, y, ids = st_nn(x, y, ...), ...) {
 
-  x_features = length(st_geometry(x))
-  x = st_centroid(x)
-  y = st_centroid(y)
+  x_features = length(sf::st_geometry(x))
+  x = sf::st_centroid(x)
+  y = sf::st_centroid(y)
 
   result = st_sfc()
 
@@ -35,11 +42,11 @@ st_connect = function(x, y, ids = st_nn(x, y, ...), ...) {
 
     for(j in ids[[i]]) {
 
-      start = st_geometry(x[i, ])
-      end = st_geometry(y[j, ])
+      start = sf::st_geometry(x[i, ])
+      end = sf::st_geometry(y[j, ])
       l = c(start, end)
-      l = st_combine(l)
-      l = st_cast(l, "LINESTRING")
+      l = sf::st_combine(l)
+      l = sf::st_cast(l, "LINESTRING")
       result = c(result, l)
 
     }
