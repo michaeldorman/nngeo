@@ -3,11 +3,12 @@ Type: Package
 Title: k-Nearest Neighbor Join for Spatial Data
 Version: 0.1.0
 Authors@R: person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre"))
-Description: k-Nearest Neighbor search for projected and un-projected spatial data represented as 'sf' objects. 
+Description: K-Nearest Neighbor search for projected and non-projected spatial data represented as 'sf' objects. 
 Imports:
     geosphere,
     RANN,
-    units
+    units,
+    lwgeom
 Depends:
     R (>= 3.2.3),
     sf (>= 0.6-0)

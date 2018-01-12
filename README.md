@@ -22,7 +22,7 @@ Once installed, the library can be loaded as follows.
 ``` r
 library(nngeo)
 #> Loading required package: sf
-#> Linking to GEOS 3.5.1, GDAL 2.2.1, proj.4 4.9.2
+#> Linking to GEOS 3.5.1, GDAL 2.2.2, proj.4 4.9.2
 ```
 
 Example
@@ -58,13 +58,13 @@ head(nearest_towns)
 #> bbox:           xmin: 34.78177 ymin: 31.76832 xmax: 35.21371 ymax: 32.0853
 #> epsg (SRID):    4326
 #> proj4string:    +proj=longlat +datum=WGS84 +no_defs
-#>        name.x    name.y                      geometry
-#> 1   Jerusalem AMMINADAV    POINT (35.21371 31.768319)
-#> 1.1 Jerusalem     ALMON    POINT (35.21371 31.768319)
-#> 1.2 Jerusalem ABU GHOSH    POINT (35.21371 31.768319)
-#> 2    Tel-Aviv      AZOR POINT (34.7817676 32.0852999)
-#> 2.1  Tel-Aviv    ADANIM POINT (34.7817676 32.0852999)
-#> 2.2  Tel-Aviv  AHI'EZER POINT (34.7817676 32.0852999)
+#>        name.x    name.y                  geometry
+#> 1   Jerusalem AMMINADAV POINT (35.21371 31.76832)
+#> 1.1 Jerusalem     ALMON POINT (35.21371 31.76832)
+#> 1.2 Jerusalem ABU GHOSH POINT (35.21371 31.76832)
+#> 2    Tel-Aviv      AZOR  POINT (34.78177 32.0853)
+#> 2.1  Tel-Aviv    ADANIM  POINT (34.78177 32.0853)
+#> 2.2  Tel-Aviv  AHI'EZER  POINT (34.78177 32.0853)
 ```
 
 A helper function `st_connect` can be used to draw lines according to joined feature IDs. This may be useful for visualization or for network analysis.

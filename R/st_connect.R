@@ -29,12 +29,11 @@
 #' plot(st_geometry(l), add = TRUE)
 #' plot(st_buffer(st_geometry(cities), units::set_units(30, km)), border = "red", add = TRUE)
 
-
 st_connect = function(x, y, ids = st_nn(x, y, ...), ...) {
 
   x_features = length(sf::st_geometry(x))
-  x = sf::st_centroid(x)
-  y = sf::st_centroid(y)
+  x_ctr = sf::st_centroid(x)
+  y_ctr = sf::st_centroid(y)
 
   result = st_sfc()
 
@@ -42,8 +41,8 @@ st_connect = function(x, y, ids = st_nn(x, y, ...), ...) {
 
     for(j in ids[[i]]) {
 
-      start = sf::st_geometry(x[i, ])
-      end = sf::st_geometry(y[j, ])
+      start = sf::st_geometry(x_ctr[i, ])
+      end = sf::st_geometry(y_ctr[j, ])
       l = c(start, end)
       l = sf::st_combine(l)
       l = sf::st_cast(l, "LINESTRING")
