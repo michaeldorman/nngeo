@@ -16,7 +16,4 @@ This is a new release, so there are no reverse dependencies.
 
 This is a resubmission. In this version I have:
 
-* Replaced 'K-Nearest Neighbor' to 'K-nearest neighbor' in the DESCRIPTION. 
-Thus I hope it is clear that the term does not refer to a specific algorithm, but to the general methodology, and does not require a reference. 
-
-* Added further clarification of the algorithms currently used in the DESCRIPTION: 'Nearest neighbor search uses (1) function 'nn2' from package 'RANN' for projected point data, or (2) function 'st_distance' from package 'sf' for other types of spatial data.' 
+* Added '()' behind all function names in the DESCRIPTION.

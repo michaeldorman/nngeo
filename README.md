@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/nngeo)](https://cran.r-project.org/package=nngeo)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/nngeo)](https://cran.r-project.org/package=nngeo) [![CRAN\_Downloads\_Badge](http://cranlogs.r-pkg.org/badges/last-month/shadow)](https://cran.r-project.org/package=shadow)
 
 nngeo
 =====
