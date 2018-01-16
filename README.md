@@ -9,6 +9,12 @@ The goal of `nngeo` is to provide **k-nearest neighbor join** capabilities for s
 Installation
 ------------
 
+CRAN version -
+
+``` r
+install.packages("nngeo")
+```
+
 GitHub version -
 
 ``` r
