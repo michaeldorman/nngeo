@@ -6,7 +6,11 @@
   ids = matrix(NA, nrow = x_features, ncol = k)
   dist_matrix = matrix(NA, nrow = x_features, ncol = k)
 
+  # Progress bar
+  pb = utils::txtProgressBar(min = 0, max = x_features, initial = 0, style = 3)
+
   for(i in 1:x_features) {
+
     dists = sf::st_distance(x[i, ], y)[1, ]
     ids1 = order(dists)[1:k]
     dists1 = dists[ids1]
@@ -15,6 +19,10 @@
     dists1[dists1 > maxdist] = NA
     ids[i, ] = ids1
     dist_matrix[i, ] = dists1
+
+    # Progress
+    utils::setTxtProgressBar(pb, i)
+
   }
 
   return(list(ids, dist_matrix))

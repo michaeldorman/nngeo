@@ -3,3 +3,5 @@
 export(st_connect)
 export(st_nn)
 import(sf)
+importFrom(Rcpp,sourceCpp)
+useDynLib(nngeo)

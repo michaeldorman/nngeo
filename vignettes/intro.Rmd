@@ -86,8 +86,11 @@ The `st_nn` function accepts two layers, `x` and `y`, and returns a list with th
 
 For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`. 
 
-```{r}
+```{r, results='hide'}
 nn = st_nn(cities, towns[1:5, ])
+```
+
+```{r}
 nn
 ```
 
@@ -124,8 +127,11 @@ text(
 
 The `st_nn` can also return the complete logical matrix indicating whether each feature in `x` is a neighbor of `y`. To get the dense matrix, instead of a list, use `sparse=FALSE`.
 
-```{r}
+```{r, results='hide'}
 nn = st_nn(cities, towns[1:5, ], sparse = FALSE)
+```
+
+```{r}
 nn
 ```
 
@@ -133,10 +139,19 @@ nn
 
 It is also possible to return any **k-nearest** neighbors, rather than just one. For example, setting `k=2` returns the **two** nearest neighbors - 
 
-```{r}
+```{r, results='hide'}
 nn = st_nn(cities, towns[1:5, ], k = 2)
+```
+
+```{r}
 nn
+```
+
+```{r, results='hide'}
 nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2)
+```
+
+```{r}
 nn
 ```
 
@@ -144,8 +159,11 @@ nn
 
 Using `returnDist=TRUE` the distances matrix is also returned, in addition the the neighbor matches, with both componenets now comprising a list - 
 
-```{r}
+```{r, results='hide'}
 nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, returnDist = TRUE)
+```
+
+```{r}
 nn
 ```
 
@@ -153,8 +171,11 @@ nn
 
 Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for `cities[2, ]`.
 
-```{r}
+```{r, results='hide'}
 nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, returnDist = TRUE, maxdist = 50000)
+```
+
+```{r}
 nn
 ```
 
@@ -164,18 +185,20 @@ The `st_nn` function can also be used as a **geometry predicate function** when 
 
 For example, the following expression spatially joins the two nearest `towns[1:5, ]` features to each `cities` features, using a search radius of 50 km. 
 
-```{r}
+```{r, results='hide'}
 st_join(cities, towns[1:5, ], join = st_nn, k = 2, maxdist = 50000)
 ```
-
 
 ## Another example
 
 Here is another example, finding the 10-nearest neighbor `towns` features for each `cities` feature (Figure \ref{fig:cities_towns})
 
-```{r cities_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 10 \\texttt{towns} features from each \\texttt{cities} feature"}
+```{r, results='hide', warning=FALSE}
 x = st_nn(cities, towns, k = 10)
 l = st_connect(cities, towns, ids = x)
+```
+
+```{r cities_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 10 \\texttt{towns} features from each \\texttt{cities} feature"}
 plot(st_geometry(towns), col = "darkgrey")
 plot(st_geometry(l), add = TRUE)
 plot(st_geometry(cities), col = "red", add = TRUE)
@@ -185,15 +208,15 @@ plot(st_geometry(cities), col = "red", add = TRUE)
 
 Nearest neighbor search also works for non-point layers. The following code section finds the 20-nearest towns for each water body. 
 
-```{r}
-nn = st_nn(water, towns, k = 20)
+```{r, results='hide'}
+nn = st_nn(water[-1, ], towns, k = 20)
 ```
 
 Again, we can visualize the matching `towns` per `water` feature using `st_connect` (Figure \ref{fig:water_towns}). Note the lines extend from the polygon centroids, yet the calculation itself considers the true shortest distance from the polygon **border**.
 
 ```{r water_towns, fig.align='center', fig.width=5, fig.height=7, warning=FALSE, fig.cap="Nearest 20 \\texttt{towns} features from each \\texttt{water} polygon"}
-l = st_connect(water, towns, ids = nn)
-plot(st_geometry(water), col = "lightblue")
+l = st_connect(water[-1, ], towns, ids = nn)
+plot(st_geometry(water[-1, ]), col = "lightblue")
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(l), add = TRUE)
 ```
