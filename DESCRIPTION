@@ -5,7 +5,7 @@ Version: 0.1.2
 Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Jan", "Antala", email = "hello@janantala.com", role = c("ctb")))
-Description: K-nearest neighbor search for projected and non-projected 'sf' spatial layers. Nearest neighbor search uses (1) function nn2() from package 'RANN' for projected point data, or (2) function st_distance() from package 'sf' for other types of spatial data.
+Description: K-nearest neighbor search for projected and non-projected 'sf' spatial layers. Nearest neighbor search uses (1) C implementation of the Vicenty Formula for lon-lat point data, (2) function nn2() from package 'RANN' for projected point data, or (3) function st_distance() from package 'sf' for other types of spatial data.
 Imports:
     geosphere,
     RANN,
