@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/nngeo)](https://cran.r-project.org/package=nngeo) [![CRAN\_Downloads\_Badge](http://cranlogs.r-pkg.org/badges/last-month/nngeo)](https://cran.r-project.org/package=nngeo)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/nngeo)](https://cran.r-project.org/package=nngeo) [![CRAN\_Downloads\_Badge](http://cranlogs.r-pkg.org/badges/last-month/nngeo)](https://cran.r-project.org/package=nngeo)
 
 nngeo
 =====
@@ -42,6 +42,15 @@ The following code section finds the 10-nearest towns for each city using functi
 data(towns)
 data(cities)
 nn = st_nn(cities, towns, k = 20)
+#> 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |======================                                           |  33%
+  |                                                                       
+  |===========================================                      |  67%
+  |                                                                       
+  |=================================================================| 100%
 nn
 #> [[1]]
 #>  [1] 29 40 87  2 49 43  9 11 63 36 37 52 10 44 46 70 48 65 39 35
@@ -59,6 +68,15 @@ The `st_nn` function can also be used as a **geometry predicate function** when 
 
 ``` r
 nearest_towns = st_join(cities, towns, join = st_nn, k = 3)
+#> 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |======================                                           |  33%
+  |                                                                       
+  |===========================================                      |  67%
+  |                                                                       
+  |=================================================================| 100%
 head(nearest_towns)
 #> Simple feature collection with 6 features and 2 fields
 #> geometry type:  POINT

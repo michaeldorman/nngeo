@@ -1,7 +1,7 @@
 Package: nngeo
 Type: Package
 Title: k-Nearest Neighbor Join for Spatial Data
-Version: 0.1.2
+Version: 0.1.5
 Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Jan", "Antala", email = "hello@janantala.com", role = c("ctb")))

@@ -2,10 +2,10 @@
 
 * Initial version
 
-# nngeo 0.1.2
+# nngeo 0.1.5
 
 * Added tests for 'st_nn'
 * Added progress bar for 'st_nn' and 'st_connect'
 * Added C code (Vincenty) for 'st_nn' & lon-lat points
 * Fixed sample size mistake in 'st_nn' example
-
+* Fixed error when using 'sfc' objects

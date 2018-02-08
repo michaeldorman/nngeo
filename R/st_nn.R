@@ -30,6 +30,11 @@
 #' # Nearest town
 #' st_nn(cities, towns)
 #'
+#' # Using 'sfc' objects
+#' st_nn(st_geometry(cities), st_geometry(towns))
+#' st_nn(cities, st_geometry(towns))
+#' st_nn(st_geometry(cities), towns)
+#'
 #' # With distances
 #' st_nn(cities, towns, returnDist = TRUE)
 #'
@@ -64,7 +69,7 @@
 st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE) {
 
   # Check that 'k' does not exceed number of features in 'y'
-  if(k > nrow(y))
+  if(k > length(sf::st_geometry(y)))
     stop("'k' cannot exceed number of features in 'y'")
 
   # Check that 'maxdist' has length 1
