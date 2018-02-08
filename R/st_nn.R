@@ -51,8 +51,8 @@
 #' # Large example
 #' n = 1000
 #' x = data.frame(
-#'   lon = (runif(1000) * 2 - 1) * 70,
-#'   lat = (runif(1000) * 2 - 1) * 70
+#'   lon = (runif(n) * 2 - 1) * 70,
+#'   lat = (runif(n) * 2 - 1) * 70
 #' )
 #' x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
 #' start = Sys.time()
