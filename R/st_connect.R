@@ -58,6 +58,8 @@ st_connect = function(x, y, ids = st_nn(x, y, ...), ...) {
 
   }
 
+  cat("\n")
+
   return(result)
 
 }

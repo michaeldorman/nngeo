@@ -16,7 +16,6 @@ double toRadians(double degree)
 	return r;
 }
 
-// [[Rcpp::export]]
 double getDistance(double lon1, double lat1, double lon2, double lat2)
 {
 	double a = 6378137, b = 6356752.314245, f = 1 / 298.257223563;
@@ -85,4 +84,65 @@ double getDistance(double lon1, double lat1, double lon2, double lat2)
 
 	return s;
 }
+
+// [[Rcpp::export]]
+NumericVector getDistancesN(NumericVector orig, NumericMatrix dest) {
+
+  int dest_nrow = dest.nrow();
+  NumericVector out(dest_nrow);
+
+  for (int i = 0; i < dest_nrow; i++) {
+    out[i] = getDistance(orig[0], orig[1], dest(i, 0), dest(i, 1));
+  }
+
+  return out;
+
+}
+
+// ***Rcpp approach for loop over distances and finding nearest ids+distances***
+// /*** R
+// x_coord = sf::st_coordinates(cities)
+// y_coord = sf::st_coordinates(towns)
+// k = 4
+// maxdist = Inf
+// nngeo:::getIdsDists(x_coord, y_coord, k, maxdist)
+// st_nn(cities, towns, k = k, maxdist = Inf, returnDist = TRUE)
+// */
+//
+// // [[Rcpp::export]]
+// List getIdsDists(NumericMatrix orig, NumericMatrix dest, int k, double maxdist) {
+//
+//   int orig_nrow = orig.nrow();
+//   int dest_nrow = dest.nrow();
+//
+//   NumericVector d(dest_nrow);
+//   NumericVector d_ord(dest_nrow);
+//   IntegerVector ord(k);
+//   IntegerVector k_seq(k);
+//   NumericMatrix ids(orig_nrow, k);
+//   NumericMatrix dists(orig_nrow, k);
+//
+//   k_seq = seq(0, k-1);
+//
+//   for (int i = 0; i < orig_nrow; i++) {
+//     d = getDistancesN(orig(i, _), dest);
+//     d_ord = clone(d).sort();
+//     ord = match(d_ord, d); // Same as 'order' in R
+//     ord = ord[k_seq];
+//     d_ord = d_ord[k_seq];
+//     ids(i, _) = ord;
+//     dists(i, _) = d_ord;
+//   }
+//
+//   List out = List::create(ids, dists);
+//   return out;
+//
+// }
+
+
+
+
+
+
+
 

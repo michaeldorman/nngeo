@@ -5,23 +5,21 @@
 
 using namespace Rcpp;
 
-// getDistance
-double getDistance(double lon1, double lat1, double lon2, double lat2);
-RcppExport SEXP _nngeo_getDistance(SEXP lon1SEXP, SEXP lat1SEXP, SEXP lon2SEXP, SEXP lat2SEXP) {
+// getDistancesN
+NumericVector getDistancesN(NumericVector orig, NumericMatrix dest);
+RcppExport SEXP _nngeo_getDistancesN(SEXP origSEXP, SEXP destSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type lon1(lon1SEXP);
-    Rcpp::traits::input_parameter< double >::type lat1(lat1SEXP);
-    Rcpp::traits::input_parameter< double >::type lon2(lon2SEXP);
-    Rcpp::traits::input_parameter< double >::type lat2(lat2SEXP);
-    rcpp_result_gen = Rcpp::wrap(getDistance(lon1, lat1, lon2, lat2));
+    Rcpp::traits::input_parameter< NumericVector >::type orig(origSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type dest(destSEXP);
+    rcpp_result_gen = Rcpp::wrap(getDistancesN(orig, dest));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_nngeo_getDistance", (DL_FUNC) &_nngeo_getDistance, 4},
+    {"_nngeo_getDistancesN", (DL_FUNC) &_nngeo_getDistancesN, 2},
     {NULL, NULL, 0}
 };
 

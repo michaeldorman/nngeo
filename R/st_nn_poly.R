@@ -25,6 +25,8 @@
 
   }
 
+  cat("\n")
+
   return(list(ids, dist_matrix))
 
 }
