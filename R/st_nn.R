@@ -3,7 +3,7 @@
 #' The function returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
 #' The function has three modes of operation -
 #' \itemize{
-#' \item{lon-lat points - Calculation using C implementation (see references) of the Vicenty distance, which is identical to \code{geosphere::distVincentyEllipsoid} and \code{sf::st_distance}}
+#' \item{lon-lat points - Calculation using C implementation (see references) of the Vincenty distance, which is identical to \code{geosphere::distVincentyEllipsoid} and \code{sf::st_distance}}
 #' \item{projected points - Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
 #' \item{lines or polygons, either lon-lat or projected - Calculation based on \code{sf::st_distance}, which internally uses \code{geosphere::distGeo}}
 #' }
@@ -11,11 +11,11 @@
 #' @param x Object of class \code{sf} or \code{sfc}
 #' @param y Object of class \code{sf} or \code{sfc}
 #' @param sparse logical; should a sparse index list be returned (TRUE) or a dense logical matrix? See below.
-#' @param k The maximum number of nearest neighbours to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned
+#' @param k The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned
 #' @param maxdist Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained
 #' @param returnDist logical; whether to return a matrix with the distances between detected neighbors
 #' @return If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j, ]} is a neighbor of \code{x[i]}; if \code{sparse=TRUE} (the default), a sparse list representation of the same matrix is returned, with list element \code{i} a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i, ]}, or \code{integer(0)} in case there are no neighbors. If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element the matrix of distances (in meters) between each pair of detected neighbors.
-#' @references C code for Vicenty distance by Jan Antala (\url{https://github.com/janantala/GPS-distance/blob/master/c/distance.c})
+#' @references C code for Vincenty distance by Jan Antala (\url{https://github.com/janantala/GPS-distance/blob/master/c/distance.c})
 #' @export
 #'
 #' @import sf

@@ -9,3 +9,8 @@
 * Added C code (Vincenty) for 'st_nn' lon-lat points method
 * Fixed sample size mistake in 'st_nn' example
 * Fixed error when using 'sfc' objects
+
+# To do:
+
+* 'st_connect' snapped to polygon boundary instead of centroid
+* Geodesic buffer

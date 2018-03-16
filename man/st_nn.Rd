@@ -13,7 +13,7 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE)
 
 \item{sparse}{logical; should a sparse index list be returned (TRUE) or a dense logical matrix? See below.}
 
-\item{k}{The maximum number of nearest neighbours to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned}
+\item{k}{The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned}
 
 \item{maxdist}{Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained}
 
@@ -26,7 +26,7 @@ If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[
 The function returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
 The function has three modes of operation -
 \itemize{
-\item{lon-lat points - Calculation using C implementation (see references) of the Vicenty distance, which is identical to \code{geosphere::distVincentyEllipsoid} and \code{sf::st_distance}}
+\item{lon-lat points - Calculation using C implementation (see references) of the Vincenty distance, which is identical to \code{geosphere::distVincentyEllipsoid} and \code{sf::st_distance}}
 \item{projected points - Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
 \item{lines or polygons, either lon-lat or projected - Calculation based on \code{sf::st_distance}, which internally uses \code{geosphere::distGeo}}
 }
@@ -78,5 +78,5 @@ end - start
 }
 }
 \references{
-C code for Vicenty distance by Jan Antala (\url{https://github.com/janantala/GPS-distance/blob/master/c/distance.c})
+C code for Vincenty distance by Jan Antala (\url{https://github.com/janantala/GPS-distance/blob/master/c/distance.c})
 }
