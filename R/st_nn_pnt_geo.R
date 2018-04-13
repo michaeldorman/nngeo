@@ -1,4 +1,4 @@
-.st_nn_pnt_geo = function(x, y, k, maxdist) {
+.st_nn_pnt_geo = function(x, y, k, maxdist, progress) {
 
   x_features = length(sf::st_geometry(x))
   x_coord = sf::st_coordinates(x)
@@ -14,7 +14,9 @@
   dist_matrix = matrix(NA, nrow = x_features, ncol = k)
 
   # Progress bar
-  pb = utils::txtProgressBar(min = 0, max = x_features, initial = 0, style = 3)
+  if(progress) {
+    pb = utils::txtProgressBar(min = 0, max = x_features, initial = 0, style = 3)
+  }
 
   for(i in 1:x_features) {
 
@@ -24,15 +26,18 @@
     dist_matrix[i, ] = dists[ids1]
 
     # Progress
-    utils::setTxtProgressBar(pb, i)
+    if(progress) {
+      utils::setTxtProgressBar(pb, i)
+    }
 
   }
 
   ids[dist_matrix > maxdist] = NA
   dist_matrix[is.na(ids)] = NA
 
-  cat("\n")
-
+  if(progress) {
+    cat("\n")
+  }
   return(list(ids, dist_matrix))
 
 }

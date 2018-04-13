@@ -1,4 +1,4 @@
-.st_nn_pnt_proj = function(x, y, k, maxdist) {
+.st_nn_pnt_proj = function(x, y, k, maxdist, progress) {
 
   x_coord = sf::st_coordinates(x)
   y_coord = sf::st_coordinates(y)

@@ -14,6 +14,7 @@
 #' @param k The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned
 #' @param maxdist Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained
 #' @param returnDist logical; whether to return a matrix with the distances between detected neighbors
+#' @param progress Display progress bar? (default `TRUE`)
 #' @return If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j, ]} is a neighbor of \code{x[i]}; if \code{sparse=TRUE} (the default), a sparse list representation of the same matrix is returned, with list element \code{i} a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i, ]}, or \code{integer(0)} in case there are no neighbors. If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element the matrix of distances (in meters) between each pair of detected neighbors.
 #' @references C code for Vincenty distance by Jan Antala (\url{https://github.com/janantala/GPS-distance/blob/master/c/distance.c})
 #' @export
@@ -52,6 +53,9 @@
 #' st_join(cities, towns, st_nn, k = 1, maxdist = 7200)
 #' st_join(towns, cities, st_nn, k = 1)
 #'
+#' # Polygons to polygons
+#' st_nn(water, water, k = 4)
+#'
 #' \dontrun{
 #' # Large example
 #' n = 1000
@@ -66,10 +70,14 @@
 #' end - start
 #' }
 
-st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE) {
+st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, progress = TRUE) {
+
+  # To geometry
+  x = sf::st_geometry(x)
+  y = sf::st_geometry(y)
 
   # Check that 'k' does not exceed number of features in 'y'
-  if(k > length(sf::st_geometry(y)))
+  if(k > length(y))
     stop("'k' cannot exceed number of features in 'y'")
 
   # Check that 'maxdist' has length 1
@@ -83,13 +91,13 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE) 
   # Determine geometry type and projection
 
   # Check that 'x' and 'y' are 'POINT'
-  if(!class(sf::st_geometry(x))[1] == "sfc_POINT" | !class(sf::st_geometry(y))[1] == "sfc_POINT") {
-    result = .st_nn_poly(x, y, k, maxdist)
+  if(!class(x)[1] == "sfc_POINT" | !class(y)[1] == "sfc_POINT") {
+    result = .st_nn_poly(x, y, k, maxdist, progress)
   } else {
     if(sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
-      result = .st_nn_pnt_geo(x, y, k, maxdist)
+      result = .st_nn_pnt_geo(x, y, k, maxdist, progress)
     } else {
-      result = .st_nn_pnt_proj(x, y, k, maxdist)
+      result = .st_nn_pnt_proj(x, y, k, maxdist, progress)
     }
   }
 
@@ -106,8 +114,8 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE) 
   if(!sparse) {
     m = matrix(
       FALSE,
-      nrow = length(sf::st_geometry(x)),
-      ncol = length(sf::st_geometry(y))
+      nrow = length(x),
+      ncol = length(y)
       )
     for(i in 1:nrow(m)) m[i, ids[[i]]] = TRUE
     ids = m

@@ -2,7 +2,7 @@
 
 * Initial version
 
-# nngeo 0.1.5
+# nngeo 0.1.5 (2018-03-16)
 
 * Added tests for 'st_nn'
 * Added progress bar for 'st_nn' (except when using projected points method) and for 'st_connect'
@@ -10,7 +10,14 @@
 * Fixed sample size mistake in 'st_nn' example
 * Fixed error when using 'sfc' objects
 
+# nngeo 0.1.8
+
+* 'st_connect' lines snap to polygon/line outline instead of centroid
+* Added new examples
+* Fixed progress bar issues
+* Changed formatting in vignette
+
 # To do:
 
-* 'st_connect' snapped to polygon boundary instead of centroid
 * Geodesic buffer
+* Refine outline point sampling, to determine sample size relatively to outline length

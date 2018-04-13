@@ -4,7 +4,8 @@
 \alias{st_nn}
 \title{Nearest Neighbor Search for Simple Features}
 \usage{
-st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE)
+st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE,
+  progress = TRUE)
 }
 \arguments{
 \item{x}{Object of class \code{sf} or \code{sfc}}
@@ -18,6 +19,8 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE)
 \item{maxdist}{Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained}
 
 \item{returnDist}{logical; whether to return a matrix with the distances between detected neighbors}
+
+\item{progress}{Display progress bar? (default `TRUE`)}
 }
 \value{
 If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j, ]} is a neighbor of \code{x[i]}; if \code{sparse=TRUE} (the default), a sparse list representation of the same matrix is returned, with list element \code{i} a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i, ]}, or \code{integer(0)} in case there are no neighbors. If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element the matrix of distances (in meters) between each pair of detected neighbors.
@@ -62,6 +65,9 @@ st_join(cities, towns, st_nn, k = 1)
 st_join(cities, towns, st_nn, k = 2)
 st_join(cities, towns, st_nn, k = 1, maxdist = 7200)
 st_join(towns, cities, st_nn, k = 1)
+
+# Polygons to polygons
+st_nn(water, water, k = 4)
 
 \dontrun{
 # Large example
