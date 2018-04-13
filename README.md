@@ -41,16 +41,7 @@ The following code section finds the 10-nearest towns for each city using functi
 ``` r
 data(towns)
 data(cities)
-nn = st_nn(cities, towns, k = 20)
-#> 
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |======================                                           |  33%
-  |                                                                       
-  |===========================================                      |  67%
-  |                                                                       
-  |=================================================================| 100%
+nn = st_nn(cities, towns, k = 20, progress = FALSE)
 nn
 #> [[1]]
 #>  [1] 29 40 87  2 49 43  9 11 63 36 37 52 10 44 46 70 48 65 39 35
@@ -67,16 +58,7 @@ By default, the result is a sparse list with the neighbor IDs.
 The `st_nn` function can also be used as a **geometry predicate function** when performing spatial join with `sf::st_join`.
 
 ``` r
-nearest_towns = st_join(cities, towns, join = st_nn, k = 3)
-#> 
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |======================                                           |  33%
-  |                                                                       
-  |===========================================                      |  67%
-  |                                                                       
-  |=================================================================| 100%
+nearest_towns = st_join(cities, towns, join = st_nn, k = 3, progress = FALSE)
 head(nearest_towns)
 #> Simple feature collection with 6 features and 2 fields
 #> geometry type:  POINT
@@ -96,7 +78,7 @@ head(nearest_towns)
 A helper function `st_connect` can be used to draw lines according to joined feature IDs. This may be useful for visualization or for network analysis.
 
 ``` r
-l = st_connect(cities, towns, ids = nn)
+l = st_connect(cities, towns, ids = nn, progress = FALSE)
 plot(st_geometry(towns), col = "darkgrey")
 plot(st_geometry(cities), col = "red", add = TRUE)
 plot(st_geometry(l), add = TRUE)
