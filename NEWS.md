@@ -21,3 +21,4 @@
 
 * Geodesic buffer
 * Refine outline point sampling, to determine sample size relatively to outline length
+* 'igraph' object from layer based on proximity

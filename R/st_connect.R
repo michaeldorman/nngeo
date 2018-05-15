@@ -7,6 +7,8 @@
 #' @param ... Other arguments passed to \code{st_nn} such as \code{k} and \code{maxdist}
 #'
 #' @return Object of class \code{sfc} with geometry type \code{LINESTRING}
+#'
+#' @importFrom methods as
 #' @export
 #'
 #' @examples
@@ -37,6 +39,8 @@
 #' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 #' plot(st_geometry(l), col = "red", add = TRUE)
 #'
+#' \dontrun{
+#'
 #' # The 2-nearest water bodies for each town
 #' l = st_connect(towns, water[-1, ], k = 2)
 #' plot(st_geometry(water[-1, ]), col = "lightblue", border = NA)
@@ -48,6 +52,8 @@
 #' plot(st_geometry(water), col = "lightblue")
 #' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 #' plot(st_geometry(l), col = "red", add = TRUE)
+#'
+#' }
 
 st_connect = function(x, y, ids = st_nn(x, y, ...), progress = TRUE, ...) {
 

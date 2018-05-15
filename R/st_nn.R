@@ -39,6 +39,8 @@
 #' # With distances
 #' st_nn(cities, towns, returnDist = TRUE)
 #'
+#' \dontrun{
+#'
 #' # Distance limit
 #' st_nn(cities, towns, maxdist = 7200)
 #' st_nn(cities, towns, k = 3, maxdist = 12000)
@@ -56,7 +58,6 @@
 #' # Polygons to polygons
 #' st_nn(water, water, k = 4)
 #'
-#' \dontrun{
 #' # Large example
 #' n = 1000
 #' x = data.frame(
@@ -68,6 +69,7 @@
 #' result = st_nn(x, x, k = 3)
 #' end = Sys.time()
 #' end - start
+#'
 #' }
 
 st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, progress = TRUE) {

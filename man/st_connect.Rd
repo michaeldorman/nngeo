@@ -51,6 +51,8 @@ plot(st_geometry(water[-1, ]), col = "lightblue", border = NA)
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(l), col = "red", add = TRUE)
 
+\dontrun{
+
 # The 2-nearest water bodies for each town
 l = st_connect(towns, water[-1, ], k = 2)
 plot(st_geometry(water[-1, ]), col = "lightblue", border = NA)
@@ -62,4 +64,6 @@ l = st_connect(water, water, k = 2)
 plot(st_geometry(water), col = "lightblue")
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(l), col = "red", add = TRUE)
+
+}
 }

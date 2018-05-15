@@ -1,7 +1,7 @@
 Package: nngeo
 Type: Package
 Title: k-Nearest Neighbor Join for Spatial Data
-Version: 0.1.5
+Version: 0.1.8
 Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Jan", "Antala", email = "hello@janantala.com", role = c("ctb")))
@@ -12,7 +12,8 @@ Imports:
     units,
     lwgeom,
     Rcpp,
-    sp
+    sp,
+    methods
 Depends:
     R (>= 3.2.3),
     sf (>= 0.6-0)
