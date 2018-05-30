@@ -10,15 +10,20 @@
 * Fixed sample size mistake in 'st_nn' example
 * Fixed error when using 'sfc' objects
 
-# nngeo 0.1.8
+# nngeo 0.1.8 (2018-05-15)
 
 * 'st_connect' lines snap to polygon/line outline instead of centroid
 * Added new examples
 * Fixed progress bar issues
 * Changed formatting in vignette
 
+# nngeo 0.2.0
+
+* Added OpenMP support
+* Added 'dist' (sampling point interval) parameter for 'st_connect'
+* Fixed progress bar issues in 'st_connect'
+
 # To do:
 
 * Geodesic buffer
-* Refine outline point sampling, to determine sample size relatively to outline length
 * 'igraph' object from layer based on proximity

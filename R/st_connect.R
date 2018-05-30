@@ -2,9 +2,10 @@
 #'
 #' @param x Object of class \code{sf} or \code{sfc}
 #' @param y Object of class \code{sf} or \code{sfc}
-#' @param ids A sparse list representation of features to connect, such as returned by function \code{\link{st_nn}}
-#' @param progress Display progress bar? (default `TRUE`)
-#' @param ... Other arguments passed to \code{st_nn} such as \code{k} and \code{maxdist}
+#' @param ids A sparse list representation of features to connect such as returned by function \code{\link{st_nn}}. If \code{NULL} the function automatically calculates \code{ids} using \code{\link{st_nn}}
+#' @param dist Sampling distance interval for generating outline points to choose from. Only relevant when at lear one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat
+#' @param progress Display progress bar? (default \code{TRUE})
+#' @param ... Other arguments passed to \code{st_nn} when calculating \code{ids}, such as \code{k} and \code{maxdist}
 #'
 #' @return Object of class \code{sfc} with geometry type \code{LINESTRING}
 #'
@@ -55,19 +56,26 @@
 #'
 #' }
 
-st_connect = function(x, y, ids = st_nn(x, y, ...), progress = TRUE, ...) {
+st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
 
   # To geometry
   x = sf::st_geometry(x)
   y = sf::st_geometry(y)
 
+  # Check projection match
+  stopifnot(st_crs(x) == st_crs(y))
+
+  # Get nearest IDs
+  if(progress) cat("Calculating nearest IDs\n")
+  if(is.null(ids)) ids = st_nn(x, y, progress = progress, ...)
+
   # Numer of 'x' features
   x_features = length(x)
 
   # Final line layer
-  result = st_sfc()
+  result = st_sfc(crs = st_crs(x))
 
-  # # If line or polygon - use nearest point on shape outline
+  # If 'x' or 'y' are polygons - convert to lines
   if(class(x)[1] %in% c("sfc_POLYGON", "sfc_MULTIPOLYGON")) {
     x = st_cast(x, "MULTILINESTRING")
   }
@@ -75,53 +83,66 @@ st_connect = function(x, y, ids = st_nn(x, y, ...), progress = TRUE, ...) {
     y = st_cast(y, "MULTILINESTRING")
   }
 
-    # Progress bar
-    if(progress) {
-      pb = utils::txtProgressBar(min = 0, max = x_features, initial = 0, style = 3)
+  # Calculate line lengths
+  if(class(x)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
+    x_lengths = st_length(x)
+    x_lengths = as.numeric(x_lengths)
+    n_x = ceiling(x_lengths / dist)
+  }
+  if(class(y)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
+    y_lengths = st_length(y)
+    y_lengths = as.numeric(y_lengths)
+    n_y = ceiling(y_lengths / dist)
+  }
+
+  # Progress bar
+  if(progress) {
+    cat("Calculating lines\n")
+    pb = utils::txtProgressBar(min = 0, max = x_features, initial = 0, style = 3)
+  }
+
+  # Draw lines
+  for(i in 1:x_features) {
+
+    if(class(x)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
+      x_sp = as(x[i], "Spatial")
+      start_pool = sp::spsample(x_sp, type = "regular", n = n_x[i])
+      start_pool = st_as_sfc(start_pool)
+    } else {
+      start = x[i]
     }
 
-    # Draw lines
-    for(i in 1:x_features) {
+    for(j in ids[[i]]) {
 
-      if(class(x)[1] == "sfc_MULTILINESTRING") {
-        x_sp = as(x[i], "Spatial")
-        start_pool = sp::spsample(x_sp, type = "regular", n = 1000)
-        start_pool = st_as_sfc(start_pool)
+      if(class(x)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
+        nearest_id = st_nn(y[j], start_pool, k = 1, progress = FALSE)[[1]]
+        start = start_pool[nearest_id]
+      }
+
+      if(class(y)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
+        y_sp = as(y[j], "Spatial")
+        end_pool = sp::spsample(y_sp, type = "regular", n = n_y[j])
+        end_pool = st_as_sfc(end_pool)
+        nearest_id = st_nn(x[i], end_pool, k = 1, progress = FALSE)[[1]]
+        end = end_pool[nearest_id]
       } else {
-        start = x[i]
+        end = y[j]
       }
 
-      for(j in ids[[i]]) {
-
-        if(class(x)[1] == "sfc_MULTILINESTRING") {
-          nearest_id = st_nn(y[j], start_pool, k = 1, progress = FALSE)[[1]]
-          start = start_pool[nearest_id]
-        }
-
-        if(class(y)[1] == "sfc_MULTILINESTRING") {
-          y_sp = as(y[j], "Spatial")
-          end_pool = sp::spsample(y_sp, type = "regular", n = 1000)
-          end_pool = st_as_sfc(end_pool)
-          nearest_id = st_nn(x[i], end_pool, k = 1, progress = FALSE)[[1]]
-          end = end_pool[nearest_id]
-        } else {
-          end = y[j]
-        }
-
-        l = c(start, end)
-        l = sf::st_combine(l)
-        l = sf::st_cast(l, "LINESTRING")
-        result = c(result, l)
-      }
-
-      # Progress
-      if(progress) {
-        utils::setTxtProgressBar(pb, i)
-      }
-
+      l = c(start, end)
+      l = sf::st_combine(l)
+      l = sf::st_cast(l, "LINESTRING")
+      result = c(result, l)
     }
 
-  cat("\n")
+    # Progress
+    if(progress) {
+      utils::setTxtProgressBar(pb, i)
+    }
+
+  }
+
+  if(progress) cat("\nDone.\n")
 
   return(result)
 
