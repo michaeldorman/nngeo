@@ -3,7 +3,7 @@
 #' @param x Object of class \code{sf} or \code{sfc}
 #' @param y Object of class \code{sf} or \code{sfc}
 #' @param ids A sparse list representation of features to connect such as returned by function \code{\link{st_nn}}. If \code{NULL} the function automatically calculates \code{ids} using \code{\link{st_nn}}
-#' @param dist Sampling distance interval for generating outline points to choose from. Only relevant when at lear one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat
+#' @param dist Sampling distance interval for generating outline points to choose from. Only relevant when at least one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat
 #' @param progress Display progress bar? (default \code{TRUE})
 #' @param ... Other arguments passed to \code{st_nn} when calculating \code{ids}, such as \code{k} and \code{maxdist}
 #'
