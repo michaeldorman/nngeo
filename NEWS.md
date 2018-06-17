@@ -22,6 +22,7 @@
 * Added OpenMP support
 * Added 'dist' (sampling point interval) parameter for 'st_connect'
 * Fixed progress bar issues in 'st_connect'
+* Switched from 'for' loop to 'lapply' in 'st_connect'
 
 # To do:
 

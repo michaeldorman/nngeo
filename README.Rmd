@@ -47,7 +47,7 @@ library(nngeo)
 
 ## Example
 
-The following code section finds the 10-nearest towns for each city using function `st_nn`. 
+The following code section finds the 20-nearest towns for each city using function `st_nn`. 
 
 ```{r}
 data(towns)
