@@ -72,9 +72,6 @@ st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
   # Numer of 'x' features
   x_features = length(x)
 
-  # Final line layer
-  result = st_sfc(crs = st_crs(x))
-
   # If 'x' or 'y' are polygons - convert to lines
   if(class(x)[1] %in% c("sfc_POLYGON", "sfc_MULTIPOLYGON")) {
     x = st_cast(x, "MULTILINESTRING")
@@ -102,7 +99,7 @@ st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
   }
 
   # Draw lines
-  for(i in 1:x_features) {
+  result <- lapply(1:x_features, function(i) {
 
     if(class(x)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
       x_sp = as(x[i], "Spatial")
@@ -112,7 +109,7 @@ st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
       start = x[i]
     }
 
-    for(j in ids[[i]]) {
+    lines <- lapply(ids[[i]], function(j) {
 
       if(class(x)[1] %in% c("sfc_LINESTRING", "sfc_MULTILINESTRING")) {
         nearest_id = st_nn(y[j], start_pool, k = 1, progress = FALSE)[[1]]
@@ -132,15 +129,20 @@ st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
       l = c(start, end)
       l = sf::st_combine(l)
       l = sf::st_cast(l, "LINESTRING")
-      result = c(result, l)
-    }
+      l
+
+    })
 
     # Progress
     if(progress) {
       utils::setTxtProgressBar(pb, i)
     }
 
-  }
+    do.call(c, lines)
+
+  })
+
+  result <- do.call(c, result)
 
   if(progress) cat("\nDone.\n")
 
