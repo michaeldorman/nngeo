@@ -25,6 +25,8 @@
 #' plot(st_geometry(l), add = TRUE)
 #' plot(st_geometry(cities), col = "red", add = TRUE)
 #'
+#' \dontrun{
+#'
 #' # Nearest 'city' per 'town', search radius of 30 km
 #' cities = st_transform(cities, 32636)
 #' towns = st_transform(towns, 32636)
@@ -40,7 +42,6 @@
 #' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 #' plot(st_geometry(l), col = "red", add = TRUE)
 #'
-#' \dontrun{
 #'
 #' # The 2-nearest water bodies for each town
 #' l = st_connect(towns, water[-1, ], k = 2, dist = 100)
