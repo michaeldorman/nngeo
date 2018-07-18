@@ -17,7 +17,7 @@
 * Fixed progress bar issues
 * Changed formatting in vignette
 
-# nngeo 0.2.0
+# nngeo 0.2.0 (2018-07-18)
 
 * Added OpenMP support
 * Added 'dist' (sampling point interval) parameter for 'st_connect'

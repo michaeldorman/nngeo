@@ -8,3 +8,7 @@ There were no ERRORs or WARNINGs.
 ## Downstream dependencies
 None.
 
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Fixed the LICENSE file
