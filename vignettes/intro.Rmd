@@ -200,10 +200,10 @@ Nearest neighbor search also works for non-point layers. The following code sect
 nn = st_nn(water[-1, ], towns, k = 20, progress = FALSE)
 ```
 
-Again, we can calculate the respective lines for the above result using `st_connect`. 
+Again, we can calculate the respective lines for the above result using `st_connect`. Since one of the inputs is line/polygon, we need to specify a sampling distance `dist`, which sets the resolution of connecting points on the shape exterior boundary. 
 
 ```{r, warning=FALSE}
-l = st_connect(water[-1, ], towns, ids = nn, progress = FALSE)
+l = st_connect(water[-1, ], towns, ids = nn, progress = FALSE, dist = 100)
 ```
 
 The result is visualized on Figure \ref{fig:water_towns}.

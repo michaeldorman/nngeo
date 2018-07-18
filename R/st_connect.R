@@ -3,7 +3,7 @@
 #' @param x Object of class \code{sf} or \code{sfc}
 #' @param y Object of class \code{sf} or \code{sfc}
 #' @param ids A sparse list representation of features to connect such as returned by function \code{\link{st_nn}}. If \code{NULL} the function automatically calculates \code{ids} using \code{\link{st_nn}}
-#' @param dist Sampling distance interval for generating outline points to choose from. Only relevant when at least one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat
+#' @param dist Sampling distance interval for generating outline points to choose from. Required when at least one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat
 #' @param progress Display progress bar? (default \code{TRUE})
 #' @param ... Other arguments passed to \code{st_nn} when calculating \code{ids}, such as \code{k} and \code{maxdist}
 #'
@@ -35,7 +35,7 @@
 #'
 #' # The 20-nearest towns for each water body
 #' water = st_transform(water, 32636)
-#' l = st_connect(water[-1, ], towns, k = 20)
+#' l = st_connect(water[-1, ], towns, k = 20, dist = 100)
 #' plot(st_geometry(water[-1, ]), col = "lightblue", border = NA)
 #' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 #' plot(st_geometry(l), col = "red", add = TRUE)
@@ -43,14 +43,8 @@
 #' \dontrun{
 #'
 #' # The 2-nearest water bodies for each town
-#' l = st_connect(towns, water[-1, ], k = 2)
+#' l = st_connect(towns, water[-1, ], k = 2, dist = 100)
 #' plot(st_geometry(water[-1, ]), col = "lightblue", border = NA)
-#' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
-#' plot(st_geometry(l), col = "red", add = TRUE)
-#'
-#' # The 2-nearest water bodies for each water body
-#' l = st_connect(water, water, k = 2)
-#' plot(st_geometry(water), col = "lightblue")
 #' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 #' plot(st_geometry(l), col = "red", add = TRUE)
 #'

@@ -6,7 +6,8 @@ Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Johnathan", "Rush", email = "johnathan.rush@mssm.edu", role = c("ctb")),
     person("Ian", "Hough", email = "hough@post.bgu.ac.il", role = c("ctb")),
-    person("Jan", "Antala", email = "hello@janantala.com", role = c("ctb")))
+    person("Jan", "Antala", email = "hello@janantala.com", role = c("ctb", "cph"), 
+        comment="Author of C code for Vincenty distance"))
 Description: K-nearest neighbor search for projected and non-projected 'sf' spatial layers. Nearest neighbor search uses (1) C implementation of the Vincenty Formula for lon-lat point layers, (2) function nn2() from package 'RANN' for projected point layers, or (3) function st_distance() from package 'sf' for line or polygon layers.
 Imports:
     geosphere,
