@@ -11,4 +11,4 @@ None.
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Fixed the LICENSE file
+* Removed OpenMP parallel loop, due to error in Solaris checks

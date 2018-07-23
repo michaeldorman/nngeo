@@ -24,6 +24,10 @@
 * Fixed progress bar issues in 'st_connect'
 * Switched from 'for' loop to 'lapply' in 'st_connect'
 
+## nngeo 0.2.1
+
+* Removed OpenMP support due to issue with Solaris
+
 # To do:
 
 * Geodesic buffer

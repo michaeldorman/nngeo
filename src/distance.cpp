@@ -90,7 +90,6 @@ NumericVector getDistancesN(NumericVector orig, NumericMatrix dest) {
 
   int dest_nrow = dest.nrow();
   NumericVector out(dest_nrow);
-  #pragma omp parallel for
   for (int i = 0; i < dest_nrow; i++) {
     out[i] = getDistance(orig[0], orig[1], dest(i, 0), dest(i, 1));
   }
