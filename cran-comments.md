@@ -1,5 +1,5 @@
 ## Test environments
-* local Ubuntu 16.04 install, R 3.4.3
+* local Ubuntu 18.04 install, R 3.5.1
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -8,7 +8,3 @@ There were no ERRORs or WARNINGs.
 ## Downstream dependencies
 None.
 
-## Resubmission
-This is a resubmission. In this version I have:
-
-* Removed OpenMP parallel loop, due to error in Solaris checks

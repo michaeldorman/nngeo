@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define STRICT_R_HEADERS
 #include <Rcpp.h>
 using namespace Rcpp;
 
@@ -12,7 +13,7 @@ using namespace Rcpp;
 
 double toRadians(double degree)
 {
-	double r = degree * PI / 180;
+	double r = degree * M_PI / 180;
 	return r;
 }
 

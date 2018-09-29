@@ -24,11 +24,21 @@
 * Fixed progress bar issues in 'st_connect'
 * Switched from 'for' loop to 'lapply' in 'st_connect'
 
-## nngeo 0.2.1
+## nngeo 0.2.1 (2018-07-21)
 
 * Removed OpenMP support due to issue with Solaris
+
+## nngeo 0.2.2
+
+* Using 'STRICT_R_HEADERS' in Rcpp
 
 # To do:
 
 * Geodesic buffer
 * 'igraph' object from layer based on proximity
+* 3D distance of 'POINT Z' layers
+
+
+
+
+

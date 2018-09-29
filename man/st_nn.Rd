@@ -4,8 +4,8 @@
 \alias{st_nn}
 \title{Nearest Neighbor Search for Simple Features}
 \usage{
-st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE,
-  progress = TRUE)
+st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
+  returnDist = FALSE, progress = TRUE)
 }
 \arguments{
 \item{x}{Object of class \code{sf} or \code{sfc}}

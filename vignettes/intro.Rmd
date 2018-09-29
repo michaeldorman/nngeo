@@ -172,7 +172,13 @@ The `st_nn` function can also be used as a **geometry predicate function** when 
 For example, the following expression spatially joins the two nearest `towns[1:5, ]` features to each `cities` features, using a search radius of 50 km. 
 
 ```{r, results='hide'}
-st_join(cities, towns[1:5, ], join = st_nn, k = 2, maxdist = 50000)
+cities1 = st_join(cities, towns[1:5, ], join = st_nn, k = 2, maxdist = 50000)
+```
+
+Here is the resulting layer - 
+
+```{r}
+cities1
 ```
 
 ## Another example
