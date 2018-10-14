@@ -31,7 +31,7 @@ The function has three modes of operation -
 \itemize{
 \item{lon-lat points - Calculation using C implementation (see references) of the Vincenty distance, which is identical to \code{geosphere::distVincentyEllipsoid} and \code{sf::st_distance}}
 \item{projected points - Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
-\item{lines or polygons, either lon-lat or projected - Calculation based on \code{sf::st_distance}, which internally uses \code{geosphere::distGeo}}
+\item{lines or polygons, either lon-lat or projected - Calculation based on \code{sf::st_distance}}
 }
 }
 \examples{

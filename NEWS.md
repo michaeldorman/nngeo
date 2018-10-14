@@ -28,9 +28,13 @@
 
 * Removed OpenMP support due to issue with Solaris
 
-## nngeo 0.2.2
+## nngeo 0.2.2 (2018-09-29)
 
 * Using 'STRICT_R_HEADERS' in Rcpp
+
+## nngeo 0.2.4
+
+* Added 'st_ellipse' function
 
 # To do:
 
