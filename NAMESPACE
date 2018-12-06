@@ -3,6 +3,7 @@
 export(st_connect)
 export(st_ellipse)
 export(st_nn)
+export(st_remove_holes)
 import(sf)
 importFrom(Rcpp,sourceCpp)
 importFrom(methods,as)

@@ -4,7 +4,7 @@
 #' @param pnt Object of class \code{sf} or \code{sfc} (type \code{"POINT"}) representing centroid locations
 #' @param ex Size along x-axis, in CRS units
 #' @param ey Size along y-axis, in CRS units
-#' @param res Number of points the ellipse polygon consists of (deafult \code{30})
+#' @param res Number of points the ellipse polygon consists of (default \code{30})
 #' @return Object of class \code{sfc} (type \code{"POLYGON"}) containing ellipse polygons
 #' @references Based on StackOverflow answer by user 'fdetsch' -
 #'
@@ -38,8 +38,13 @@
 st_ellipse = function(pnt, ex, ey, res = 30) {
 
   # Checks
-  stopifnot(length(st_geometry(pnt)) == length(ex) & length(ex) == length(ey))
-  stopifnot(class(ex) == "numeric" & class(ey) == "numeric")
+  stopifnot(length(st_geometry(pnt)) == length(ex))
+  stopifnot(length(ex) == length(ey))
+  stopifnot(class(ex) == "numeric")
+  stopifnot(class(ey) == "numeric")
+  stopifnot(all(!st_is_empty(pnt)))
+  stopifnot(all(!is.na(ex)))
+  stopifnot(all(!is.na(ey)))
   stopifnot(class(st_geometry(pnt))[1] == "sfc_POINT")
 
   # Point coordinates

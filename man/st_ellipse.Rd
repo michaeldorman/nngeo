@@ -13,7 +13,7 @@ st_ellipse(pnt, ex, ey, res = 30)
 
 \item{ey}{Size along y-axis, in CRS units}
 
-\item{res}{Number of points the ellipse polygon consists of (deafult \code{30})}
+\item{res}{Number of points the ellipse polygon consists of (default \code{30})}
 }
 \value{
 Object of class \code{sfc} (type \code{"POLYGON"}) containing ellipse polygons
