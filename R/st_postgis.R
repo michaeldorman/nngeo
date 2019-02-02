@@ -12,7 +12,7 @@
 #' \dontrun{
 #'
 #' # Database connection and 'sf' layer
-#' con = source("~/Dropbox/postgis_231.R")$value
+#' source("~/Dropbox/postgis_159.R")  ## Creates connection object 'con'
 #' x = towns
 #'
 #' # Query 1: Buffer
