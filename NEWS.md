@@ -32,13 +32,19 @@
 
 * Using 'STRICT_R_HEADERS' in Rcpp
 
-## nngeo 0.2.4
+## nngeo 0.2.4 (2018-12-06)
 
 * Added 'st_ellipse' function
 * Added 'st_remove_holes' function
 
+## nngeo 0.2.7
+
+* Added 'st_postgis' function
+* Added 'st_segments' function
+
 ## To do:
 
+* Add parallel processing option
 * Geodesic buffer
 * 'igraph' object from layer based on proximity
 * 3D distance of 'POINT Z' layers
