@@ -3,7 +3,7 @@
 #' The function returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
 #' The function has three modes of operation -
 #' \itemize{
-#' \item{lon-lat points - Calculation using C implementation (see references) of the Vincenty distance, which is identical to \code{geosphere::distVincentyEllipsoid} and \code{sf::st_distance}}
+#' \item{lon-lat points - Calculation using C code from \code{GeographicLib}, similar to \code{sf::st_distance}}
 #' \item{projected points - Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
 #' \item{lines or polygons, either lon-lat or projected - Calculation based on \code{sf::st_distance}}
 #' }
@@ -16,7 +16,7 @@
 #' @param returnDist logical; whether to return a matrix with the distances between detected neighbors
 #' @param progress Display progress bar? (default `TRUE`)
 #' @return If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j, ]} is a neighbor of \code{x[i]}; if \code{sparse=TRUE} (the default), a sparse list representation of the same matrix is returned, with list element \code{i} a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i, ]}, or \code{integer(0)} in case there are no neighbors. If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element the matrix of distances (in meters) between each pair of detected neighbors.
-#' @references C code for Vincenty distance by Jan Antala (\url{https://github.com/janantala/GPS-distance/blob/master/c/distance.c})
+#' @references C. F. F. Karney, GeographicLib, Version 1.49 (2017-mm-dd), \url{https://geographiclib.sourceforge.io/1.49}
 #' @export
 #'
 #' @import sf
@@ -58,13 +58,40 @@
 #' # Polygons to polygons
 #' st_nn(water, water, k = 4)
 #'
-#' # Large example
+#' # Large example - Geo points
 #' n = 1000
 #' x = data.frame(
 #'   lon = (runif(n) * 2 - 1) * 70,
 #'   lat = (runif(n) * 2 - 1) * 70
 #' )
 #' x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
+#' start = Sys.time()
+#' result = st_nn(x, x, k = 3)
+#' end = Sys.time()
+#' end - start
+#'
+#' # Large example - Proj points
+#' n = 1000
+#' x = data.frame(
+#'   lon = (runif(n) * 2 - 1) * 70,
+#'   lat = (runif(n) * 2 - 1) * 70
+#' )
+#' x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
+#' x = st_transform(x, 32630)
+#' start = Sys.time()
+#' result = st_nn(x, x, k = 3)
+#' end = Sys.time()
+#' end - start
+#'
+#' # Large example - Polygons
+#' n = 1000
+#' x = data.frame(
+#'   lon = (runif(n) * 2 - 1) * 70,
+#'   lat = (runif(n) * 2 - 1) * 70
+#' )
+#' x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
+#' x = st_transform(x, 32630)
+#' x = st_buffer(x, 1000)
 #' start = Sys.time()
 #' result = st_nn(x, x, k = 3)
 #' end = Sys.time()

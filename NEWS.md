@@ -37,14 +37,21 @@
 * Added 'st_ellipse' function
 * Added 'st_remove_holes' function
 
-## nngeo 0.2.7
+## nngeo 0.2.7 (2019-03-12)
 
 * Added 'st_postgis' function
 * Added 'st_segments' function
 
-## To do:
+## nngeo 0.2.8
 
+* Change C code fron 'distance.c' to 'GeographicLib'
+* Use C code through the C API instead of 'Rcpp'
+
+## More ideas:
+
+* Translate loop over 'y_features' to C code
 * Add parallel processing option
+* Add 'st_az' function
 * Geodesic buffer
 * 'igraph' object from layer based on proximity
 * 3D distance of 'POINT Z' layers

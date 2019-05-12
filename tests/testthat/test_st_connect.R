@@ -4,10 +4,10 @@ context("st_connect")
 
 test_that("'st_connect' points", {
 
-  city_geoms <- st_geometry(cities)
-  town_geoms <- st_geometry(towns)
+  city_geoms = st_geometry(cities)
+  town_geoms = st_geometry(towns)
 
-  lines <- st_connect(cities, towns, k = 2)
+  lines = st_connect(cities, towns, k = 2)
 
   expect_equivalent(
     lines,
