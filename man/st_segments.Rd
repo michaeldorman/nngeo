@@ -16,7 +16,6 @@ An \code{sf} layer of type \code{LINESTRING} where each segment is represented b
 Split lines or polygons to separate segments.
 }
 \examples{
-
 # Sample geometries
 s1 = rbind(c(0,3),c(0,4),c(1,5),c(2,5))
 ls = st_linestring(s1)

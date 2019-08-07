@@ -42,14 +42,21 @@
 * Added 'st_postgis' function
 * Added 'st_segments' function
 
-## nngeo 0.2.8
+## nngeo 0.2.8 (2019-05-12)
 
 * Change C code fron 'distance.c' to 'GeographicLib'
 * Use C code through the C API instead of 'Rcpp'
 
-## More ideas:
+## nngeo 0.2.9
 
-* Translate loop over 'y_features' to C code
+* Added 'raster_focal', a wrapper around 'raster::focal'
+* Added 'raster_clump', a wrapper around 'raster::clump'
+* Added 'raster_slope' and 'raster_aspect', wrappers around 'raster::terrain' for calculating topographic slope and aspect rasters
+* Added 'raster_extract', a wrapper around 'raster::extract'
+* Added 'raster_trim', a wrapper around 'raster::trim'
+
+## Other ideas:
+
 * Add parallel processing option
 * Add 'st_az' function
 * Geodesic buffer
