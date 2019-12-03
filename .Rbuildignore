@@ -5,3 +5,5 @@
 ^README\.md$
 ^README-.*\.png$
 ^cran-comments\.md$
+^doc$
+^Meta$

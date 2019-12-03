@@ -2,6 +2,7 @@
 
 export(raster_aspect)
 export(raster_clump)
+export(raster_extend)
 export(raster_extract)
 export(raster_focal)
 export(raster_slope)

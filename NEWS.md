@@ -47,13 +47,18 @@
 * Change C code fron 'distance.c' to 'GeographicLib'
 * Use C code through the C API instead of 'Rcpp'
 
-## nngeo 0.2.9
+## nngeo 0.2.9 (2019-08-07)
 
 * Added 'raster_focal', a wrapper around 'raster::focal'
 * Added 'raster_clump', a wrapper around 'raster::clump'
 * Added 'raster_slope' and 'raster_aspect', wrappers around 'raster::terrain' for calculating topographic slope and aspect rasters
 * Added 'raster_extract', a wrapper around 'raster::extract'
 * Added 'raster_trim', a wrapper around 'raster::trim'
+
+## nngeo 0.3.0
+
+* Added 'raster_extend', a wrapper around 'raster::extend'
+* When using 'returnDist=TRUE', distances are now returned as sparse 'list' rather than a 'matrix'
 
 ## Other ideas:
 

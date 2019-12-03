@@ -19,11 +19,21 @@
     )
   }
 
+  # Extract ids and indices
   ids = nn$nn.idx
   ids[ids == 0] = NA
-  dist_matrix = nn$nn.dists
-  dist_matrix[is.na(ids)] = NA
+  dists = nn$nn.dists
+  dists[is.na(ids)] = NA
 
-  return(list(ids, dist_matrix))
+  # From n*k 'matrix' to sparse 'list'
+  ids = split(ids, 1:nrow(ids))
+  ids = lapply(ids, function(x) c(x[!is.na(x)]))
+  names(ids) = NULL
+  dists = split(dists, 1:nrow(dists))
+  dists = lapply(dists, function(x) c(x[!is.na(x)]))
+  names(dists) = NULL
+
+  # Return sparse lists
+  return(list(ids, dists))
 
 }

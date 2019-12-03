@@ -12,26 +12,30 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
 
 \item{y}{Object of class \code{sf} or \code{sfc}}
 
-\item{sparse}{logical; should a sparse index list be returned (TRUE) or a dense logical matrix? See below.}
+\item{sparse}{\code{logical}; should a sparse index list be returned (\code{TRUE}, the default) or a dense logical matrix? See below. This only affects the}
 
-\item{k}{The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned}
+\item{k}{The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned.}
 
 \item{maxdist}{Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained}
 
-\item{returnDist}{logical; whether to return a matrix with the distances between detected neighbors}
+\item{returnDist}{\code{logical}; whether to return a second \code{list} with the distances between detected neighbors.}
 
-\item{progress}{Display progress bar? (default `TRUE`)}
+\item{progress}{Display progress bar? (default \code{TRUE})}
 }
 \value{
-If \code{sparse=FALSE}, returned object is a logical matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j, ]} is a neighbor of \code{x[i]}; if \code{sparse=TRUE} (the default), a sparse list representation of the same matrix is returned, with list element \code{i} a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i, ]}, or \code{integer(0)} in case there are no neighbors. If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element the matrix of distances (in meters) between each pair of detected neighbors.
+\itemize{
+\item{If \code{sparse=TRUE} (the default), a sparse \code{list} with list element \code{i} being a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i,]}, or \code{integer(0)} in case there are no neighbors.}
+\item{If \code{sparse=FALSE}, a \code{logical} matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j,]} is a neighbor of \code{x[i]}.}
+\item{If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element a sparse \code{list} with the distances (in meters) between each pair of detected neighbors corresponding to the sparse \code{list} of indices.}
+}
 }
 \description{
 The function returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
-The function has three modes of operation -
+The function has three modes of operation:
 \itemize{
-\item{lon-lat points - Calculation using C code from \code{GeographicLib}, similar to \code{sf::st_distance}}
-\item{projected points - Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
-\item{lines or polygons, either lon-lat or projected - Calculation based on \code{sf::st_distance}}
+\item{lon-lat points—Calculation using C code from \code{GeographicLib}, similar to \code{sf::st_distance}}
+\item{projected points—Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
+\item{lines or polygons, either lon-lat or projected—Calculation based on \code{sf::st_distance}}
 }
 }
 \examples{
@@ -97,16 +101,18 @@ end = Sys.time()
 end - start
 
 # Large example - Polygons
-n = 1000
+set.seed(1)
+n = 50
 x = data.frame(
   lon = (runif(n) * 2 - 1) * 70,
   lat = (runif(n) * 2 - 1) * 70
 )
 x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
 x = st_transform(x, 32630)
-x = st_buffer(x, 1000)
+x = st_buffer(x, 1000000)
 start = Sys.time()
 result = st_nn(x, x, k = 3)
+result[1:3]
 end = Sys.time()
 end - start
 

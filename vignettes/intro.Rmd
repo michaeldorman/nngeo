@@ -84,7 +84,7 @@ The main function in the `nngeo` package is `st_nn`.
 
 The `st_nn` function accepts two layers, `x` and `y`, and returns a list with the same number of elements as `x` features. Each list element `i` is an integer vector with all indices `j` for which `x[i]` and `y[j]` are **nearest neighbors**. 
 
-For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`. 
+For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`:
 
 ```{r}
 nn = st_nn(cities, towns[1:5, ], progress = FALSE)
@@ -95,7 +95,7 @@ This output tells us that `towns[2, ]` is the nearest among the five features of
 
 ## The `st_connect` function
 
-The resulting nearest neighbor matches can be visualized using the `st_connect` function. This function builds a line layer connecting features from two layers `x` and `y` based on the relations defined in a list such the one returned by `st_nn` - 
+The resulting nearest neighbor matches can be visualized using the `st_connect` function. This function builds a line layer connecting features from two layers `x` and `y` based on the relations defined in a list such the one returned by `st_nn`:
 
 ```{r}
 l = st_connect(cities, towns[1:5, ], ids = nn, progress = FALSE)
@@ -108,16 +108,8 @@ Plotting the line layer `l` gives a visual demonstration of the nearest neighbor
 plot(st_geometry(towns[1:5, ]), col = "darkgrey")
 plot(st_geometry(l), add = TRUE)
 plot(st_geometry(cities), col = "red", add = TRUE)
-text(
-  st_coordinates(cities)[, 1], 
-  st_coordinates(cities)[, 2], 
-  1:3, col = "red", pos = 4
-)
-text(
-  st_coordinates(towns[1:5, ])[, 1], 
-  st_coordinates(towns[1:5, ])[, 2], 
-  1:5, pos = 4
-)
+text(st_coordinates(cities)[, 1], st_coordinates(cities)[, 2], 1:3, col = "red", pos = 4)
+text(st_coordinates(towns[1:5, ])[, 1], st_coordinates(towns[1:5, ])[, 2], 1:5, pos = 4)
 ```
 
 ## Dense matrix representation
@@ -131,51 +123,45 @@ nn
 
 ## k-Nearest neighbors where `k>0`
 
-It is also possible to return any **k-nearest** neighbors, rather than just one. For example, setting `k=2` returns the **two** nearest neighbors - 
+It is also possible to return any **k-nearest** neighbors, rather than just one. For example, setting `k=2` returns both the 1^st^ and 2^nd^ nearest neighbors:
 
 ```{r}
 nn = st_nn(cities, towns[1:5, ], k = 2, progress = FALSE)
 nn
+```
 
+```{r}
 nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, progress = FALSE)
 nn
 ```
 
 ## Distance matrix
 
-Using `returnDist=TRUE` the distances matrix is also returned, in addition the the neighbor matches, with both componenets now comprising a list - 
+Using `returnDist=TRUE` the distances `list` is also returned, in addition the the neighbor matches, with both componenets now comprising a `list`:
 
 ```{r}
-nn = st_nn(
-  cities, towns[1:5, ], sparse = FALSE, k = 2, returnDist = TRUE, 
-  progress = FALSE
-)
+nn = st_nn(cities, towns[1:5, ], k = 2, returnDist = TRUE, progress = FALSE)
 nn
 ```
 
 ## Search radius
 
-Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for `cities[2, ]`.
+Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for `cities[2, ]`:
 
 ```{r}
-nn = st_nn(
-  cities, towns[1:5, ], sparse = FALSE, k = 2, returnDist = TRUE, maxdist = 50000, 
-  progress = FALSE
-)
+nn = st_nn(cities, towns[1:5, ], k = 2, maxdist = 50000, progress = FALSE)
 nn
 ```
 
 ## Spatial join
 
-The `st_nn` function can also be used as a **geometry predicate function** when performing spatial join with `sf::st_join`. 
-
-For example, the following expression spatially joins the two nearest `towns[1:5, ]` features to each `cities` features, using a search radius of 50 km. 
+The `st_nn` function can also be used as a **geometry predicate function** when performing spatial join with `sf::st_join`. For example, the following expression spatially joins the two nearest `towns[1:5, ]` features to each `cities` features, using a search radius of 50 km:
 
 ```{r, results='hide'}
 cities1 = st_join(cities, towns[1:5, ], join = st_nn, k = 2, maxdist = 50000)
 ```
 
-Here is the resulting layer - 
+Here is the resulting layer:
 
 ```{r}
 cities1
@@ -183,7 +169,7 @@ cities1
 
 ## Another example
 
-Here is another example, finding the 10-nearest neighbor `towns` features for each `cities` feature. 
+Here is another example, finding the 10-nearest neighbor `towns` features for each `cities` feature:
 
 ```{r, results='hide', warning=FALSE}
 x = st_nn(cities, towns, k = 10)
@@ -214,7 +200,7 @@ l = st_connect(water[-1, ], towns, ids = nn, progress = FALSE, dist = 100)
 
 The result is visualized on Figure \ref{fig:water_towns}.
 
-```{r water_towns, fig.align='center', fig.width=5, fig.height=7, warning=FALSE, fig.cap="Nearest 20 \\texttt{towns} features from each \\texttt{water} polygon"}
+```{r water_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 20 \\texttt{towns} features from each \\texttt{water} polygon"}
 plot(st_geometry(water[-1, ]), col = "lightblue", border = "grey")
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(l), col = "red", add = TRUE)
