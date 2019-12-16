@@ -39,6 +39,7 @@
   names(ids) = NULL
   dists = split(dists, 1:nrow(dists))
   dists = lapply(dists, function(x) c(x[!is.na(x)]))
+  # dists = lapply(dists, function(x) units::set_units(x, "m"))
   names(dists) = NULL
 
   if(progress) cat("\n")

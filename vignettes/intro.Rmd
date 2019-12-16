@@ -70,8 +70,7 @@ water
 Figure \ref{fig:layers} shows the spatial configuration of the `cities`, `towns` and `water` layers.
 
 ```{r layers, fig.align='center', fig.width=5, fig.height=5, fig.cap='Visualization of the \\texttt{water}, \\texttt{towns} and \\texttt{cities} layers'}
-plot(st_geometry(towns), col = NA)
-plot(st_geometry(water), col = "lightblue", add = TRUE)
+plot(st_geometry(water), col = "lightblue")
 plot(st_geometry(towns), col = "grey", pch = 1, add = TRUE)
 plot(st_geometry(cities), col = "red", pch = 1, add = TRUE)
 ```
@@ -179,9 +178,9 @@ l = st_connect(cities, towns, ids = x)
 The result is visualized in Figure \ref{fig:cities_towns}. 
 
 ```{r cities_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 10 \\texttt{towns} features from each \\texttt{cities} feature"}
-plot(st_geometry(towns), col = "darkgrey")
-plot(st_geometry(l), add = TRUE)
+plot(st_geometry(l))
 plot(st_geometry(cities), col = "red", add = TRUE)
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 ```
 
 # Polygons

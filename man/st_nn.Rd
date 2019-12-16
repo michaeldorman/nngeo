@@ -4,8 +4,15 @@
 \alias{st_nn}
 \title{Nearest Neighbor Search for Simple Features}
 \usage{
-st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
-  returnDist = FALSE, progress = TRUE)
+st_nn(
+  x,
+  y,
+  sparse = TRUE,
+  k = 1,
+  maxdist = Inf,
+  returnDist = FALSE,
+  progress = TRUE
+)
 }
 \arguments{
 \item{x}{Object of class \code{sf} or \code{sfc}}
@@ -16,7 +23,7 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
 
 \item{k}{The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned.}
 
-\item{maxdist}{Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained}
+\item{maxdist}{Search radius (\strong{in meters}). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained}
 
 \item{returnDist}{\code{logical}; whether to return a second \code{list} with the distances between detected neighbors.}
 
@@ -26,7 +33,7 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
 \itemize{
 \item{If \code{sparse=TRUE} (the default), a sparse \code{list} with list element \code{i} being a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i,]}, or \code{integer(0)} in case there are no neighbors.}
 \item{If \code{sparse=FALSE}, a \code{logical} matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j,]} is a neighbor of \code{x[i]}.}
-\item{If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element a sparse \code{list} with the distances (in meters) between each pair of detected neighbors corresponding to the sparse \code{list} of indices.}
+\item{If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element a sparse \code{list} with the distances (as \code{units} vectors, \strong{in meters}) between each pair of detected neighbors corresponding to the sparse \code{list} of indices.}
 }
 }
 \description{
@@ -44,6 +51,7 @@ data(towns)
 
 cities = st_transform(cities, 32636)
 towns = st_transform(towns, 32636)
+water = st_transform(water, 32636)
 
 # Nearest town
 st_nn(cities, towns)
@@ -73,7 +81,7 @@ st_join(cities, towns, st_nn, k = 1, maxdist = 7200)
 st_join(towns, cities, st_nn, k = 1)
 
 # Polygons to polygons
-st_nn(water, water, k = 4)
+st_nn(water, towns, k = 4)
 
 # Large example - Geo points
 n = 1000

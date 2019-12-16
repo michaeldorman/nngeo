@@ -1,10 +1,13 @@
 #' Point layer of towns in Israel
 #'
-#' A \code{sf} POINT layer of all towns in Israel whose name starts with the letter "A".
+#' A \code{sf} POINT layer of towns in Israel, based on a subset from the \code{maps::world.cities} dataset.
 #'
-#' @format A \code{sf} POINT layer with 93 features and 1 attribute:
+#' @format A \code{sf} POINT layer with 193 features and 4 attributes:
 #' \describe{
 #'   \item{name}{Town name}
+#'   \item{country.etc}{Country name}
+#'   \item{pop}{Population size}
+#'   \item{capital}{Is it a capital?}
 #' }
 
 "towns"

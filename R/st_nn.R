@@ -12,13 +12,13 @@
 #' @param y Object of class \code{sf} or \code{sfc}
 #' @param sparse \code{logical}; should a sparse index list be returned (\code{TRUE}, the default) or a dense logical matrix? See below. This only affects the
 #' @param k The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned.
-#' @param maxdist Search radius (in meters). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained
+#' @param maxdist Search radius (\strong{in meters}). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained
 #' @param returnDist \code{logical}; whether to return a second \code{list} with the distances between detected neighbors.
 #' @param progress Display progress bar? (default \code{TRUE})
 #' @return  \itemize{
 #' \item{If \code{sparse=TRUE} (the default), a sparse \code{list} with list element \code{i} being a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i,]}, or \code{integer(0)} in case there are no neighbors.}
 #' \item{If \code{sparse=FALSE}, a \code{logical} matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j,]} is a neighbor of \code{x[i]}.}
-#' \item{If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element a sparse \code{list} with the distances (in meters) between each pair of detected neighbors corresponding to the sparse \code{list} of indices.}
+#' \item{If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element a sparse \code{list} with the distances (as \code{units} vectors, \strong{in meters}) between each pair of detected neighbors corresponding to the sparse \code{list} of indices.}
 #' }
 #' @references C. F. F. Karney, GeographicLib, Version 1.49 (2017-mm-dd), \url{https://geographiclib.sourceforge.io/1.49}
 #' @export
@@ -121,14 +121,14 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
     stop("'k' must be 'numeric' of length 1")
 
   # Check that CRS is the same
-  if(sf::st_crs(x) != sf::st_crs(y))
+  if(!is.na(sf::st_crs(x)) & !is.na(sf::st_crs(y)) & sf::st_crs(x) != sf::st_crs(y))
     stop("'x' and 'y' needs to be in the same CRS")
 
   # Determine geometry type and projection
   if(!class(x)[1] == "sfc_POINT" | !class(y)[1] == "sfc_POINT") {
     result = .st_nn_poly(x, y, k, maxdist, progress)
   } else {
-    if(sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
+    if(!is.na(sf::st_crs(x)) & !is.na(sf::st_crs(y)) & sf::st_is_longlat(x) & sf::st_is_longlat(y)) {
       result = .st_nn_pnt_geo(x, y, k, maxdist, progress)
     } else {
       result = .st_nn_pnt_proj(x, y, k, maxdist, progress)
@@ -153,7 +153,7 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
 
   # Attach distances?
   if(returnDist) {
-    result = list(ids, dists)
+    result = list(nn = ids, dist = dists)
   } else {
     result = ids
   }

@@ -55,10 +55,16 @@
 * Added 'raster_extract', a wrapper around 'raster::extract'
 * Added 'raster_trim', a wrapper around 'raster::trim'
 
-## nngeo 0.3.0
+## nngeo 0.3.0 (2019-12-03)
 
 * Added 'raster_extend', a wrapper around 'raster::extend'
 * When using 'returnDist=TRUE', distances are now returned as sparse 'list' rather than a 'matrix'
+
+## nngeo 0.3.1
+
+* 'st_nn' with 'returnDist=TRUE' returns named list with elements 'nn' and 'dist'
+* 'dist' is now a list of 'units' vectors
+* Replaced 'towns' dataset
 
 ## Other ideas:
 
