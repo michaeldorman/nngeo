@@ -60,11 +60,14 @@
 * Added 'raster_extend', a wrapper around 'raster::extend'
 * When using 'returnDist=TRUE', distances are now returned as sparse 'list' rather than a 'matrix'
 
-## nngeo 0.3.1
+## nngeo 0.3.2
 
 * 'st_nn' with 'returnDist=TRUE' returns named list with elements 'nn' and 'dist'
 * 'dist' is now a list of 'units' vectors
 * Replaced 'towns' dataset
+* Removed 'raster_*" functions
+* Added 'focal2' function (a 3x3 focal filter on 'stars')
+* Added 'line' and 'pnt' sample data (based on pgRouting tutorial)
 
 ## Other ideas:
 

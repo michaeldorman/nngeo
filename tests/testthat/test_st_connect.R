@@ -11,61 +11,61 @@ test_that("'st_connect' points", {
 
   expect_equivalent(
     lines,
-    c(
-      st_cast(
-        st_combine(
-          c(
-            city_geoms[1],
-            town_geoms[29]
-          )
+    structure(
+      list(
+        structure(
+          c(35.21371, 35.22, 31.768319, 31.78),
+          .Dim = c(2L,
+                   2L),
+          class = c("XY", "LINESTRING", "sfg")
         ),
-        "LINESTRING"
+        structure(
+          c(35.21371,
+            35.15, 31.768319, 31.8),
+          .Dim = c(2L, 2L),
+          class = c("XY", "LINESTRING",
+                    "sfg")
+        ),
+        structure(
+          c(34.7817676, 34.8, 32.0852999, 32.08),
+          .Dim = c(2L,
+                   2L),
+          class = c("XY", "LINESTRING", "sfg")
+        ),
+        structure(
+          c(34.7817676,
+            34.77, 32.0852999, 32.07),
+          .Dim = c(2L, 2L),
+          class = c("XY",
+                    "LINESTRING", "sfg")
+        ),
+        structure(
+          c(34.989571, 34.99, 32.7940463,
+            32.82),
+          .Dim = c(2L, 2L),
+          class = c("XY", "LINESTRING", "sfg")
+        ),
+        structure(
+          c(34.989571, 34.99, 32.7940463, 32.75),
+          .Dim = c(2L,
+                   2L),
+          class = c("XY", "LINESTRING", "sfg")
+        )
       ),
-      st_cast(
-        st_combine(
-          c(
-            city_geoms[1],
-            town_geoms[40]
-          )
-        ),
-        "LINESTRING"
+      n_empty = 0L,
+      precision = 0,
+      crs = structure(
+        list(epsg = 4326L, proj4string = "+proj=longlat +datum=WGS84 +no_defs"),
+        class = "crs"
       ),
-      st_cast(
-        st_combine(
-          c(
-            city_geoms[2],
-            town_geoms[18]
-          )
-        ),
-        "LINESTRING"
-      ),
-      st_cast(
-        st_combine(
-          c(
-            city_geoms[2],
-            town_geoms[19]
-          )
-        ),
-        "LINESTRING"
-      ),
-      st_cast(
-        st_combine(
-          c(
-            city_geoms[3],
-            town_geoms[69]
-          )
-        ),
-        "LINESTRING"
-      ),
-      st_cast(
-        st_combine(
-          c(
-            city_geoms[3],
-            town_geoms[80]
-          )
-        ),
-        "LINESTRING"
-      )
+      class = c("sfc_LINESTRING",
+                "sfc"),
+      bbox = structure(c(
+        xmin = 34.77,
+        ymin = 31.768319,
+        xmax = 35.22,
+        ymax = 32.82
+      ), class = "bbox")
     )
   )
 

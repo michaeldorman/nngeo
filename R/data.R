@@ -51,6 +51,26 @@
 
 "dem"
 
+#' Sample network dataset: lines
+#'
+#' An \code{sf} object based on the \code{edge_table} sample dataset from pgRouting 2.6 tutorial
+#'
+#' @format An \code{sf} object
+#' @references
+#' \url{https://docs.pgrouting.org/2.6/en/sampledata.html}
+
+"line"
+
+#' Sample network dataset: points
+#'
+#' An \code{sf} object based on the \code{pointsOfInterest} sample dataset from pgRouting 2.6 tutorial
+#'
+#' @format An \code{sf} object
+#' @references
+#' \url{https://docs.pgrouting.org/2.6/en/sampledata.html}
+
+"pnt"
+
 
 
 
