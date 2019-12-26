@@ -32,7 +32,7 @@ Once installed, the library can be loaded as follows.
 ``` r
 library(nngeo)
 #> Loading required package: sf
-#> Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 4.9.3
+#> Linking to GEOS 3.7.1, GDAL 2.4.0, PROJ 5.2.0
 ```
 
 Example
@@ -45,15 +45,19 @@ using function `st_nn`.
 data(towns)
 data(cities)
 nn = st_nn(cities, towns, k = 20, progress = FALSE)
+#> lon-lat points
 nn
 #> [[1]]
-#>  [1] 29 40 87  2 49 43  9 11 63 36 37 52 10 44 46 70 48 65 39 35
+#>  [1]  70  99  60  15  36  56 193 142  90  82  17  93  44  13  32   9 172
+#> [18]  34 103 132
 #> 
 #> [[2]]
-#>  [1] 18 19 39 32 28 44 25 10 64 46 33 92 81 26 45 50 36 70 71 35
+#>  [1] 145 175  57 144  29  55  21  64 138  24 121 146  53 126 160  31  62
+#> [18] 187  85  83
 #> 
 #> [[3]]
-#>  [1] 69 80 61 68 60 58 30 57 89 56 22  7 24 78 13 84  6  3 59 20
+#>  [1]  59 179 137 114 141 134  67 152  41 133   6 140  23 166  66   2 189
+#> [18]  73 173 147
 ```
 
 By default, the result is a sparse list with the neighbor IDs.
@@ -63,22 +67,33 @@ function** when performing spatial join with `sf::st_join`.
 
 ``` r
 st_join(cities, towns, join = st_nn, k = 3, progress = FALSE)
-#> Simple feature collection with 9 features and 2 fields
+#> lon-lat points
+#> Simple feature collection with 9 features and 5 fields
 #> geometry type:  POINT
 #> dimension:      XY
 #> bbox:           xmin: 34.78177 ymin: 31.76832 xmax: 35.21371 ymax: 32.79405
 #> epsg (SRID):    4326
 #> proj4string:    +proj=longlat +datum=WGS84 +no_defs
-#>        name.x    name.y                  geometry
-#> 1   Jerusalem AMMINADAV POINT (35.21371 31.76832)
-#> 1.1 Jerusalem     ALMON POINT (35.21371 31.76832)
-#> 1.2 Jerusalem ABU GHOSH POINT (35.21371 31.76832)
-#> 2    Tel-Aviv      AZOR  POINT (34.78177 32.0853)
-#> 2.1  Tel-Aviv    ADANIM  POINT (34.78177 32.0853)
-#> 2.2  Tel-Aviv  AHI'EZER  POINT (34.78177 32.0853)
-#> 3       Haifa     ATLIT POINT (34.98957 32.79405)
-#> 3.1     Haifa      AFEQ POINT (34.98957 32.79405)
-#> 3.2     Haifa   ALLONIM POINT (34.98957 32.79405)
+#>        name.x            name.y country.etc    pop capital
+#> 1   Jerusalem         Jerusalem      Israel 731731       1
+#> 1.1 Jerusalem Mevasserat Ziyyon      Israel  22470       0
+#> 1.2 Jerusalem          Har Adar      Israel   2101       0
+#> 2    Tel-Aviv         Ramat Gan      Israel 128583       0
+#> 2.1  Tel-Aviv     Tel Aviv-Yafo      Israel 384276       0
+#> 2.2  Tel-Aviv        Giv'atayim      Israel  48882       0
+#> 3       Haifa             Haifa      Israel 266418       0
+#> 3.1     Haifa      Tirat Karmel      Israel  19080       0
+#> 3.2     Haifa    Qiryat Motzkin      Israel  39413       0
+#>                      geometry
+#> 1   POINT (35.21371 31.76832)
+#> 1.1 POINT (35.21371 31.76832)
+#> 1.2 POINT (35.21371 31.76832)
+#> 2    POINT (34.78177 32.0853)
+#> 2.1  POINT (34.78177 32.0853)
+#> 2.2  POINT (34.78177 32.0853)
+#> 3   POINT (34.98957 32.79405)
+#> 3.1 POINT (34.98957 32.79405)
+#> 3.2 POINT (34.98957 32.79405)
 ```
 
 A helper function `st_connect` can be used to draw lines according to
@@ -87,6 +102,7 @@ analysis.
 
 ``` r
 l = st_connect(cities, towns, ids = nn, progress = FALSE)
+#> although coordinates are longitude/latitude, st_nearest_points assumes that they are planar
 plot(st_geometry(towns), col = "darkgrey")
 plot(st_geometry(cities), col = "red", add = TRUE)
 plot(st_geometry(l), add = TRUE)
