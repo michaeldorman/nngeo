@@ -60,7 +60,7 @@
 * Added 'raster_extend', a wrapper around 'raster::extend'
 * When using 'returnDist=TRUE', distances are now returned as sparse 'list' rather than a 'matrix'
 
-## nngeo 0.3.2
+## nngeo 0.3.4
 
 * 'st_nn' with 'returnDist=TRUE' returns named list with elements 'nn' and 'dist'
 * 'dist' is now a list of 'units' vectors
@@ -68,9 +68,14 @@
 * Removed 'raster_*" functions
 * Added 'focal2' function (a 3x3 focal filter on 'stars')
 * Added 'line' and 'pnt' sample data (based on pgRouting tutorial)
+* Added 'st_split_junctions'
 
 ## Other ideas:
 
+* Add 'split line to equal parts' function
+* Add 'round coord' function
+* Add 'extend lines' function
+* Add 'bridge lines to network' function
 * Add parallel processing option
 * Add 'st_az' function
 * Geodesic buffer

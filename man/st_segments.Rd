@@ -4,10 +4,12 @@
 \alias{st_segments}
 \title{Split polygons or lines to segments}
 \usage{
-st_segments(x)
+st_segments(x, progress = TRUE)
 }
 \arguments{
 \item{x}{An object of class \code{sfg}, \code{sfc} or \code{sf}, with geometry type \code{LINESTRING}, \code{MULTILINESTRING}, \code{POLYGON} or \code{MULTIPOLYGON}}
+
+\item{progress}{Display progress bar? (default \code{TRUE})}
 }
 \value{
 An \code{sf} layer of type \code{LINESTRING} where each segment is represented by a separate feature

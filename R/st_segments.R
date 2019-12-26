@@ -3,6 +3,7 @@
 #' Split lines or polygons to separate segments.
 #'
 #' @param	x	An object of class \code{sfg}, \code{sfc} or \code{sf}, with geometry type \code{LINESTRING}, \code{MULTILINESTRING}, \code{POLYGON} or \code{MULTIPOLYGON}
+#' @param progress Display progress bar? (default \code{TRUE})
 #' @return	An \code{sf} layer of type \code{LINESTRING} where each segment is represented by a separate feature
 #'
 #' @examples
@@ -105,17 +106,23 @@
 #'
 #' @export
 
-st_segments = function(x) {
+st_segments = function(x, progress = TRUE) {
 
   # Get or transform to geometry
   geom = st_geometry(x)
 
   # Get attributes
-  if(class(x)[1] == "sf") dat = st_set_geometry(x, NULL) else dat = NULL
+  if(class(x)[1] == "sf") dat = st_drop_geometry(x) else dat = NULL
+
+  # Progress bar
+  if(progress) pb = utils::txtProgressBar(min = 0, max = length(geom), initial = 0, style = 3)
 
   # For each feature...
   final = list()
   for(i in 1:length(geom)) {
+
+    # Progress
+    if(progress) utils::setTxtProgressBar(pb, i)
 
     # Current geometry
     geom1 = geom[i]
@@ -153,6 +160,9 @@ st_segments = function(x) {
     final[[i]] = result
 
   }
+
+  # Progress
+  if(progress) cat("\n")
 
   # Combine
   if(!is.null(dat)) final = do.call(rbind, final) else final = do.call(c, final)

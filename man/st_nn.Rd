@@ -4,8 +4,15 @@
 \alias{st_nn}
 \title{Nearest Neighbor Search for Simple Features}
 \usage{
-st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
-  returnDist = FALSE, progress = TRUE)
+st_nn(
+  x,
+  y,
+  sparse = TRUE,
+  k = 1,
+  maxdist = Inf,
+  returnDist = FALSE,
+  progress = TRUE
+)
 }
 \arguments{
 \item{x}{Object of class \code{sf} or \code{sfc}}
@@ -20,7 +27,7 @@ st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
 
 \item{returnDist}{\code{logical}; whether to return a second \code{list} with the distances between detected neighbors.}
 
-\item{progress}{Display progress bar? (default \code{TRUE})}
+\item{progress}{Display progress bar? (default \code{TRUE}}
 }
 \value{
 \itemize{
