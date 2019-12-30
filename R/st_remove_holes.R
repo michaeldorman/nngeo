@@ -75,12 +75,16 @@ st_remove_holes = function(x) {
   # Remove holes
   for(i in 1:length(geom)) {
     if(st_is(geom[i], "POLYGON")) {
-      geom[i] = st_multipolygon(lapply(geom[i], function(p) p[1]))
+      if(length(geom[i][[1]]) > 1){
+        geom[i] = st_multipolygon(lapply(geom[i], function(p) p[1]))
+      }
     }
     if(st_is(geom[i], "MULTIPOLYGON")) {
       tmp = st_cast(geom[i], "POLYGON")
       for(j in 1:length(tmp)) {
-        tmp[j] = st_multipolygon(lapply(tmp[j], function(p) p[1]))
+        if(length(tmp[j][[1]]) > 1){
+          tmp[j] = st_multipolygon(lapply(tmp[j], function(p) p[1]))
+        }
       }
       geom[i] = st_combine(tmp)
     }
