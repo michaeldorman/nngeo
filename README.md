@@ -1,4 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/nngeo)](https://cran.r-project.org/package=nngeo)
 [![CRAN\_Downloads\_Badge](http://cranlogs.r-pkg.org/badges/last-month/nngeo)](https://cran.r-project.org/package=nngeo)
 
@@ -32,7 +33,7 @@ Once installed, the library can be loaded as follows.
 ``` r
 library(nngeo)
 #> Loading required package: sf
-#> Linking to GEOS 3.7.1, GDAL 2.4.0, PROJ 5.2.0
+#> Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
 ```
 
 Example
@@ -103,9 +104,10 @@ analysis.
 ``` r
 l = st_connect(cities, towns, ids = nn, progress = FALSE)
 #> although coordinates are longitude/latitude, st_nearest_points assumes that they are planar
-plot(st_geometry(towns), col = "darkgrey")
+plot(l, col = NA)  # For setting the extent
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(cities), col = "red", add = TRUE)
-plot(st_geometry(l), add = TRUE)
+plot(l, add = TRUE)
 ```
 
 <img src="README-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
