@@ -63,12 +63,13 @@
 ## nngeo 0.3.4
 
 * 'st_nn' with 'returnDist=TRUE' returns named list with elements 'nn' and 'dist'
-* 'dist' is now a list of 'units' vectors
 * Replaced 'towns' dataset
 * Removed 'raster_*" functions
 * Added 'focal2' function (a 3x3 focal filter on 'stars')
 * Added 'line' and 'pnt' sample data (based on pgRouting tutorial)
 * Added 'st_split_junctions'
+* 'st_connect' now uses 'st_nearest_point' rather than point sampling
+* 'st_connect' removes CRS before calculating nearest point, to omit the warning when using lon-lat
 
 ## Other ideas:
 

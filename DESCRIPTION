@@ -13,12 +13,9 @@ Description: K-nearest neighbor search for projected and non-projected 'sf' spat
 Imports:
     RANN,
     units,
-    Rcpp,
-    sp,
     methods,
-    lwgeom,
     stars,
-    igraph
+    lwgeom
 Depends:
     R (>= 3.5.0),
     sf (>= 0.6)

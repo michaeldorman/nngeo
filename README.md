@@ -103,7 +103,6 @@ analysis.
 
 ``` r
 l = st_connect(cities, towns, ids = nn, progress = FALSE)
-#> although coordinates are longitude/latitude, st_nearest_points assumes that they are planar
 plot(l, col = NA)  # For setting the extent
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(cities), col = "red", add = TRUE)

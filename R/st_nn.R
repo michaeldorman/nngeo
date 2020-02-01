@@ -1,6 +1,6 @@
 #' Nearest Neighbor Search for Simple Features
 #'
-#' The function returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
+#' Returns the indices of layer \code{y} which are nearest neighbors of each feature of layer \code{x}. The number of nearest neighbors \code{k} and the search radius \code{maxdist} can be modified.\cr\cr
 #' The function has three modes of operation:
 #' \itemize{
 #' \item{lon-lat points—Calculation using C code from \code{GeographicLib}, similar to \code{sf::st_distance}}

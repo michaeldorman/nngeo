@@ -4,7 +4,7 @@
 \alias{st_connect}
 \title{Create lines between features of two layers}
 \usage{
-st_connect(x, y, ids = NULL, dist, progress = TRUE, ...)
+st_connect(x, y, ids = NULL, progress = TRUE, ...)
 }
 \arguments{
 \item{x}{Object of class \code{sf} or \code{sfc}}
@@ -12,8 +12,6 @@ st_connect(x, y, ids = NULL, dist, progress = TRUE, ...)
 \item{y}{Object of class \code{sf} or \code{sfc}}
 
 \item{ids}{A sparse list representation of features to connect such as returned by function \code{\link{st_nn}}. If \code{NULL} the function automatically calculates \code{ids} using \code{\link{st_nn}}}
-
-\item{dist}{Sampling distance interval for generating outline points to choose from. Required when at least one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat}
 
 \item{progress}{Display progress bar? (default \code{TRUE})}
 
@@ -23,7 +21,10 @@ st_connect(x, y, ids = NULL, dist, progress = TRUE, ...)
 Object of class \code{sfc} with geometry type \code{LINESTRING}
 }
 \description{
-Create lines between features of two layers
+Returns a line layer with line segments which connect the nearest feature(s) from \code{y} for each feature in \code{x}. This is mostly useful for graphical purposes (see Note and Examples below).
+}
+\note{
+The segments are straight lines, i.e., they correspond to shortes path assuming planar geometry regardless of CRS. Therefore, the lines should serve as a graphical indication of features that are nearest to each other; the exact shortest path between features should be calculated by other means, such as \code{geosphere::greatCircle}.
 }
 \examples{
 # Nearest 'city' per 'town'

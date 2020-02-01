@@ -1,13 +1,15 @@
 #' Create lines between features of two layers
 #'
+#' Returns a line layer with line segments which connect the nearest feature(s) from \code{y} for each feature in \code{x}. This is mostly useful for graphical purposes (see Note and Examples below).
+#'
 #' @param x Object of class \code{sf} or \code{sfc}
 #' @param y Object of class \code{sf} or \code{sfc}
 #' @param ids A sparse list representation of features to connect such as returned by function \code{\link{st_nn}}. If \code{NULL} the function automatically calculates \code{ids} using \code{\link{st_nn}}
-#' @param dist Sampling distance interval for generating outline points to choose from. Required when at least one of \code{x} or \code{y} is a line or polygon layer. Should be given in CRS units for projected layers, or in meters for layers in lon/lat
 #' @param progress Display progress bar? (default \code{TRUE})
 #' @param ... Other arguments passed to \code{st_nn} when calculating \code{ids}, such as \code{k} and \code{maxdist}
 #'
 #' @return Object of class \code{sfc} with geometry type \code{LINESTRING}
+#' @note The segments are straight lines, i.e., they correspond to shortes path assuming planar geometry regardless of CRS. Therefore, the lines should serve as a graphical indication of features that are nearest to each other; the exact shortest path between features should be calculated by other means, such as \code{geosphere::greatCircle}.
 #'
 #' @importFrom methods as
 #' @export
@@ -51,7 +53,7 @@
 #'
 #' }
 
-st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
+st_connect = function(x, y, ids = NULL, progress = TRUE, ...) {
 
   # To geometry
   x = sf::st_geometry(x)
@@ -59,7 +61,7 @@ st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
 
   # Check that CRS is the same
   if(!is.na(sf::st_crs(x)) & !is.na(sf::st_crs(y)) & sf::st_crs(x) != sf::st_crs(y))
-    stop("'x' and 'y' needs to be in the same CRS")
+    stop("'x' and 'y' need to be in the same CRS")
 
   # Get nearest IDs
   if(progress) cat("Calculating nearest IDs\n")
@@ -69,7 +71,9 @@ st_connect = function(x, y, ids = NULL, dist, progress = TRUE, ...) {
   if(progress) cat("Calculating lines\n")
   x = x[rep(1:length(ids), times = lengths(ids))]
   y = y[unlist(ids)]
-  result = st_nearest_points(x, y, pairwise = TRUE)
+  crs = st_crs(x)
+  result = st_nearest_points(st_set_crs(x, NA), st_set_crs(y, NA), pairwise = TRUE)
+  result = st_set_crs(result, crs)
 
   # Return
   return(result)
