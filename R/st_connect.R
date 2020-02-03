@@ -9,7 +9,7 @@
 #' @param ... Other arguments passed to \code{st_nn} when calculating \code{ids}, such as \code{k} and \code{maxdist}
 #'
 #' @return Object of class \code{sfc} with geometry type \code{LINESTRING}
-#' @note The segments are straight lines, i.e., they correspond to shortes path assuming planar geometry regardless of CRS. Therefore, the lines should serve as a graphical indication of features that are nearest to each other; the exact shortest path between features should be calculated by other means, such as \code{geosphere::greatCircle}.
+#' @note The segments are straight lines, i.e., they correspond to shortest path assuming planar geometry regardless of CRS. Therefore, the lines should serve as a graphical indication of features that are nearest to each other; the exact shortest path between features should be calculated by other means, such as \code{geosphere::greatCircle}.
 #'
 #' @importFrom methods as
 #' @export
@@ -72,7 +72,7 @@ st_connect = function(x, y, ids = NULL, progress = TRUE, ...) {
   x = x[rep(1:length(ids), times = lengths(ids))]
   y = y[unlist(ids)]
   crs = st_crs(x)
-  result = st_nearest_points(st_set_crs(x, NA), st_set_crs(y, NA), pairwise = TRUE)
+  result = sf::st_nearest_points(st_set_crs(x, NA), st_set_crs(y, NA), pairwise = TRUE)
   result = st_set_crs(result, crs)
 
   # Return

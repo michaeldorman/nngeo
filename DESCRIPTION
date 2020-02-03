@@ -9,7 +9,7 @@ Authors@R: c(
     person("Dominic", "Russel", email = "domrussel@gmail.com", role = c("ctb")),
     person("Charles", "F.F Karney", role = c("ctb", "cph"), 
         comment="Author of included C code from 'GeographicLib' for geodesic distance"))
-Description: K-nearest neighbor search for projected and non-projected 'sf' spatial layers. Nearest neighbor search uses (1) C code from 'GeographicLib' for lon-lat point layers, (2) function nn2() from package 'RANN' for projected point layers, or (3) function st_distance() from package 'sf' for line or polygon layers. The package also includes other utility functions for spatial analysis.
+Description: K-nearest neighbor search for projected and non-projected 'sf' spatial layers. Nearest neighbor search uses (1) C code from 'GeographicLib' for lon-lat point layers, (2) function nn2() from package 'RANN' for projected point layers, or (3) function st_distance() from package 'sf' for line or polygon layers. The package also includes several other utility functions for spatial analysis.
 Imports:
     RANN,
     units,

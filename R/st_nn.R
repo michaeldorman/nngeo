@@ -122,7 +122,7 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
 
   # Check that CRS is the same
   if(!is.na(sf::st_crs(x)) & !is.na(sf::st_crs(y)) & sf::st_crs(x) != sf::st_crs(y))
-    stop("'x' and 'y' needs to be in the same CRS")
+    stop("'x' and 'y' need to be in the same CRS")
 
   # Determine geometry type and projection
   if(!class(x)[1] == "sfc_POINT" | !class(y)[1] == "sfc_POINT") {

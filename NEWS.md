@@ -67,7 +67,7 @@
 * Removed 'raster_*" functions
 * Added 'focal2' function (a 3x3 focal filter on 'stars')
 * Added 'line' and 'pnt' sample data (based on pgRouting tutorial)
-* Added 'st_split_junctions'
+* Added 'st_split_junctions' function
 * 'st_connect' now uses 'st_nearest_point' rather than point sampling
 * 'st_connect' removes CRS before calculating nearest point, to omit the warning when using lon-lat
 

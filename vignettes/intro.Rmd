@@ -28,7 +28,7 @@ This document introduces the `nngeo` package. The `nngeo` package includes funct
 
 ## Installation
 
-GitHub version -
+GitHub version:
 
 ``` r
 install.packages("devtools")
@@ -37,7 +37,7 @@ devtools::install_github("michaeldorman/nngeo")
 
 ## Sample data
 
-The `nngeo` package comes with three sample datasets - 
+The `nngeo` package comes with three sample datasets:
 
 * `cities`
 * `towns`
@@ -55,7 +55,7 @@ The `cities` layer is a **point** layer representing the location of the three l
 cities
 ```
 
-The `towns` layer is another **point** layer, with the location of all towns in Israel whose name begins with the letter A. 
+The `towns` layer is another **point** layer, with the location of all large towns in Israel, compiled from a different data source:
 
 ```{r}
 towns
@@ -86,18 +86,18 @@ The `st_nn` function accepts two layers, `x` and `y`, and returns a list with th
 For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], progress = FALSE)
+nn = st_nn(cities, towns[1:5, ])
 nn
 ```
 
-This output tells us that `towns[2, ]` is the nearest among the five features of `towns[1:5, ]` to `cities[1, ]`, etc.
+This output tells us that `towns[4, ]` is the nearest among the five features of `towns[1:5, ]` to `cities[1, ]`, etc.
 
 ## The `st_connect` function
 
 The resulting nearest neighbor matches can be visualized using the `st_connect` function. This function builds a line layer connecting features from two layers `x` and `y` based on the relations defined in a list such the one returned by `st_nn`:
 
 ```{r}
-l = st_connect(cities, towns[1:5, ], ids = nn, progress = FALSE)
+l = st_connect(cities, towns[1:5, ], ids = nn)
 l
 ```
 
@@ -116,7 +116,7 @@ text(st_coordinates(towns[1:5, ])[, 1], st_coordinates(towns[1:5, ])[, 2], 1:5, 
 The `st_nn` can also return the complete logical matrix indicating whether each feature in `x` is a neighbor of `y`. To get the dense matrix, instead of a list, use `sparse=FALSE`.
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], sparse = FALSE, progress = FALSE)
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE)
 nn
 ```
 
@@ -125,12 +125,12 @@ nn
 It is also possible to return any **k-nearest** neighbors, rather than just one. For example, setting `k=2` returns both the 1^st^ and 2^nd^ nearest neighbors:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, progress = FALSE)
+nn = st_nn(cities, towns[1:5, ], k = 2)
 nn
 ```
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, progress = FALSE)
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2)
 nn
 ```
 
@@ -139,7 +139,7 @@ nn
 Using `returnDist=TRUE` the distances `list` is also returned, in addition the the neighbor matches, with both componenets now comprising a `list`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, returnDist = TRUE, progress = FALSE)
+nn = st_nn(cities, towns[1:5, ], k = 2, returnDist = TRUE)
 nn
 ```
 
@@ -148,7 +148,7 @@ nn
 Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for `cities[2, ]`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, maxdist = 50000, progress = FALSE)
+nn = st_nn(cities, towns[1:5, ], k = 2, maxdist = 50000)
 nn
 ```
 
@@ -188,16 +188,16 @@ plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 Nearest neighbor search also works for non-point layers. The following code section finds the 20-nearest `towns` features for each water body in `water[-1, ]`. 
 
 ```{r}
-nn = st_nn(water[-1, ], towns, k = 20, progress = FALSE)
+nn = st_nn(water[-1, ], towns, k = 20)
 ```
 
 Again, we can calculate the respective lines for the above result using `st_connect`. Since one of the inputs is line/polygon, we need to specify a sampling distance `dist`, which sets the resolution of connecting points on the shape exterior boundary. 
 
 ```{r, warning=FALSE}
-l = st_connect(water[-1, ], towns, ids = nn, progress = FALSE, dist = 100)
+l = st_connect(water[-1, ], towns, ids = nn, dist = 100)
 ```
 
-The result is visualized on Figure \ref{fig:water_towns}.
+The result is visualized in Figure \ref{fig:water_towns}.
 
 ```{r water_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 20 \\texttt{towns} features from each \\texttt{water} polygon"}
 plot(st_geometry(water[-1, ]), col = "lightblue", border = "grey")

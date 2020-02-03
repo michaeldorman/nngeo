@@ -24,7 +24,7 @@ Object of class \code{sfc} with geometry type \code{LINESTRING}
 Returns a line layer with line segments which connect the nearest feature(s) from \code{y} for each feature in \code{x}. This is mostly useful for graphical purposes (see Note and Examples below).
 }
 \note{
-The segments are straight lines, i.e., they correspond to shortes path assuming planar geometry regardless of CRS. Therefore, the lines should serve as a graphical indication of features that are nearest to each other; the exact shortest path between features should be calculated by other means, such as \code{geosphere::greatCircle}.
+The segments are straight lines, i.e., they correspond to shortest path assuming planar geometry regardless of CRS. Therefore, the lines should serve as a graphical indication of features that are nearest to each other; the exact shortest path between features should be calculated by other means, such as \code{geosphere::greatCircle}.
 }
 \examples{
 # Nearest 'city' per 'town'
