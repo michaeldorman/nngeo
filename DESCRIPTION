@@ -1,7 +1,7 @@
 Package: nngeo
 Type: Package
 Title: k-Nearest Neighbor Join for Spatial Data
-Version: 0.3.4
+Version: 0.3.6
 Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Johnathan", "Rush", email = "johnathan.rush@mssm.edu", role = c("ctb")),
@@ -14,8 +14,8 @@ Imports:
     RANN,
     units,
     methods,
-    stars,
-    lwgeom
+    lwgeom,
+    parallel
 Depends:
     R (>= 3.5.0),
     sf (>= 0.6)
@@ -25,6 +25,7 @@ RoxygenNote: 7.0.2
 Suggests:
     DBI,    
     RPostgreSQL,
+    stars,
     knitr,
     rmarkdown,
     testthat

@@ -11,7 +11,8 @@ st_nn(
   k = 1,
   maxdist = Inf,
   returnDist = FALSE,
-  progress = TRUE
+  progress = TRUE,
+  parallel = 1
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ st_nn(
 \item{returnDist}{\code{logical}; whether to return a second \code{list} with the distances between detected neighbors.}
 
 \item{progress}{Display progress bar? (default \code{TRUE}}
+
+\item{parallel}{Number of parallel processes or a predefined socket cluster. With \code{parallel=1} uses ordinary, non-parallel processing. Parallel processing is done with the \code{parallel} package}
 }
 \value{
 \itemize{
@@ -110,7 +113,7 @@ end - start
 
 # Large example - Polygons
 set.seed(1)
-n = 50
+n = 150
 x = data.frame(
   lon = (runif(n) * 2 - 1) * 70,
   lat = (runif(n) * 2 - 1) * 70
@@ -119,10 +122,18 @@ x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
 x = st_transform(x, 32630)
 x = st_buffer(x, 1000000)
 start = Sys.time()
-result = st_nn(x, x, k = 3)
-result[1:3]
+result1 = st_nn(x, x, k = 3)
+result1[1:3]
 end = Sys.time()
 end - start
+
+# Large example - Polygons - Parallel processing
+start = Sys.time()
+result2 = st_nn(x, x, k = 3, parallel = 4)
+result2[1:3]
+end = Sys.time()
+end - start
+all.equal(result1, result2)
 
 }
 }

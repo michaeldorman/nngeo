@@ -60,7 +60,7 @@
 * Added 'raster_extend', a wrapper around 'raster::extend'
 * When using 'returnDist=TRUE', distances are now returned as sparse 'list' rather than a 'matrix'
 
-## nngeo 0.3.4
+## nngeo 0.3.4 (2020-02-03)
 
 * 'st_nn' with 'returnDist=TRUE' returns named list with elements 'nn' and 'dist'
 * Replaced 'towns' dataset
@@ -71,13 +71,16 @@
 * 'st_connect' now uses 'st_nearest_point' rather than point sampling
 * 'st_connect' removes CRS before calculating nearest point, to omit the warning when using lon-lat
 
+## nngeo 0.3.6
+
+* Added parallel processing option for 'st_nn'
+
 ## Other ideas:
 
 * Add 'split line to equal parts' function
 * Add 'round coord' function
 * Add 'extend lines' function
 * Add 'bridge lines to network' function
-* Add parallel processing option
 * Add 'st_az' function
 * Geodesic buffer
 * 'igraph' object from layer based on proximity
