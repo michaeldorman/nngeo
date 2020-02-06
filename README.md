@@ -12,13 +12,13 @@ capabilities for spatial analysis in R.
 Installation
 ------------
 
-CRAN version -
+CRAN version:
 
 ``` r
 install.packages("nngeo")
 ```
 
-GitHub version -
+GitHub version:
 
 ``` r
 install.packages("devtools")
@@ -109,4 +109,4 @@ plot(st_geometry(cities), col = "red", add = TRUE)
 plot(l, add = TRUE)
 ```
 
-<img src="README-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
