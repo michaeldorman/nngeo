@@ -79,6 +79,7 @@
 
 ## Other ideas
 
+* Internal loop (over 'y_coords') using C in 'st_nn_pnt_geo'
 * Parallel processing message
 * Parallel processing in other functions
 * Add 'split line to equal parts' function

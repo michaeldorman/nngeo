@@ -20,7 +20,7 @@ st_nn(
 
 \item{y}{Object of class \code{sf} or \code{sfc}}
 
-\item{sparse}{\code{logical}; should a sparse index list be returned (\code{TRUE}, the default) or a dense logical matrix? See below. This only affects the}
+\item{sparse}{\code{logical}; should a sparse index list be returned (\code{TRUE}, the default) or a dense logical matrix? See "Value" section below.}
 
 \item{k}{The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned.}
 
@@ -34,7 +34,7 @@ st_nn(
 }
 \value{
 \itemize{
-\item{If \code{sparse=TRUE} (the default), a sparse \code{list} with list element \code{i} being a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i,]}, or \code{integer(0)} in case there are no neighbors.}
+\item{If \code{sparse=TRUE} (the default), a sparse \code{list} with list element \code{i} being a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i,]}, or an empty vector (\code{integer(0)}) in case there are no neighbors.}
 \item{If \code{sparse=FALSE}, a \code{logical} matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j,]} is a neighbor of \code{x[i]}.}
 \item{If \code{returnDists=TRUE} the function returns a \code{list}, with the first element as specified above, and the second element a sparse \code{list} with the distances (as \code{units} vectors, \strong{in meters}) between each pair of detected neighbors corresponding to the sparse \code{list} of indices.}
 }
