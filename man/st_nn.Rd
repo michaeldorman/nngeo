@@ -24,13 +24,13 @@ st_nn(
 
 \item{k}{The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned.}
 
-\item{maxdist}{Search radius (\strong{in meters}). Points farther than search radius are not considered. Default is \code{Inf} meaning that search is unconstrained}
+\item{maxdist}{Search radius (\strong{in meters}). Points farther than search radius are not considered. Default is \code{Inf}, meaning that search is unconstrained.}
 
 \item{returnDist}{\code{logical}; whether to return a second \code{list} with the distances between detected neighbors.}
 
-\item{progress}{Display progress bar? (default \code{TRUE}}
+\item{progress}{Display progress bar? The default is \code{TRUE}. When using \code{parallel>1}, a progress bar is not displayed regardless of \code{progress} argument.}
 
-\item{parallel}{Number of parallel processes or a predefined socket cluster. With \code{parallel=1} uses ordinary, non-parallel processing. Parallel processing is done with the \code{parallel} package}
+\item{parallel}{Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is done with the \code{parallel} package.}
 }
 \value{
 \itemize{

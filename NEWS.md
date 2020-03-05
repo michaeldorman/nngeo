@@ -64,7 +64,7 @@
 
 * 'st_nn' with 'returnDist=TRUE' returns named list with elements 'nn' and 'dist'
 * Replaced 'towns' dataset
-* Removed 'raster_*" functions
+* Removed 'raster_*" functions (moved to package 'geobgu')
 * Added 'focal2' function (a 3x3 focal filter on 'stars')
 * Added 'line' and 'pnt' sample data (based on pgRouting tutorial)
 * Added 'st_split_junctions' function
@@ -74,9 +74,13 @@
 ## nngeo 0.3.6
 
 * Added parallel processing option for 'st_nn'
+* Added 'st_azimuth' function
+* Removed 'focal2' function (moved to package 'starsExtra')
 
-## Other ideas:
+## Other ideas
 
+* Parallel processing message
+* Parallel processing in other functions
 * Add 'split line to equal parts' function
 * Add 'round coord' function
 * Add 'extend lines' function

@@ -15,6 +15,11 @@ Object of same class as \code{x}, with holes removed
 \description{
 The function removes all polygon holes and return the modified layer
 }
+\note{
+See function \code{sfheaders::st_remove_holes} for highly-optimized faster alternative:
+
+\url{https://github.com/dcooley/sfheaders}
+}
 \examples{
 opar = par(mfrow = c(1, 2))
 
@@ -66,7 +71,7 @@ plot(x, main = "Before")
 plot(result, main = "After")
 }
 \references{
-Following the StackOverflow answer by user 'lbusett' -
+Following the StackOverflow answer by user 'lbusett':
 
 \url{https://stackoverflow.com/questions/52654701/removing-holes-from-polygons-in-r-sf}
 }

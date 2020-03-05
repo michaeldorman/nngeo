@@ -40,17 +40,6 @@
 
 "water"
 
-#' Small Digital Elevation Model
-#'
-#' A \code{stars} object representing a 13*11 Digital Elevation Model (DEM)
-#'
-#' @format A \code{stars} object with 1 attribute:
-#' \describe{
-#'   \item{elevation}{Elevation above sea level, in meters}
-#' }
-
-"dem"
-
 #' Sample network dataset: lines
 #'
 #' An \code{sf} object based on the \code{edge_table} sample dataset from pgRouting 2.6 tutorial

@@ -9,6 +9,3 @@ There were no ERRORs or WARNINGs.
 ## Downstream dependencies
 None.
 
-## Notes
-This release addresses the problems reported on:
-https://cran.r-project.org/web/checks/check_results_nngeo.html
