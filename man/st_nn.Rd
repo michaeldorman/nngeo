@@ -4,16 +4,8 @@
 \alias{st_nn}
 \title{Nearest Neighbor Search for Simple Features}
 \usage{
-st_nn(
-  x,
-  y,
-  sparse = TRUE,
-  k = 1,
-  maxdist = Inf,
-  returnDist = FALSE,
-  progress = TRUE,
-  parallel = 1
-)
+st_nn(x, y, sparse = TRUE, k = 1, maxdist = Inf,
+  returnDist = FALSE, progress = TRUE, parallel = 1)
 }
 \arguments{
 \item{x}{Object of class \code{sf} or \code{sfc}}
@@ -94,9 +86,16 @@ x = data.frame(
 )
 x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
 start = Sys.time()
-result = st_nn(x, x, k = 3)
+result1 = st_nn(x, x, k = 3)
 end = Sys.time()
 end - start
+
+# Large example - Geo points - Parallel processing
+start = Sys.time()
+result2 = st_nn(x, x, k = 3, parallel = 4)
+end = Sys.time()
+end - start
+all.equal(result1, result2)
 
 # Large example - Proj points
 n = 1000
@@ -123,14 +122,12 @@ x = st_transform(x, 32630)
 x = st_buffer(x, 1000000)
 start = Sys.time()
 result1 = st_nn(x, x, k = 3)
-result1[1:3]
 end = Sys.time()
 end - start
 
 # Large example - Polygons - Parallel processing
 start = Sys.time()
 result2 = st_nn(x, x, k = 3, parallel = 4)
-result2[1:3]
 end = Sys.time()
 end - start
 all.equal(result1, result2)

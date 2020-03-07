@@ -23,7 +23,6 @@
 #' }
 #' @references C. F. F. Karney, GeographicLib, Version 1.49 (2017-mm-dd), \url{https://geographiclib.sourceforge.io/1.49}
 #' @export
-#'
 #' @import sf
 #'
 #' @examples
@@ -72,9 +71,16 @@
 #' )
 #' x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
 #' start = Sys.time()
-#' result = st_nn(x, x, k = 3)
+#' result1 = st_nn(x, x, k = 3)
 #' end = Sys.time()
 #' end - start
+#'
+#' # Large example - Geo points - Parallel processing
+#' start = Sys.time()
+#' result2 = st_nn(x, x, k = 3, parallel = 4)
+#' end = Sys.time()
+#' end - start
+#' all.equal(result1, result2)
 #'
 #' # Large example - Proj points
 #' n = 1000
@@ -101,14 +107,12 @@
 #' x = st_buffer(x, 1000000)
 #' start = Sys.time()
 #' result1 = st_nn(x, x, k = 3)
-#' result1[1:3]
 #' end = Sys.time()
 #' end - start
 #'
 #' # Large example - Polygons - Parallel processing
 #' start = Sys.time()
 #' result2 = st_nn(x, x, k = 3, parallel = 4)
-#' result2[1:3]
 #' end = Sys.time()
 #' end - start
 #' all.equal(result1, result2)
@@ -132,6 +136,10 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
   # Check that CRS is the same
   if(!is.na(sf::st_crs(x)) & !is.na(sf::st_crs(y)) & sf::st_crs(x) != sf::st_crs(y))
     stop("'x' and 'y' need to be in the same CRS")
+
+  # Check that geometries are non-empty
+  if(any(st_is_empty(x))) stop("'x' contains empty geometries")
+  if(any(st_is_empty(y))) stop("'y' contains empty geometries")
 
   # Determine geometry type and projection & calculate IDs+dists
   # Single thread

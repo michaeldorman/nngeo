@@ -15,11 +15,15 @@
 
   for(i in 1:x_features) {
 
-    dists1 = rep(NA, y_features)
-
-    for(j in 1:y_features) {
-      dists1[j] = .Call(addr_dist_one, c(x_coord[i, ], y_coord[j, ]))
-    }
+    dists1 = .C(
+      "dist_geo_vector",
+      as.integer(y_features),
+      as.numeric(x_coord[i, 1]),
+      as.numeric(x_coord[i, 2]),
+      as.numeric(y_coord[, 1]),
+      as.numeric(y_coord[, 2]),
+      as.numeric(rep(0, y_features))
+    )[[6]]
 
     ids1 = order(dists1)[1:k]
     ids[i, ] = ids1

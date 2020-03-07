@@ -76,21 +76,20 @@
 * Added parallel processing option for 'st_nn'
 * Added 'st_azimuth' function
 * Removed 'focal2' function (moved to package 'starsExtra')
+* 'st_nn' now raises error if any geometry is empty
+* Switched C API from '.Call' to '.C'
 
 ## Other ideas
 
-* Internal loop (over 'y_coords') using C in 'st_nn_pnt_geo'
+* Dealing with empty geometries (return 'NA' IDs and distances)
 * Parallel processing message
 * Parallel processing in other functions
 * Add 'split line to equal parts' function
 * Add 'round coord' function
 * Add 'extend lines' function
 * Add 'bridge lines to network' function
-* Add 'st_az' function
 * Geodesic buffer
 * 'igraph' object from layer based on proximity
 * 3D distance of 'POINT Z' layers
-
-
 
 

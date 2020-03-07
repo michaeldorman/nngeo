@@ -9,7 +9,7 @@ test_that("'st_nn' points", {
       cities,
       towns,
       k = 10
-      )
+    )
   },
   list(c(70L, 99L, 60L, 15L, 36L, 56L, 193L, 142L, 90L, 82L),
        c(145L,175L, 57L, 144L, 29L, 55L, 21L, 64L, 138L, 24L),
