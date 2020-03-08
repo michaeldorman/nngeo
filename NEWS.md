@@ -71,7 +71,7 @@
 * 'st_connect' now uses 'st_nearest_point' rather than point sampling
 * 'st_connect' removes CRS before calculating nearest point, to omit the warning when using lon-lat
 
-## nngeo 0.3.6
+## nngeo 0.3.7
 
 * Added parallel processing option for 'st_nn'
 * Added 'st_azimuth' function

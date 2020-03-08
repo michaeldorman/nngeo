@@ -21,8 +21,8 @@ install.packages("nngeo")
 GitHub version:
 
 ``` r
-install.packages("devtools")
-devtools::install_github("michaeldorman/nngeo")
+install.packages("remotes")
+remotes::install_github("michaeldorman/nngeo")
 ```
 
 Usage
@@ -49,16 +49,16 @@ nn = st_nn(cities, towns, k = 20, progress = FALSE)
 #> lon-lat points
 nn
 #> [[1]]
-#>  [1]  70  99  60  15  36  56 193 142  90  82  17  93  44  13  32   9 172
-#> [18]  34 103 132
+#>  [1]  70  99  60  15  36  56 193 142  90  82  17  93  44  13  32   9 172  34 103
+#> [20] 132
 #> 
 #> [[2]]
-#>  [1] 145 175  57 144  29  55  21  64 138  24 121 146  53 126 160  31  62
-#> [18] 187  85  83
+#>  [1] 145 175  57 144  29  55  21  64 138  24 121 146  53 126 160  31  62 187  85
+#> [20]  83
 #> 
 #> [[3]]
-#>  [1]  59 179 137 114 141 134  67 152  41 133   6 140  23 166  66   2 189
-#> [18]  73 173 147
+#>  [1]  59 179 137 114 141 134  67 152  41 133   6 140  23 166  66   2 189  73 173
+#> [20] 147
 ```
 
 By default, the result is a sparse list with the neighbor IDs.

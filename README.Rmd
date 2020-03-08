@@ -32,8 +32,8 @@ install.packages("nngeo")
 GitHub version:
 
 ```{r installation2, eval=FALSE}
-install.packages("devtools")
-devtools::install_github("michaeldorman/nngeo")
+install.packages("remotes")
+remotes::install_github("michaeldorman/nngeo")
 ```
 
 ## Usage

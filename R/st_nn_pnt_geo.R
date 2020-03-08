@@ -22,7 +22,8 @@
       as.numeric(x_coord[i, 2]),
       as.numeric(y_coord[, 1]),
       as.numeric(y_coord[, 2]),
-      as.numeric(rep(0, y_features))
+      as.numeric(rep(0, y_features)),
+      PACKAGE = "nngeo"
     )[[6]]
 
     ids1 = order(dists1)[1:k]
