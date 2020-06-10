@@ -4,10 +4,12 @@
 \name{water}
 \alias{water}
 \title{Polygonal layer of water bodies in Israel}
-\format{A \code{sf} POLYGON layer with 4 features and 1 attribute:
+\format{
+A \code{sf} POLYGON layer with 4 features and 1 attribute:
 \describe{
   \item{name}{Water body name}
-}}
+}
+}
 \usage{
 water
 }

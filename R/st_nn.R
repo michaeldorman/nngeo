@@ -85,10 +85,10 @@
 #' # Large example - Proj points
 #' n = 1000
 #' x = data.frame(
-#'   lon = (runif(n) * 2 - 1) * 70,
-#'   lat = (runif(n) * 2 - 1) * 70
+#'   x = (runif(n) * 2 - 1) * 70,
+#'   y = (runif(n) * 2 - 1) * 70
 #' )
-#' x = st_as_sf(x, coords = c("lon", "lat"), crs = 4326)
+#' x = st_as_sf(x, coords = c("x", "y"), crs = 4326)
 #' x = st_transform(x, 32630)
 #' start = Sys.time()
 #' result = st_nn(x, x, k = 3)

@@ -35,9 +35,15 @@
   dists = split(dists, 1:nrow(dists))
   dists = lapply(dists, function(x) c(x[!is.na(x)]))
   crs_units = st_crs(x)$units
-  dists = lapply(dists, units::set_units, crs_units, mode = "standard")
-  dists = lapply(dists, units::set_units, "m", mode = "standard")
-  dists = lapply(dists, as.numeric)
+
+  # Convert to meters
+  if(!is.na(crs_units)) {
+    dists = lapply(dists, units::set_units, crs_units, mode = "standard")
+    dists = lapply(dists, units::set_units, "m", mode = "standard")
+    dists = lapply(dists, as.numeric)
+  }
+
+  # Remove names
   names(dists) = NULL
 
   # Progress

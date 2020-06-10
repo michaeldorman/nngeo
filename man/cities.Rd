@@ -4,10 +4,12 @@
 \name{cities}
 \alias{cities}
 \title{Point layer of the three largest cities in Israel}
-\format{A \code{sf} POINT layer with 3 features and 1 attribute:
+\format{
+A \code{sf} POINT layer with 3 features and 1 attribute:
 \describe{
   \item{name}{Town name}
-}}
+}
+}
 \usage{
 cities
 }

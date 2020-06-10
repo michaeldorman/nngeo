@@ -33,7 +33,7 @@ Once installed, the library can be loaded as follows.
 ``` r
 library(nngeo)
 #> Loading required package: sf
-#> Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
+#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 7.0.0
 ```
 
 Example
@@ -73,8 +73,7 @@ st_join(cities, towns, join = st_nn, k = 3, progress = FALSE)
 #> geometry type:  POINT
 #> dimension:      XY
 #> bbox:           xmin: 34.78177 ymin: 31.76832 xmax: 35.21371 ymax: 32.79405
-#> epsg (SRID):    4326
-#> proj4string:    +proj=longlat +datum=WGS84 +no_defs
+#> geographic CRS: WGS 84
 #>        name.x            name.y country.etc    pop capital
 #> 1   Jerusalem         Jerusalem      Israel 731731       1
 #> 1.1 Jerusalem Mevasserat Ziyyon      Israel  22470       0
@@ -109,4 +108,4 @@ plot(st_geometry(cities), col = "red", add = TRUE)
 plot(l, add = TRUE)
 ```
 
-<img src="README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="README-readme-plot-1.png" style="display: block; margin: auto;" />

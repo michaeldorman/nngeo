@@ -1,11 +1,9 @@
 ## Test environments
-* local Ubuntu 18.04 install, R 3.6.2
+* local Ubuntu 18.04 install, R 4.0.0
 * win-builder (devel and release)
-* R-hub builder
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
+There were no ERRORs or WARNINGs
 
 ## Downstream dependencies
-None.
-
+I have also run R CMD check on downstream dependency of nngeo (starsExtra)

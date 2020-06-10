@@ -74,7 +74,7 @@ plot(st_geometry(cities), col = "red", add = TRUE)
 plot(l, add = TRUE)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=5, fig.height=5, warning=FALSE}
+```{r readme-plot, echo=FALSE, fig.align='center', fig.width=5, fig.height=5, warning=FALSE}
 opar = par(mar = rep(0.5, 4))
 l = st_connect(cities, towns, ids = nn, progress = FALSE)
 plot(l, col = NA)  # For setting the extent
@@ -83,14 +83,3 @@ plot(st_geometry(cities), col = "red", add = TRUE)
 plot(l, add = TRUE)
 par(opar)
 ```
-
-
-
-
-
-
-
-
-
-
-

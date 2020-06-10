@@ -24,7 +24,7 @@ library(nngeo)
 
 ## Package purpose
 
-This document introduces the `nngeo` package. The `nngeo` package includes functions for spatial join of laters based on *k-nearest neighbor* relation between features. The functions work with spatial layer object defined in package `sf`, namely classes `sfc` and `sf`. 
+This document introduces the `nngeo` package. The `nngeo` package includes functions for spatial join of layers based on *k-nearest neighbor* relation between features. The functions work with spatial layer object defined in package `sf`, namely classes `sfc` and `sf`. 
 
 ## Installation
 
@@ -86,7 +86,7 @@ The `st_nn` function accepts two layers, `x` and `y`, and returns a list with th
 For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ])
+nn = st_nn(cities, towns[1:5, ], progress = FALSE)
 nn
 ```
 
@@ -116,7 +116,7 @@ text(st_coordinates(towns[1:5, ])[, 1], st_coordinates(towns[1:5, ])[, 2], 1:5, 
 The `st_nn` can also return the complete logical matrix indicating whether each feature in `x` is a neighbor of `y`. To get the dense matrix, instead of a list, use `sparse=FALSE`.
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], sparse = FALSE)
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE, progress = FALSE)
 nn
 ```
 
@@ -125,21 +125,21 @@ nn
 It is also possible to return any **k-nearest** neighbors, rather than just one. For example, setting `k=2` returns both the 1^st^ and 2^nd^ nearest neighbors:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2)
+nn = st_nn(cities, towns[1:5, ], k = 2, progress = FALSE)
 nn
 ```
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2)
+nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, progress = FALSE)
 nn
 ```
 
 ## Distance matrix
 
-Using `returnDist=TRUE` the distances `list` is also returned, in addition the the neighbor matches, with both componenets now comprising a `list`:
+Using `returnDist=TRUE` the distances `list` is also returned, in addition the the neighbor matches, with both components now comprising a `list`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, returnDist = TRUE)
+nn = st_nn(cities, towns[1:5, ], k = 2, returnDist = TRUE, progress = FALSE)
 nn
 ```
 
@@ -148,7 +148,7 @@ nn
 Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for `cities[2, ]`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, maxdist = 50000)
+nn = st_nn(cities, towns[1:5, ], k = 2, maxdist = 50000, progress = FALSE)
 nn
 ```
 
@@ -188,7 +188,7 @@ plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 Nearest neighbor search also works for non-point layers. The following code section finds the 20-nearest `towns` features for each water body in `water[-1, ]`. 
 
 ```{r}
-nn = st_nn(water[-1, ], towns, k = 20)
+nn = st_nn(water[-1, ], towns, k = 20, progress = FALSE)
 ```
 
 Again, we can calculate the respective lines for the above result using `st_connect`. Since one of the inputs is line/polygon, we need to specify a sampling distance `dist`, which sets the resolution of connecting points on the shape exterior boundary. 

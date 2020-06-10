@@ -44,7 +44,7 @@
 
 ## nngeo 0.2.8 (2019-05-12)
 
-* Change C code fron 'distance.c' to 'GeographicLib'
+* Change C code from 'distance.c' to 'GeographicLib'
 * Use C code through the C API instead of 'Rcpp'
 
 ## nngeo 0.2.9 (2019-08-07)
@@ -71,7 +71,7 @@
 * 'st_connect' now uses 'st_nearest_point' rather than point sampling
 * 'st_connect' removes CRS before calculating nearest point, to omit the warning when using lon-lat
 
-## nngeo 0.3.7
+## nngeo 0.3.7 (2020-04-04)
 
 * Added parallel processing option for 'st_nn'
 * Added 'st_azimuth' function
@@ -79,16 +79,21 @@
 * 'st_nn' now raises error if any geometry is empty
 * Switched C API from '.Call' to '.C'
 
+## nngeo 0.3.8
+
+* Switched from 'testthat' to 'tinytest'
+
 ## Other ideas
 
-* Dealing with empty geometries (return 'NA' IDs and distances)
+* Add 'arrowhead' function
+* Add UTM zone function
 * Parallel processing message
 * Parallel processing in other functions
 * Add 'split line to equal parts' function
 * Add 'round coord' function
 * Add 'extend lines' function
 * Add 'bridge lines to network' function
-* Geodesic buffer
+* Geodesic buffer (using geographiclib)
 * 'igraph' object from layer based on proximity
 * 3D distance of 'POINT Z' layers
 

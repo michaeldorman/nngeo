@@ -3,7 +3,7 @@
 #' Calculates the (planar!) azimuth between pairs in two sequences of points \code{x} and \code{y}. When point sequence length doesn't match, the shorter one is recycled.
 #' @param x Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POINT"}
 #' @param y Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POINT"}
-#' @return A \code{numeric} vector, of the same length as (the longer of) \code{x} and \code{y}, with the azimuth values from \code{x} to \code{y} (in decimal degrees, ranging between 0 and 360 clockwise from north). For identical points an azumuth of \code{NA} is returned.
+#' @return A \code{numeric} vector, of the same length as (the longer of) \code{x} and \code{y}, with the azimuth values from \code{x} to \code{y} (in decimal degrees, ranging between 0 and 360 clockwise from north). For identical points, an azimuth of \code{NA} is returned.
 #' @note
 #' The function currently calculates planar azimuth, ignoring CRS information. For bearing on a sphere, given points in lon-lat, see function \code{geosphere::bearing}.
 #' @references

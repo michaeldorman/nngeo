@@ -71,7 +71,7 @@ plot(x, main = "Before")
 plot(result, main = "After")
 }
 \references{
-Following the StackOverflow answer by user 'lbusett':
+Following the StackOverflow answer by user \code{lbusett}:
 
 \url{https://stackoverflow.com/questions/52654701/removing-holes-from-polygons-in-r-sf}
 }

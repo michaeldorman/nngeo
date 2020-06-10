@@ -4,7 +4,9 @@
 \name{pnt}
 \alias{pnt}
 \title{Sample network dataset: points}
-\format{An \code{sf} object}
+\format{
+An \code{sf} object
+}
 \usage{
 pnt
 }

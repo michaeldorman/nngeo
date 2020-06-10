@@ -6,7 +6,7 @@
 #' @param ey Size along y-axis, in CRS units
 #' @param res Number of points the ellipse polygon consists of (default \code{30})
 #' @return Object of class \code{sfc} (type \code{"POLYGON"}) containing ellipse polygons
-#' @references Based on StackOverflow answer by user 'fdetsch' -
+#' @references Based on StackOverflow answer by user \code{fdetsch}:
 #'
 #' \url{https://stackoverflow.com/questions/35841685/add-an-ellipse-on-raster-plot-in-r}
 #' @export

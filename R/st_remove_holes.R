@@ -3,7 +3,7 @@
 #' The function removes all polygon holes and return the modified layer
 #' @param x Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POLYGON"} or \code{"MULTIPOLYGON"}
 #' @return Object of same class as \code{x}, with holes removed
-#' @references Following the StackOverflow answer by user 'lbusett':
+#' @references Following the StackOverflow answer by user \code{lbusett}:
 #'
 #' \url{https://stackoverflow.com/questions/52654701/removing-holes-from-polygons-in-r-sf}
 #' @note

@@ -46,7 +46,7 @@ plot(dat \%>\% st_geometry, pch = 3, add = TRUE)
 text(dat \%>\% st_coordinates, as.character(1:nrow(dat)), pos = 2)
 }
 \references{
-Based on StackOverflow answer by user 'fdetsch' -
+Based on StackOverflow answer by user \code{fdetsch}:
 
 \url{https://stackoverflow.com/questions/35841685/add-an-ellipse-on-raster-plot-in-r}
 }

@@ -4,7 +4,9 @@
 \name{line}
 \alias{line}
 \title{Sample network dataset: lines}
-\format{An \code{sf} object}
+\format{
+An \code{sf} object
+}
 \usage{
 line
 }
