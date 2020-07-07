@@ -213,7 +213,7 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
     ids = lapply(result, function(i) i[[1]])
     ids = do.call(c, ids)
     names(ids) = NULL
-    dists = lapply(result, function(i) i[[1]])
+    dists = lapply(result, function(i) i[[2]])
     dists = do.call(c, dists)
     names(dists) = NULL
   }
@@ -240,14 +240,4 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
   return(result)
 
 }
-
-
-
-
-
-
-
-
-
-
 

@@ -79,12 +79,17 @@
 * 'st_nn' now raises error if any geometry is empty
 * Switched C API from '.Call' to '.C'
 
-## nngeo 0.3.8
+## nngeo 0.3.8 (2020-06-10)
 
 * Switched from 'testthat' to 'tinytest'
 
+## nngeo 0.3.9
+
+* Fixed bug in 'st_nn' when 'parallel>1'
+
 ## Other ideas
 
+* https://www.spatialanalytics.co.nz/post/2017/09/11/a-parallel-function-for-spatial-analysis-in-r/
 * Add 'arrowhead' function
 * Add UTM zone function
 * Parallel processing message
