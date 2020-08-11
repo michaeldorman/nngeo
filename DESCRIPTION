@@ -15,7 +15,8 @@ Imports:
     units,
     methods,
     lwgeom,
-    parallel
+    parallel,
+    s2
 Depends:
     R (>= 3.5.0),
     sf (>= 0.6)
