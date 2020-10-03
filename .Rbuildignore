@@ -8,3 +8,6 @@
 ^doc$
 ^Meta$
 ^revdep$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

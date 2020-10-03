@@ -83,9 +83,13 @@
 
 * Switched from 'testthat' to 'tinytest'
 
-## nngeo 0.3.9
+## nngeo 0.3.9 (2020-08-11)
 
 * Fixed bug in 'st_nn' when 'parallel>1'
+
+## nngeo 0.4.0
+
+* Added 'pkgdown' site
 
 ## Other ideas
 

@@ -1,7 +1,7 @@
 Package: nngeo
 Type: Package
 Title: k-Nearest Neighbor Join for Spatial Data
-Version: 0.3.9
+Version: 0.4.0
 Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Johnathan", "Rush", email = "johnathan.rush@mssm.edu", role = c("ctb")),
@@ -22,7 +22,7 @@ Depends:
     sf (>= 0.6)
 License: MIT + file LICENSE
 LazyData: TRUE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests:
     DBI,    
     RPostgreSQL,
@@ -31,6 +31,6 @@ Suggests:
     rmarkdown,
     tinytest
 VignetteBuilder: knitr
-URL: https://github.com/michaeldorman/nngeo/
+URL: https://michaeldorman.github.io/nngeo/, https://github.com/michaeldorman/nngeo/
 BugReports: https://github.com/michaeldorman/nngeo/issues/
 Encoding: UTF-8

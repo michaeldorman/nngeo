@@ -1,16 +1,15 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/nngeo)](https://cran.r-project.org/package=nngeo)
 [![CRAN\_Downloads\_Badge](http://cranlogs.r-pkg.org/badges/last-month/nngeo)](https://cran.r-project.org/package=nngeo)
 
-nngeo
-=====
+# nngeo
 
 The goal of `nngeo` is to provide **k-nearest neighbor join**
 capabilities for spatial analysis in R.
 
-Installation
-------------
+## Installation
 
 CRAN version:
 
@@ -25,19 +24,22 @@ install.packages("remotes")
 remotes::install_github("michaeldorman/nngeo")
 ```
 
-Usage
------
+## Documentation
+
+The complete documentation can be found at
+<https://michaeldorman.github.io/nngeo/>.
+
+## Usage
 
 Once installed, the library can be loaded as follows.
 
 ``` r
 library(nngeo)
 #> Loading required package: sf
-#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 7.0.0
+#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
 ```
 
-Example
--------
+## Example
 
 The following code section finds the 20-nearest towns for each city
 using function `st_nn`.

@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -35,6 +33,10 @@ GitHub version:
 install.packages("remotes")
 remotes::install_github("michaeldorman/nngeo")
 ```
+
+## Documentation
+
+The complete documentation can be found at [https://michaeldorman.github.io/nngeo/](https://michaeldorman.github.io/nngeo/).
 
 ## Usage
 
@@ -82,4 +84,8 @@ plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(cities), col = "red", add = TRUE)
 plot(l, add = TRUE)
 par(opar)
+```
+
+```{r, include=FALSE}
+file.copy("README-readme-plot-1.png", "docs/README-readme-plot-1.png")
 ```
