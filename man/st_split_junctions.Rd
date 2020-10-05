@@ -24,7 +24,7 @@ data(line)
 line = st_sf(st_union(line))
 
 # Line layer split at intersections
-line1 = st_split_junctions(line)
+line1 = st_split_junctions(line, progress = FALSE)
 
 # Plot
 opar = par(mfrow = c(1, 2))

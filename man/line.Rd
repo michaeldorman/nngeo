@@ -13,6 +13,9 @@ line
 \description{
 An \code{sf} object based on the \code{edge_table} sample dataset from pgRouting 2.6 tutorial
 }
+\examples{
+plot(line)
+}
 \references{
 \url{https://docs.pgrouting.org/2.6/en/sampledata.html}
 }

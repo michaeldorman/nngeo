@@ -78,7 +78,7 @@ lines or polygons, either lon-lat or projected—Calculation based on sf::st_dis
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -214,8 +214,8 @@ The function has three modes of operation:</p><ul>
 <span class='va'>water</span> <span class='op'>=</span> <span class='fu'><a href='https://r-spatial.github.io/stars/reference/st_transform.html'>st_transform</a></span><span class='op'>(</span><span class='va'>water</span>, <span class='fl'>32636</span><span class='op'>)</span>
 
 <span class='co'># Nearest town</span>
-<span class='fu'>st_nn</span><span class='op'>(</span><span class='va'>cities</span>, <span class='va'>towns</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>st_nn</span><span class='op'>(</span><span class='va'>cities</span>, <span class='va'>towns</span>, progress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 70
 #&gt; 
 #&gt; [[2]]
@@ -225,8 +225,8 @@ The function has three modes of operation:</p><ul>
 #&gt; [1] 59
 #&gt; </div><div class='input'>
 <span class='co'># Using 'sfc' objects</span>
-<span class='fu'>st_nn</span><span class='op'>(</span><span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>cities</span><span class='op'>)</span>, <span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>towns</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>st_nn</span><span class='op'>(</span><span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>cities</span><span class='op'>)</span>, <span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>towns</span><span class='op'>)</span>, progress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 70
 #&gt; 
 #&gt; [[2]]
@@ -234,8 +234,8 @@ The function has three modes of operation:</p><ul>
 #&gt; 
 #&gt; [[3]]
 #&gt; [1] 59
-#&gt; </div><div class='input'><span class='fu'>st_nn</span><span class='op'>(</span><span class='va'>cities</span>, <span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>towns</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>st_nn</span><span class='op'>(</span><span class='va'>cities</span>, <span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>towns</span><span class='op'>)</span>, progress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 70
 #&gt; 
 #&gt; [[2]]
@@ -243,8 +243,8 @@ The function has three modes of operation:</p><ul>
 #&gt; 
 #&gt; [[3]]
 #&gt; [1] 59
-#&gt; </div><div class='input'><span class='fu'>st_nn</span><span class='op'>(</span><span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>cities</span><span class='op'>)</span>, <span class='va'>towns</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>st_nn</span><span class='op'>(</span><span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>cities</span><span class='op'>)</span>, <span class='va'>towns</span>, progress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 70
 #&gt; 
 #&gt; [[2]]
@@ -254,8 +254,8 @@ The function has three modes of operation:</p><ul>
 #&gt; [1] 59
 #&gt; </div><div class='input'>
 <span class='co'># With distances</span>
-<span class='fu'>st_nn</span><span class='op'>(</span><span class='va'>cities</span>, <span class='va'>towns</span>, returnDist <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; $nn
+<span class='fu'>st_nn</span><span class='op'>(</span><span class='va'>cities</span>, <span class='va'>towns</span>, returnDist <span class='op'>=</span> <span class='cn'>TRUE</span>, progress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>projected points</span></div><div class='output co'>#&gt; $nn
 #&gt; $nn[[1]]
 #&gt; [1] 70
 #&gt; 

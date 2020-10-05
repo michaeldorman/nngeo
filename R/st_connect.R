@@ -16,13 +16,13 @@
 #'
 #' @examples
 #' # Nearest 'city' per 'town'
-#' l = st_connect(towns, cities)
+#' l = st_connect(towns, cities, progress = FALSE)
 #' plot(st_geometry(towns), col = "darkgrey")
 #' plot(st_geometry(l), add = TRUE)
 #' plot(st_geometry(cities), col = "red", add = TRUE)
 #'
 #' # Ten nearest 'towns' per 'city'
-#' l = st_connect(cities, towns, k = 10)
+#' l = st_connect(cities, towns, k = 10, progress = FALSE)
 #' plot(st_geometry(towns), col = "darkgrey")
 #' plot(st_geometry(l), add = TRUE)
 #' plot(st_geometry(cities), col = "red", add = TRUE)
@@ -32,14 +32,14 @@
 #' # Nearest 'city' per 'town', search radius of 30 km
 #' cities = st_transform(cities, 32636)
 #' towns = st_transform(towns, 32636)
-#' l = st_connect(cities, towns, k = nrow(towns), maxdist = 30000)
+#' l = st_connect(cities, towns, k = nrow(towns), maxdist = 30000, progress = FALSE)
 #' plot(st_geometry(towns), col = "darkgrey")
 #' plot(st_geometry(l), add = TRUE)
 #' plot(st_buffer(st_geometry(cities), units::set_units(30, km)), border = "red", add = TRUE)
 #'
 #' # The 20-nearest towns for each water body
 #' water = st_transform(water, 32636)
-#' l = st_connect(water[-1, ], towns, k = 20, dist = 100)
+#' l = st_connect(water[-1, ], towns, k = 20, dist = 100, progress = FALSE)
 #' plot(st_geometry(water[-1, ]), col = "lightblue", border = NA)
 #' plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 #' plot(st_geometry(l), col = "red", add = TRUE)

@@ -22,4 +22,7 @@ A \code{sf} POLYGON layer of the four large water bodies in Israel:
 \item{Dead Sea}
 }
 }
+\examples{
+plot(water)
+}
 \keyword{datasets}

@@ -34,15 +34,15 @@
 #' water = st_transform(water, 32636)
 #'
 #' # Nearest town
-#' st_nn(cities, towns)
+#' st_nn(cities, towns, progress = FALSE)
 #'
 #' # Using 'sfc' objects
-#' st_nn(st_geometry(cities), st_geometry(towns))
-#' st_nn(cities, st_geometry(towns))
-#' st_nn(st_geometry(cities), towns)
+#' st_nn(st_geometry(cities), st_geometry(towns), progress = FALSE)
+#' st_nn(cities, st_geometry(towns), progress = FALSE)
+#' st_nn(st_geometry(cities), towns, progress = FALSE)
 #'
 #' # With distances
-#' st_nn(cities, towns, returnDist = TRUE)
+#' st_nn(cities, towns, returnDist = TRUE, progress = FALSE)
 #'
 #' \dontrun{
 #'

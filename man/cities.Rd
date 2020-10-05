@@ -16,4 +16,7 @@ cities
 \description{
 A \code{sf} POINT layer of the three largest cities in Israel: Jerusalem, Tel-Aviv and Haifa.
 }
+\examples{
+plot(cities)
+}
 \keyword{datasets}

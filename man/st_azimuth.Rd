@@ -37,7 +37,7 @@ pnt = st_as_sf(s, as_points = TRUE)
 ctr = pnt[pnt$value == 0, ]
 az = st_azimuth(ctr, pnt)
 plot(st_geometry(pnt), col = NA)
-plot(st_connect(ctr, pnt, k = nrow(pnt)), col = "grey", add = TRUE)
+plot(st_connect(ctr, pnt, k = nrow(pnt), progress = FALSE), col = "grey", add = TRUE)
 plot(st_geometry(pnt), col = "grey", add = TRUE)
 text(st_coordinates(pnt), as.character(round(az)), col = "red")
 }

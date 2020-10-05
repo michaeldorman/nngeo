@@ -87,5 +87,6 @@ par(opar)
 ```
 
 ```{r, include=FALSE}
-file.copy("README-readme-plot-1.png", "docs/README-readme-plot-1.png")
+x = list.files(pattern = "^README-.*\\.png$")
+file.copy(x, "docs/", overwrite = TRUE)
 ```

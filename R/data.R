@@ -9,6 +9,8 @@
 #'   \item{pop}{Population size}
 #'   \item{capital}{Is it a capital?}
 #' }
+#' @examples 
+#' plot(towns)
 
 "towns"
 
@@ -20,6 +22,8 @@
 #' \describe{
 #'   \item{name}{Town name}
 #' }
+#' @examples 
+#' plot(cities)
 
 "cities"
 
@@ -37,6 +41,8 @@
 #' \describe{
 #'   \item{name}{Water body name}
 #' }
+#' @examples 
+#' plot(water)
 
 "water"
 
@@ -47,6 +53,8 @@
 #' @format An \code{sf} object
 #' @references
 #' \url{https://docs.pgrouting.org/2.6/en/sampledata.html}
+#' @examples 
+#' plot(line)
 
 "line"
 
@@ -57,6 +65,8 @@
 #' @format An \code{sf} object
 #' @references
 #' \url{https://docs.pgrouting.org/2.6/en/sampledata.html}
+#' @examples 
+#' plot(pnt)
 
 "pnt"
 

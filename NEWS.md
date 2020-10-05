@@ -93,7 +93,6 @@
 
 ## Other ideas
 
-* https://www.spatialanalytics.co.nz/post/2017/09/11/a-parallel-function-for-spatial-analysis-in-r/
 * Add 'arrowhead' function
 * Add UTM zone function
 * Parallel processing message

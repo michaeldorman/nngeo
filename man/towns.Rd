@@ -19,4 +19,7 @@ towns
 \description{
 A \code{sf} POINT layer of towns in Israel, based on a subset from the \code{maps::world.cities} dataset.
 }
+\examples{
+plot(towns)
+}
 \keyword{datasets}

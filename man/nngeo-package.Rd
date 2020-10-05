@@ -11,6 +11,7 @@ K-nearest neighbor search for projected and non-projected 'sf' spatial layers. N
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://michaeldorman.github.io/nngeo/}
   \item \url{https://github.com/michaeldorman/nngeo/}
   \item Report bugs at \url{https://github.com/michaeldorman/nngeo/issues/}
 }

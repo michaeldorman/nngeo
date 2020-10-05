@@ -13,6 +13,9 @@ pnt
 \description{
 An \code{sf} object based on the \code{pointsOfInterest} sample dataset from pgRouting 2.6 tutorial
 }
+\examples{
+plot(pnt)
+}
 \references{
 \url{https://docs.pgrouting.org/2.6/en/sampledata.html}
 }
