@@ -90,6 +90,7 @@
 ## nngeo 0.4.0
 
 * Added 'pkgdown' site
+* Ignoring 'parallel' argument for projected points input in 'st_nn'
 
 ## Other ideas
 

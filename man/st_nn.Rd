@@ -28,9 +28,9 @@ st_nn(
 
 \item{returnDist}{\code{logical}; whether to return a second \code{list} with the distances between detected neighbors.}
 
-\item{progress}{Display progress bar? The default is \code{TRUE}. When using \code{parallel>1}, a progress bar is not displayed regardless of \code{progress} argument.}
+\item{progress}{Display progress bar? The default is \code{TRUE}. When using \code{parallel>1} or when input is projected points, a progress bar is not displayed regardless of \code{progress} argument.}
 
-\item{parallel}{Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is done with the \code{parallel} package.}
+\item{parallel}{Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of \code{RANN::nn2}. Parallel processing is done with the \code{parallel} package.}
 }
 \value{
 \itemize{

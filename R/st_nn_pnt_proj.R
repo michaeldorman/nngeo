@@ -1,10 +1,7 @@
-.st_nn_pnt_proj = function(x, y, k, maxdist, progress) {
+.st_nn_pnt_proj = function(x, y, k, maxdist) {
 
   x_coord = sf::st_coordinates(x)
   y_coord = sf::st_coordinates(y)
-
-  # Progress bar
-  if(progress) pb = utils::txtProgressBar(min = 0, max = 1, initial = 0, style = 3)
 
   if(maxdist == Inf) {
     nn = RANN::nn2(
@@ -45,10 +42,6 @@
 
   # Remove names
   names(dists) = NULL
-
-  # Progress
-  if(progress) utils::setTxtProgressBar(pb, 1)
-  if(progress) cat("\n")
 
   # Return sparse lists
   return(list(ids, dists))

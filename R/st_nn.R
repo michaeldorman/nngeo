@@ -14,8 +14,8 @@
 #' @param k The maximum number of nearest neighbors to compute. Default is \code{1}, meaning that only a single point (nearest neighbor) is returned.
 #' @param maxdist Search radius (\strong{in meters}). Points farther than search radius are not considered. Default is \code{Inf}, meaning that search is unconstrained.
 #' @param returnDist \code{logical}; whether to return a second \code{list} with the distances between detected neighbors.
-#' @param progress Display progress bar? The default is \code{TRUE}. When using \code{parallel>1}, a progress bar is not displayed regardless of \code{progress} argument.
-#' @param parallel Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is done with the \code{parallel} package.
+#' @param progress Display progress bar? The default is \code{TRUE}. When using \code{parallel>1} or when input is projected points, a progress bar is not displayed regardless of \code{progress} argument.
+#' @param parallel Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of \code{RANN::nn2}. Parallel processing is done with the \code{parallel} package.
 #' @return  \itemize{
 #' \item{If \code{sparse=TRUE} (the default), a sparse \code{list} with list element \code{i} being a numeric vector with the indices \code{j} of neighboring features from \code{y} for the feature \code{x[i,]}, or an empty vector (\code{integer(0)}) in case there are no neighbors.}
 #' \item{If \code{sparse=FALSE}, a \code{logical} matrix with element \code{[i,j]} being \code{TRUE} when \code{y[j,]} is a neighbor of \code{x[i]}.}
@@ -153,7 +153,7 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
         result = .st_nn_pnt_geo(x, y, k, maxdist, progress)
       } else {
         message("projected points")
-        result = .st_nn_pnt_proj(x, y, k, maxdist, progress)
+        result = .st_nn_pnt_proj(x, y, k, maxdist)
       }
     }
     # Returned sparse lists
@@ -195,19 +195,8 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
         }
       } else {
         message("projected points")
-        if(.Platform$OS.type == "unix") {
-          result = parallel::mclapply(
-            split(x, 1:length(x)),
-            function(i) .st_nn_pnt_proj(i, y, k, maxdist, progress = FALSE),
-            mc.cores = parallel
-          )
-        } else {
-          result = parallel::parLapply(
-            parallel::makeCluster(parallel),
-            split(x, 1:length(x)),
-            function(i) .st_nn_pnt_proj(i, y, k, maxdist, progress = FALSE)
-          )
-        }
+        warning("argument 'parallel' ignored")
+        result = .st_nn_pnt_proj(x, y, k, maxdist)
       }
     }
     ids = lapply(result, function(i) i[[1]])
