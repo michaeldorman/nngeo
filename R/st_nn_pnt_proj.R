@@ -4,17 +4,16 @@
   y_coord = sf::st_coordinates(y)
 
   if(maxdist == Inf) {
-    nn = RANN::nn2(
+    nn = nabor::knn(
       query = x_coord,
       data = y_coord,
       k = k
       )
   } else {
-    nn = RANN::nn2(
+    nn = nabor::knn(
       query = x_coord,
       data = y_coord,
       k = k,
-      searchtype = "radius",
       radius = maxdist
     )
   }
@@ -34,7 +33,7 @@
   crs_units = st_crs(x)$units
 
   # Convert to meters
-  if(!is.na(crs_units)) {
+  if(!is.na(crs_units) & crs_units != "m") {
     dists = lapply(dists, units::set_units, crs_units, mode = "standard")
     dists = lapply(dists, units::set_units, "m", mode = "standard")
     dists = lapply(dists, as.numeric)

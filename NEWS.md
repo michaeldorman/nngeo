@@ -91,9 +91,11 @@
 
 * Added 'pkgdown' site
 * Ignoring 'parallel' argument for projected points input in 'st_nn'
+* Switched from 'RANN' to 'nabor'
 
 ## Other ideas
 
+* Add 'data-raw'
 * Add 'arrowhead' function
 * Add UTM zone function
 * Parallel processing message
@@ -105,5 +107,4 @@
 * Geodesic buffer (using geographiclib)
 * 'igraph' object from layer based on proximity
 * 3D distance of 'POINT Z' layers
-
 

@@ -184,11 +184,11 @@ The function has three modes of operation:</p><ul>
     </tr>
     <tr>
       <th>progress</th>
-      <td><p>Display progress bar? The default is <code>TRUE</code>. When using <code>parallel&gt;1</code>, a progress bar is not displayed regardless of <code>progress</code> argument.</p></td>
+      <td><p>Display progress bar? The default is <code>TRUE</code>. When using <code>parallel&gt;1</code> or when input is projected points, a progress bar is not displayed regardless of <code>progress</code> argument.</p></td>
     </tr>
     <tr>
       <th>parallel</th>
-      <td><p>Number of parallel processes. The default <code>parallel=1</code> implies ordinary non-parallel processing. Parallel processing is done with the <code>parallel</code> package.</p></td>
+      <td><p>Number of parallel processes. The default <code>parallel=1</code> implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of <code><a href='https://rdrr.io/pkg/RANN/man/nn2.html'>RANN::nn2</a></code>. Parallel processing is done with the <code>parallel</code> package.</p></td>
     </tr>
     </table>
 
