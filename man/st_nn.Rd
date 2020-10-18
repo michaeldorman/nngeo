@@ -30,7 +30,7 @@ st_nn(
 
 \item{progress}{Display progress bar? The default is \code{TRUE}. When using \code{parallel>1} or when input is projected points, a progress bar is not displayed regardless of \code{progress} argument.}
 
-\item{parallel}{Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of \code{RANN::nn2}. Parallel processing is done with the \code{parallel} package.}
+\item{parallel}{Number of parallel processes. The default \code{parallel=1} implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of \code{nabor::knn}. Parallel processing is done with the \code{parallel} package.}
 }
 \value{
 \itemize{
@@ -44,7 +44,7 @@ Returns the indices of layer \code{y} which are nearest neighbors of each featur
 The function has three modes of operation:
 \itemize{
 \item{lon-lat points—Calculation using C code from \code{GeographicLib}, similar to \code{sf::st_distance}}
-\item{projected points—Calculation using \code{RANN::nn2}, a fast search method based on the ANN C++ library}
+\item{projected points—Calculation using \code{nabor::knn}, a fast search method based on the libnabo C++ library}
 \item{lines or polygons, either lon-lat or projected—Calculation based on \code{sf::st_distance}}
 }
 }

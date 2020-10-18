@@ -43,7 +43,7 @@
 <meta property="og:description" content="Returns the indices of layer y which are nearest neighbors of each feature of layer x. The number of nearest neighbors k and the search radius maxdist can be modified.
 The function has three modes of operation:
 lon-lat points—Calculation using C code from GeographicLib, similar to sf::st_distance
-projected points—Calculation using RANN::nn2, a fast search method based on the ANN C++ library
+projected points—Calculation using nabor::knn, a fast search method based on the libnabo C++ library
 lines or polygons, either lon-lat or projected—Calculation based on sf::st_distance
 
 " />
@@ -138,7 +138,7 @@ lines or polygons, either lon-lat or projected—Calculation based on sf::st_dis
     <p>Returns the indices of layer <code>y</code> which are nearest neighbors of each feature of layer <code>x</code>. The number of nearest neighbors <code>k</code> and the search radius <code>maxdist</code> can be modified.<br /><br />
 The function has three modes of operation:</p><ul>
 <li><p>lon-lat points—Calculation using C code from <code>GeographicLib</code>, similar to <code><a href='https://r-spatial.github.io/sf/reference/geos_measures.html'>sf::st_distance</a></code></p></li>
-<li><p>projected points—Calculation using <code><a href='https://rdrr.io/pkg/RANN/man/nn2.html'>RANN::nn2</a></code>, a fast search method based on the ANN C++ library</p></li>
+<li><p>projected points—Calculation using <code><a href='https://rdrr.io/pkg/nabor/man/knn.html'>nabor::knn</a></code>, a fast search method based on the libnabo C++ library</p></li>
 <li><p>lines or polygons, either lon-lat or projected—Calculation based on <code><a href='https://r-spatial.github.io/sf/reference/geos_measures.html'>sf::st_distance</a></code></p></li>
 </ul>
 
@@ -188,7 +188,7 @@ The function has three modes of operation:</p><ul>
     </tr>
     <tr>
       <th>parallel</th>
-      <td><p>Number of parallel processes. The default <code>parallel=1</code> implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of <code><a href='https://rdrr.io/pkg/RANN/man/nn2.html'>RANN::nn2</a></code>. Parallel processing is done with the <code>parallel</code> package.</p></td>
+      <td><p>Number of parallel processes. The default <code>parallel=1</code> implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of <code><a href='https://rdrr.io/pkg/nabor/man/knn.html'>nabor::knn</a></code>. Parallel processing is done with the <code>parallel</code> package.</p></td>
     </tr>
     </table>
 
