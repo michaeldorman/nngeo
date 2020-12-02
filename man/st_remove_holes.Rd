@@ -4,10 +4,13 @@
 \alias{st_remove_holes}
 \title{Remove polygon holes}
 \usage{
-st_remove_holes(x)
+st_remove_holes(x, max_area = 0)
 }
 \arguments{
 \item{x}{Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POLYGON"} or \code{"MULTIPOLYGON"}}
+
+\item{max_area}{Numeric: maximum area of holes to be removed (in the unit
+of `x`). Default value (0) causes removing all holes.}
 }
 \value{
 Object of same class as \code{x}, with holes removed
@@ -66,6 +69,14 @@ par(opar)
 x = st_sfc(pol, mpol * 0.75 + c(3.5, 2))
 x = st_sf(geom = x, data.frame(id = 1:length(x)))
 result = st_remove_holes(x)
+result
+plot(x, main = "Before")
+plot(result, main = "After")
+
+# Example with 'sf' using argument 'max_area'
+x = st_sfc(pol, mpol * 0.75 + c(3.5, 2))
+x = st_sf(geom = x, data.frame(id = 1:length(x)))
+result = st_remove_holes(x, max_area = 0.4)
 result
 plot(x, main = "Before")
 plot(result, main = "After")
