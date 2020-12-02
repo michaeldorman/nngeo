@@ -2,6 +2,8 @@
 #'
 #' The function removes all polygon holes and return the modified layer
 #' @param x Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POLYGON"} or \code{"MULTIPOLYGON"}
+#' @param max_area Numeric: maximum area of holes to be removed (in the unit
+#'  of `x`). Default value (0) causes removing all holes.
 #' @return Object of same class as \code{x}, with holes removed
 #' @references Following the StackOverflow answer by user \code{lbusett}:
 #'
@@ -63,8 +65,16 @@
 #' result
 #' plot(x, main = "Before")
 #' plot(result, main = "After")
+#' 
+#' # Example with 'sf' using argument 'max_area'
+#' x = st_sfc(pol, mpol * 0.75 + c(3.5, 2))
+#' x = st_sf(geom = x, data.frame(id = 1:length(x)))
+#' result = st_remove_holes(x, max_area = 0.4)
+#' result
+#' plot(x, main = "Before")
+#' plot(result, main = "After")
 
-st_remove_holes = function(x) {
+st_remove_holes = function(x, max_area = 0) {
 
   # Checks
   stopifnot(all(st_is(x, "POLYGON") | st_is(x, "MULTIPOLYGON")))
@@ -82,14 +92,26 @@ st_remove_holes = function(x) {
   for(i in 1:length(geom)) {
     if(st_is(geom[i], "POLYGON")) {
       if(length(geom[i][[1]]) > 1){
-        geom[i] = st_multipolygon(lapply(geom[i], function(p) p[1]))
+        if (max_area > 0) {
+          holes <- lapply(geom[i][[1]], function(x) {st_polygon(list(x))})[-1]
+          areas <- c(Inf,sapply(holes, st_area))
+          geom[i] = st_polygon(geom[i][[1]][which(areas > max_area)])
+        } else {
+          geom[i] = st_polygon(geom[i][[1]][1])
+        }
       }
     }
     if(st_is(geom[i], "MULTIPOLYGON")) {
       tmp = st_cast(geom[i], "POLYGON")
       for(j in 1:length(tmp)) {
         if(length(tmp[j][[1]]) > 1){
-          tmp[j] = st_multipolygon(lapply(tmp[j], function(p) p[1]))
+          if (max_area > 0) {
+            holes <- lapply(tmp[j][[1]], function(x) {st_polygon(list(x))})[-1]
+            areas <- c(Inf,sapply(holes, st_area))
+            tmp[j] = st_polygon(tmp[j][[1]][which(areas > max_area)])
+          } else {
+            tmp[j] = st_polygon(tmp[j][[1]][1])
+          }
         }
       }
       geom[i] = st_combine(tmp)
