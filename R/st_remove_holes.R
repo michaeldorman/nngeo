@@ -93,8 +93,8 @@ st_remove_holes = function(x, max_area = 0) {
     if(st_is(geom[i], "POLYGON")) {
       if(length(geom[i][[1]]) > 1){
         if (max_area > 0) {
-          holes <- lapply(geom[i][[1]], function(x) {st_polygon(list(x))})[-1]
-          areas <- c(Inf,sapply(holes, st_area))
+          holes = lapply(geom[i][[1]], function(x) {st_polygon(list(x))})[-1]
+          areas = c(Inf,sapply(holes, st_area))
           geom[i] = st_polygon(geom[i][[1]][which(areas > max_area)])
         } else {
           geom[i] = st_polygon(geom[i][[1]][1])
@@ -106,8 +106,8 @@ st_remove_holes = function(x, max_area = 0) {
       for(j in 1:length(tmp)) {
         if(length(tmp[j][[1]]) > 1){
           if (max_area > 0) {
-            holes <- lapply(tmp[j][[1]], function(x) {st_polygon(list(x))})[-1]
-            areas <- c(Inf,sapply(holes, st_area))
+            holes = lapply(tmp[j][[1]], function(x) {st_polygon(list(x))})[-1]
+            areas = c(Inf,sapply(holes, st_area))
             tmp[j] = st_polygon(tmp[j][[1]][which(areas > max_area)])
           } else {
             tmp[j] = st_polygon(tmp[j][[1]][1])

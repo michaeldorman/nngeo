@@ -87,11 +87,16 @@
 
 * Fixed bug in 'st_nn' when 'parallel>1'
 
-## nngeo 0.4.0
+## nngeo 0.4.0 (2020-10-18)
 
 * Added 'pkgdown' site
 * Ignoring 'parallel' argument for projected points input in 'st_nn'
 * Switched from 'RANN' to 'nabor'
+
+## nngeo 0.4.1
+
+* Removed 'st_split_junctions' function
+* Added 'max_area' argument in 'st_remove_holes' (Luigi Ranghetti)
 
 ## Other ideas
 

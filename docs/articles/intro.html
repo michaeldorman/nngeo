@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
       </span>
     </div>
 
@@ -79,14 +79,15 @@
 
       
 
-      </header><div class="row">
+      </header><script src="intro_files/header-attrs-2.5/header-attrs.js"></script><link href="intro_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="intro_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to package <code>nngeo</code>
 </h1>
                         <h4 class="author">Michael Dorman</h4>
             
-            <h4 class="date">2020-10-18</h4>
+            <h4 class="date">2020-12-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/michaeldorman/nngeo/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -107,9 +108,9 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>GitHub version:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"michaeldorman/nngeo"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"michaeldorman/nngeo"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="sample-data" class="section level2">
 <h2 class="hasAnchor">
@@ -121,8 +122,8 @@
 <li><code>water</code></li>
 </ul>
 <p>The <code>cities</code> layer is a <strong>point</strong> layer representing the location of the three largest cities in Israel.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">cities</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cities</span>
 <span class="co">#&gt; Simple feature collection with 3 features and 1 field</span>
 <span class="co">#&gt; geometry type:  POINT</span>
 <span class="co">#&gt; dimension:      XY</span>
@@ -131,10 +132,10 @@
 <span class="co">#&gt;        name                  geometry</span>
 <span class="co">#&gt; 1 Jerusalem POINT (35.21371 31.76832)</span>
 <span class="co">#&gt; 2  Tel-Aviv  POINT (34.78177 32.0853)</span>
-<span class="co">#&gt; 3     Haifa POINT (34.98957 32.79405)</span></pre></div>
+<span class="co">#&gt; 3     Haifa POINT (34.98957 32.79405)</span></code></pre></div>
 <p>The <code>towns</code> layer is another <strong>point</strong> layer, with the location of all large towns in Israel, compiled from a different data source:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">towns</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">towns</span>
 <span class="co">#&gt; Simple feature collection with 193 features and 4 fields</span>
 <span class="co">#&gt; geometry type:  POINT</span>
 <span class="co">#&gt; dimension:      XY</span>
@@ -151,10 +152,10 @@
 <span class="co">#&gt; 103     'Eilabun      Israel  4296       0  POINT (35.4 32.83)</span>
 <span class="co">#&gt; 104   'Ein Mahel      Israel 11014       0 POINT (35.35 32.72)</span>
 <span class="co">#&gt; 105 'Ein Qiniyye      Israel  2101       0 POINT (35.15 31.93)</span>
-<span class="co">#&gt; 112        'Ilut      Israel  6536       0 POINT (35.25 32.72)</span></pre></div>
+<span class="co">#&gt; 112        'Ilut      Israel  6536       0 POINT (35.25 32.72)</span></code></pre></div>
 <p>The <code>water</code> layer is an example of a <strong>polygonal</strong> layer. This layer contains four polygons of water bodies in Israel.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">water</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">water</span>
 <span class="co">#&gt; Simple feature collection with 4 features and 1 field</span>
 <span class="co">#&gt; geometry type:  POLYGON</span>
 <span class="co">#&gt; dimension:      XY</span>
@@ -164,12 +165,12 @@
 <span class="co">#&gt; 1           Red Sea POLYGON ((34.96428 29.54775...</span>
 <span class="co">#&gt; 2 Mediterranean Sea POLYGON ((35.10533 33.07661...</span>
 <span class="co">#&gt; 3          Dead Sea POLYGON ((35.54743 31.37881...</span>
-<span class="co">#&gt; 4    Sea of Galilee POLYGON ((35.6014 32.89248,...</span></pre></div>
+<span class="co">#&gt; 4    Sea of Galilee POLYGON ((35.6014 32.89248,...</span></code></pre></div>
 <p>Figure  shows the spatial configuration of the <code>cities</code>, <code>towns</code> and <code>water</code> layers.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">water</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">water</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"grey"</span>, pch <span class="op">=</span> <span class="fl">1</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, pch <span class="op">=</span> <span class="fl">1</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, pch <span class="op">=</span> <span class="fl">1</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="intro_files/figure-html/layers-1.png" alt="Visualization of the \texttt{water}, \texttt{towns} and \texttt{cities} layers" width="480"><p class="caption">
 Visualization of the ,  and  layers
@@ -186,8 +187,8 @@ Visualization of the ,  and  layers
 <p>The main function in the <code>nngeo</code> package is <code>st_nn</code>.</p>
 <p>The <code>st_nn</code> function accepts two layers, <code>x</code> and <code>y</code>, and returns a list with the same number of elements as <code>x</code> features. Each list element <code>i</code> is an integer vector with all indices <code>j</code> for which <code>x[i]</code> and <code>y[j]</code> are <strong>nearest neighbors</strong>.</p>
 <p>For example, the following expression finds which feature in <code>towns[1:5, ]</code> is the nearest neighbor to each feature in <code>cities</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
 <span class="va">nn</span>
 <span class="co">#&gt; [[1]]</span>
@@ -197,15 +198,15 @@ Visualization of the ,  and  layers
 <span class="co">#&gt; [1] 3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; [1] 2</span></pre></div>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
 <p>This output tells us that <code>towns[4, ]</code> is the nearest among the five features of <code>towns[1:5, ]</code> to <code>cities[1, ]</code>, etc.</p>
 </div>
 <div id="the-st_connect-function" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-st_connect-function" class="anchor"></a>The <code>st_connect</code> function</h2>
 <p>The resulting nearest neighbor matches can be visualized using the <code>st_connect</code> function. This function builds a line layer connecting features from two layers <code>x</code> and <code>y</code> based on the relations defined in a list such the one returned by <code>st_nn</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, ids <span class="op">=</span> <span class="va">nn</span><span class="op">)</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, ids <span class="op">=</span> <span class="va">nn</span><span class="op">)</span>
 <span class="co">#&gt; Calculating nearest IDs</span>
 <span class="co">#&gt; Calculating lines</span>
 <span class="va">l</span>
@@ -216,14 +217,14 @@ Visualization of the ,  and  layers
 <span class="co">#&gt; geographic CRS: WGS 84</span>
 <span class="co">#&gt; LINESTRING (35.21371 31.76832, 35.22 31.26)</span>
 <span class="co">#&gt; LINESTRING (34.78177 32.0853, 35.1 32.49)</span>
-<span class="co">#&gt; LINESTRING (34.98957 32.79405, 35.08 32.94)</span></pre></div>
+<span class="co">#&gt; LINESTRING (34.98957 32.79405, 35.08 32.94)</span></code></pre></div>
 <p>Plotting the line layer <code>l</code> gives a visual demonstration of the nearest neighbors match, as shown in Figure .</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="intro_files/figure-html/st_connect-1.png" alt="Nearest neighbor match between \texttt{cities} (in red) and \texttt{towns[1:5, ]} (in grey)" width="480"><p class="caption">
 Nearest neighbor match between  (in red) and  (in grey)
@@ -234,22 +235,22 @@ Nearest neighbor match between  (in red) and  (in grey)
 <h2 class="hasAnchor">
 <a href="#dense-matrix-representation" class="anchor"></a>Dense matrix representation</h2>
 <p>The <code>st_nn</code> can also return the complete logical matrix indicating whether each feature in <code>x</code> is a neighbor of <code>y</code>. To get the dense matrix, instead of a list, use <code>sparse=FALSE</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, sparse <span class="op">=</span> <span class="cn">FALSE</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, sparse <span class="op">=</span> <span class="cn">FALSE</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
 <span class="va">nn</span>
 <span class="co">#&gt;       [,1]  [,2]  [,3]  [,4]  [,5]</span>
 <span class="co">#&gt; [1,] FALSE FALSE FALSE  TRUE FALSE</span>
 <span class="co">#&gt; [2,] FALSE FALSE  TRUE FALSE FALSE</span>
-<span class="co">#&gt; [3,] FALSE  TRUE FALSE FALSE FALSE</span></pre></div>
+<span class="co">#&gt; [3,] FALSE  TRUE FALSE FALSE FALSE</span></code></pre></div>
 </div>
 <div id="k-nearest-neighbors-where-k0" class="section level2">
 <h2 class="hasAnchor">
 <a href="#k-nearest-neighbors-where-k0" class="anchor"></a>k-Nearest neighbors where <code>k&gt;0</code>
 </h2>
 <p>It is also possible to return any <strong>k-nearest</strong> neighbors, rather than just one. For example, setting <code>k=2</code> returns both the 1<sup>st</sup> and 2<sup>nd</sup> nearest neighbors:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
 <span class="va">nn</span>
 <span class="co">#&gt; [[1]]</span>
@@ -259,22 +260,22 @@ Nearest neighbor match between  (in red) and  (in grey)
 <span class="co">#&gt; [1] 3 1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; [1] 2 5</span></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, sparse <span class="op">=</span> <span class="cn">FALSE</span>, k <span class="op">=</span> <span class="fl">2</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="co">#&gt; [1] 2 5</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, sparse <span class="op">=</span> <span class="cn">FALSE</span>, k <span class="op">=</span> <span class="fl">2</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
 <span class="va">nn</span>
 <span class="co">#&gt;       [,1]  [,2]  [,3]  [,4]  [,5]</span>
 <span class="co">#&gt; [1,] FALSE FALSE  TRUE  TRUE FALSE</span>
 <span class="co">#&gt; [2,]  TRUE FALSE  TRUE FALSE FALSE</span>
-<span class="co">#&gt; [3,] FALSE  TRUE FALSE FALSE  TRUE</span></pre></div>
+<span class="co">#&gt; [3,] FALSE  TRUE FALSE FALSE  TRUE</span></code></pre></div>
 </div>
 <div id="distance-matrix" class="section level2">
 <h2 class="hasAnchor">
 <a href="#distance-matrix" class="anchor"></a>Distance matrix</h2>
 <p>Using <code>returnDist=TRUE</code> the distances <code>list</code> is also returned, in addition the the neighbor matches, with both components now comprising a <code>list</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, returnDist <span class="op">=</span> <span class="cn">TRUE</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, returnDist <span class="op">=</span> <span class="cn">TRUE</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
 <span class="va">nn</span>
 <span class="co">#&gt; $nn</span>
@@ -296,14 +297,14 @@ Nearest neighbor match between  (in red) and  (in grey)
 <span class="co">#&gt; [1] 53968.63 76186.87</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dist[[3]]</span>
-<span class="co">#&gt; [1] 18265.72 32476.24</span></pre></div>
+<span class="co">#&gt; [1] 18265.72 32476.24</span></code></pre></div>
 </div>
 <div id="search-radius" class="section level2">
 <h2 class="hasAnchor">
 <a href="#search-radius" class="anchor"></a>Search radius</h2>
 <p>Finally, the search for nearest neighbors can be limited to a <strong>search radius</strong> using <code>maxdist</code>. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for <code>cities[2, ]</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, maxdist <span class="op">=</span> <span class="fl">50000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, maxdist <span class="op">=</span> <span class="fl">50000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
 <span class="va">nn</span>
 <span class="co">#&gt; [[1]]</span>
@@ -313,18 +314,18 @@ Nearest neighbor match between  (in red) and  (in grey)
 <span class="co">#&gt; integer(0)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; [1] 2 5</span></pre></div>
+<span class="co">#&gt; [1] 2 5</span></code></pre></div>
 </div>
 <div id="spatial-join" class="section level2">
 <h2 class="hasAnchor">
 <a href="#spatial-join" class="anchor"></a>Spatial join</h2>
 <p>The <code>st_nn</code> function can also be used as a <strong>geometry predicate function</strong> when performing spatial join with <code><a href="https://r-spatial.github.io/sf/reference/st_join.html">sf::st_join</a></code>. For example, the following expression spatially joins the two nearest <code>towns[1:5, ]</code> features to each <code>cities</code> features, using a search radius of 50 km:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="va">cities1</span> <span class="op">=</span> <span class="fu">st_join</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, join <span class="op">=</span> <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">2</span>, maxdist <span class="op">=</span> <span class="fl">50000</span><span class="op">)</span>
-<span class="co">#&gt; lon-lat points</span></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cities1</span> <span class="op">=</span> <span class="fu">st_join</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, join <span class="op">=</span> <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">2</span>, maxdist <span class="op">=</span> <span class="fl">50000</span><span class="op">)</span>
+<span class="co">#&gt; lon-lat points</span></code></pre></div>
 <p>Here is the resulting layer:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="va">cities1</span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cities1</span>
 <span class="co">#&gt; Simple feature collection with 4 features and 5 fields</span>
 <span class="co">#&gt; geometry type:  POINT</span>
 <span class="co">#&gt; dimension:      XY</span>
@@ -334,21 +335,21 @@ Nearest neighbor match between  (in red) and  (in grey)
 <span class="co">#&gt; 1   Jerusalem    &lt;NA&gt;        &lt;NA&gt;    NA      NA POINT (35.21371 31.76832)</span>
 <span class="co">#&gt; 2    Tel-Aviv    &lt;NA&gt;        &lt;NA&gt;    NA      NA  POINT (34.78177 32.0853)</span>
 <span class="co">#&gt; 3       Haifa   'Akko      Israel 45606       0 POINT (34.98957 32.79405)</span>
-<span class="co">#&gt; 3.1     Haifa 'Arrabe      Israel 20316       0 POINT (34.98957 32.79405)</span></pre></div>
+<span class="co">#&gt; 3.1     Haifa 'Arrabe      Israel 20316       0 POINT (34.98957 32.79405)</span></code></pre></div>
 </div>
 <div id="another-example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#another-example" class="anchor"></a>Another example</h2>
 <p>Here is another example, finding the 10-nearest neighbor <code>towns</code> features for each <code>cities</code> feature:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>
-<span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, ids <span class="op">=</span> <span class="va">x</span><span class="op">)</span></pre></div>
+<span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, ids <span class="op">=</span> <span class="va">x</span><span class="op">)</span></code></pre></div>
 <p>The result is visualized in Figure .</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">l</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">l</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="intro_files/figure-html/cities_towns-1.png" alt="Nearest 10 \texttt{towns} features from each \texttt{cities} feature" width="480"><p class="caption">
 Nearest 10  features from each  feature
@@ -360,19 +361,19 @@ Nearest 10  features from each  feature
 <h1 class="hasAnchor">
 <a href="#polygons" class="anchor"></a>Polygons</h1>
 <p>Nearest neighbor search also works for non-point layers. The following code section finds the 20-nearest <code>towns</code> features for each water body in <code>water[-1, ]</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">20</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; lines or polygons</span></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">20</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="co">#&gt; lines or polygons</span></code></pre></div>
 <p>Again, we can calculate the respective lines for the above result using <code>st_connect</code>. Since one of the inputs is line/polygon, we need to specify a sampling distance <code>dist</code>, which sets the resolution of connecting points on the shape exterior boundary.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit">
-<span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">towns</span>, ids <span class="op">=</span> <span class="va">nn</span>, dist <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">towns</span>, ids <span class="op">=</span> <span class="va">nn</span>, dist <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; Calculating nearest IDs</span>
-<span class="co">#&gt; Calculating lines</span></pre></div>
+<span class="co">#&gt; Calculating lines</span></code></pre></div>
 <p>The result is visualized in Figure .</p>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, border <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, border <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu">st_geometry</span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="intro_files/figure-html/water_towns-1.png" alt="Nearest 20 \texttt{towns} features from each \texttt{water} polygon" width="480"><p class="caption">
 Nearest 20  features from each  polygon
