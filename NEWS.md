@@ -93,13 +93,20 @@
 * Ignoring 'parallel' argument for projected points input in 'st_nn'
 * Switched from 'RANN' to 'nabor'
 
-## nngeo 0.4.1
+## nngeo 0.4.1 (2021-01-07)
 
 * Removed 'st_split_junctions' function
 * Added 'max_area' argument in 'st_remove_holes' (Luigi Ranghetti)
 
+## nngeo 0.4.2
+
+* Minor fixes in vignette
+
 ## Other ideas
 
+* Check if 'max_area' in 'st_remove_holes' works with 'units'
+* Keep 'x' and 'y' attributes in output of 'st_connect'
+* http://r-posts.com/isovists-using-uniform-ray-casting-in-r/
 * Add 'data-raw'
 * Add 'arrowhead' function
 * Add UTM zone function

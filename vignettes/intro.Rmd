@@ -28,11 +28,17 @@ This document introduces the `nngeo` package. The `nngeo` package includes funct
 
 ## Installation
 
+CRAN version:
+
+```{r, eval=FALSE}
+install.packages("remotes")
+remotes::install_github("michaeldorman/nngeo")
+```
+
 GitHub version:
 
-``` r
-install.packages("devtools")
-devtools::install_github("michaeldorman/nngeo")
+```{r, eval=FALSE}
+install.packages("nngeo")
 ```
 
 ## Sample data
@@ -183,7 +189,7 @@ plot(st_geometry(cities), col = "red", add = TRUE)
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 ```
 
-# Polygons
+## Polygons
 
 Nearest neighbor search also works for non-point layers. The following code section finds the 20-nearest `towns` features for each water body in `water[-1, ]`. 
 
@@ -204,23 +210,4 @@ plot(st_geometry(water[-1, ]), col = "lightblue", border = "grey")
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(l), col = "red", add = TRUE)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

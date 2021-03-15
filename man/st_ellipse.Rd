@@ -34,16 +34,16 @@ dat = st_as_sf(dat, coords = c("x", "y"))
 dat
 
 # Plot 1
-plot(dat \%>\% st_geometry, graticule = TRUE, axes = TRUE, main = "Input")
-text(dat \%>\% st_coordinates, as.character(1:nrow(dat)), pos = 2)
+plot(st_geometry(dat), graticule = TRUE, axes = TRUE, main = "Input")
+text(st_coordinates(dat), as.character(1:nrow(dat)), pos = 2)
 
 # Calculate ellipses
 el = st_ellipse(pnt = dat, ex = dat$ex, ey = dat$ey)
 
 # Plot 2
 plot(el, graticule = TRUE, axes = TRUE, main = "Output")
-plot(dat \%>\% st_geometry, pch = 3, add = TRUE)
-text(dat \%>\% st_coordinates, as.character(1:nrow(dat)), pos = 2)
+plot(st_geometry(dat), pch = 3, add = TRUE)
+text(st_coordinates(dat), as.character(1:nrow(dat)), pos = 2)
 }
 \references{
 Based on StackOverflow answer by user \code{fdetsch}:

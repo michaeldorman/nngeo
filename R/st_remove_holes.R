@@ -2,8 +2,8 @@
 #'
 #' The function removes all polygon holes and return the modified layer
 #' @param x Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POLYGON"} or \code{"MULTIPOLYGON"}
-#' @param max_area Numeric: maximum area of holes to be removed (in the unit
-#'  of `x`). Default value (0) causes removing all holes.
+#' @param max_area Maximum area of holes to be removed (\code{numeric} or \code{units}) in the units
+#'  of \code{x}). Default value (\code{0}) causes removing all holes.
 #' @return Object of same class as \code{x}, with holes removed
 #' @references Following the StackOverflow answer by user \code{lbusett}:
 #'

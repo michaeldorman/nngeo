@@ -9,8 +9,8 @@ st_remove_holes(x, max_area = 0)
 \arguments{
 \item{x}{Object of class \code{sf}, \code{sfc} or \code{sfg}, of type \code{"POLYGON"} or \code{"MULTIPOLYGON"}}
 
-\item{max_area}{Numeric: maximum area of holes to be removed (in the unit
-of `x`). Default value (0) causes removing all holes.}
+\item{max_area}{Maximum area of holes to be removed (\code{numeric} or \code{units}) in the units
+of \code{x}). Default value (\code{0}) causes removing all holes.}
 }
 \value{
 Object of same class as \code{x}, with holes removed
