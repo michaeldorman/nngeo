@@ -98,9 +98,13 @@
 * Removed 'st_split_junctions' function
 * Added 'max_area' argument in 'st_remove_holes' (Luigi Ranghetti)
 
-## nngeo 0.4.2
+## nngeo 0.4.2 (2021-03-15)
 
 * Minor fixes in vignette
+
+## nngeo 0.4.3
+
+* Modified vignette, added an example of adding "distance to nearest" column
 
 ## Other ideas
 

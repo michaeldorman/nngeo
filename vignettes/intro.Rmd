@@ -75,46 +75,60 @@ water
 
 Figure \ref{fig:layers} shows the spatial configuration of the `cities`, `towns` and `water` layers.
 
-```{r layers, fig.align='center', fig.width=5, fig.height=5, fig.cap='Visualization of the \\texttt{water}, \\texttt{towns} and \\texttt{cities} layers'}
+```{r, eval=FALSE}
 plot(st_geometry(water), col = "lightblue")
 plot(st_geometry(towns), col = "grey", pch = 1, add = TRUE)
 plot(st_geometry(cities), col = "red", pch = 1, add = TRUE)
+```
+
+```{r layers, echo=FALSE, fig.align='center', fig.width=4, fig.height=8, out.width="50%", fig.cap='Visualization of the \\texttt{water}, \\texttt{towns} and \\texttt{cities} layers'}
+opar = par(mar = rep(0, 4))
+plot(st_geometry(water), col = "lightblue")
+plot(st_geometry(towns), col = "grey", pch = 1, add = TRUE)
+plot(st_geometry(cities), col = "red", pch = 1, add = TRUE)
+par(opar)
 ```
 
 # Usage examples
 
 ## The `st_nn` function
 
-The main function in the `nngeo` package is `st_nn`. 
+The main function in the `nngeo` package is `st_nn`. The `st_nn` function accepts two layers, `x` and `y`, and returns a list with the same number of elements as `x` features. Each list element `i` is an integer vector with all indices `j` for which `x[i]` and `y[j]` are **nearest neighbors**. 
 
-The `st_nn` function accepts two layers, `x` and `y`, and returns a list with the same number of elements as `x` features. Each list element `i` is an integer vector with all indices `j` for which `x[i]` and `y[j]` are **nearest neighbors**. 
-
-For example, the following expression finds which feature in `towns[1:5, ]` is the nearest neighbor to each feature in `cities`:
+For example, the following expression finds which feature in `towns` is the nearest neighbor to each feature in `cities`:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], progress = FALSE)
+nn = st_nn(cities, towns, progress = FALSE)
 nn
 ```
 
-This output tells us that `towns[4, ]` is the nearest among the five features of `towns[1:5, ]` to `cities[1, ]`, etc.
+This output tells us that `towns[70, ]` is the nearest among the `r nrow(towns)` features of `towns` to `cities[1, ]`, `towns[145, ]` is the nearest to `cities[2, ]`, and `towns[59, ]` is the nearest to `cities[3, ]`.
 
 ## The `st_connect` function
 
 The resulting nearest neighbor matches can be visualized using the `st_connect` function. This function builds a line layer connecting features from two layers `x` and `y` based on the relations defined in a list such the one returned by `st_nn`:
 
 ```{r}
-l = st_connect(cities, towns[1:5, ], ids = nn)
+l = st_connect(cities, towns, ids = nn)
 l
 ```
 
 Plotting the line layer `l` gives a visual demonstration of the nearest neighbors match, as shown in Figure \ref{fig:st_connect}.
 
-```{r st_connect, fig.align='center', fig.width=5, fig.height=5, fig.cap="Nearest neighbor match between \\texttt{cities} (in red) and \\texttt{towns[1:5, ]} (in grey)"}
-plot(st_geometry(towns[1:5, ]), col = "darkgrey")
-plot(st_geometry(l), add = TRUE)
+```{r, eval=FALSE}
+plot(st_geometry(l))
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(cities), col = "red", add = TRUE)
 text(st_coordinates(cities)[, 1], st_coordinates(cities)[, 2], 1:3, col = "red", pos = 4)
-text(st_coordinates(towns[1:5, ])[, 1], st_coordinates(towns[1:5, ])[, 2], 1:5, pos = 4)
+```
+
+```{r st_connect, echo=FALSE, fig.align='center', fig.width=4, fig.height=8, out.width="50%", fig.cap="Nearest neighbor match between \\texttt{cities} (in red) and \\texttt{towns} (in grey)"}
+opar = par(mar = rep(0.5, 4))
+plot(st_geometry(l))
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
+plot(st_geometry(cities), col = "red", add = TRUE)
+text(st_coordinates(cities)[, 1], st_coordinates(cities)[, 2], 1:3, col = "red", pos = 4)
+par(opar)
 ```
 
 ## Dense matrix representation
@@ -131,48 +145,9 @@ nn
 It is also possible to return any **k-nearest** neighbors, rather than just one. For example, setting `k=2` returns both the 1^st^ and 2^nd^ nearest neighbors:
 
 ```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, progress = FALSE)
+nn = st_nn(cities, towns, k = 2, progress = FALSE)
 nn
 ```
-
-```{r}
-nn = st_nn(cities, towns[1:5, ], sparse = FALSE, k = 2, progress = FALSE)
-nn
-```
-
-## Distance matrix
-
-Using `returnDist=TRUE` the distances `list` is also returned, in addition the the neighbor matches, with both components now comprising a `list`:
-
-```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, returnDist = TRUE, progress = FALSE)
-nn
-```
-
-## Search radius
-
-Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 50,000 meters (50 kilometers). Note that no neighbors are found within the search radius for `cities[2, ]`:
-
-```{r}
-nn = st_nn(cities, towns[1:5, ], k = 2, maxdist = 50000, progress = FALSE)
-nn
-```
-
-## Spatial join
-
-The `st_nn` function can also be used as a **geometry predicate function** when performing spatial join with `sf::st_join`. For example, the following expression spatially joins the two nearest `towns[1:5, ]` features to each `cities` features, using a search radius of 50 km:
-
-```{r, results='hide'}
-cities1 = st_join(cities, towns[1:5, ], join = st_nn, k = 2, maxdist = 50000)
-```
-
-Here is the resulting layer:
-
-```{r}
-cities1
-```
-
-## Another example
 
 Here is another example, finding the 10-nearest neighbor `towns` features for each `cities` feature:
 
@@ -183,10 +158,85 @@ l = st_connect(cities, towns, ids = x)
 
 The result is visualized in Figure \ref{fig:cities_towns}. 
 
-```{r cities_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 10 \\texttt{towns} features from each \\texttt{cities} feature"}
+```{r, eval=FALSE}
 plot(st_geometry(l))
 plot(st_geometry(cities), col = "red", add = TRUE)
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
+```
+
+```{r cities_towns, echo=FALSE, fig.align='center', fig.width=4, fig.height=8, out.width="50%", warning=FALSE, fig.cap="Nearest 10 \\texttt{towns} features from each \\texttt{cities} feature"}
+opar = par(mar = rep(1, 4))
+plot(st_geometry(l))
+plot(st_geometry(cities), col = "red", add = TRUE)
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
+par(opar)
+```
+
+## Distance to nearest neighbors
+
+Using `returnDist=TRUE` the distances `list` is also returned, in addition the the neighbor matches, with both components now comprising a `list`:
+
+```{r}
+nn = st_nn(cities, towns, k = 1, returnDist = TRUE, progress = FALSE)
+nn
+```
+
+## Search radius
+
+Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 2,000 meters (2 kilometers). Note that no neighbors are found within the search radius for `cities[3, ]`, therefore the third lest element is a zero-length vector of indices:
+
+```{r}
+nn = st_nn(cities, towns, k = 1, maxdist = 2000, progress = FALSE)
+nn
+```
+
+## Spatial join
+
+The `st_nn` function can also be used as a **predicate function** when performing spatial join with `sf::st_join`. For example, the following expression spatially joins the two nearest `towns` features to each `cities` features, using a search radius of 5 km:
+
+```{r}
+st_join(cities, towns, join = st_nn, k = 2, maxdist = 5000, progress = FALSE)
+```
+
+## Binding distances to join result
+
+Sometimes it's necessary to bind the distances to the joined features in the resulting layer, to have more detailed information about the distance to nearest features. For example, suppose we join the nearest `towns` feature to `cities`, as shown above:
+
+```{r}
+cities1 = st_join(cities, towns, join = st_nn, k = 1, progress = FALSE)
+cities1
+```
+
+As shown above, the distances can be calculated using the `returnDist=TRUE` option, then binded to the above join result:
+
+```{r}
+# Calculate distances
+n = st_nn(cities, towns, k = 1, returnDist = TRUE, progress = FALSE)
+dists = sapply(n[[2]], "[", 1)
+dists
+
+# Bind distances
+cities1$dist = dists
+cities1
+```
+
+In the above workflow, we actually ran the same nearest neighbor search *twice*, once in `st_join` and more time to get the distances. 
+
+Another more verbose approach can be used in case the computation time is prohibitive. Here, we calculate the nearest neighbor indices and distances just once, then use them to construct the "joined" table with the distances:
+
+```{r}
+# Get indices & distances
+n = st_nn(cities, towns, k = 1, returnDist = TRUE, progress = FALSE)
+ids = sapply(n[[1]], "[", 1)
+dists = sapply(n[[2]], "[", 1)
+
+# Join
+cities1 = data.frame(cities, st_drop_geometry(towns)[ids, , drop = FALSE])
+cities1 = st_sf(cities1)
+
+# Add distances
+cities1$dist = dists
+cities1
 ```
 
 ## Polygons
@@ -205,9 +255,17 @@ l = st_connect(water[-1, ], towns, ids = nn, dist = 100)
 
 The result is visualized in Figure \ref{fig:water_towns}.
 
-```{r water_towns, fig.align='center', fig.width=5, fig.height=5, warning=FALSE, fig.cap="Nearest 20 \\texttt{towns} features from each \\texttt{water} polygon"}
+```{r, eval=FALSE}
 plot(st_geometry(water[-1, ]), col = "lightblue", border = "grey")
 plot(st_geometry(towns), col = "darkgrey", add = TRUE)
 plot(st_geometry(l), col = "red", add = TRUE)
+```
+
+```{r water_towns, echo=FALSE, fig.align='center', fig.width=4, fig.height=8, out.width="50%", warning=FALSE, fig.cap="Nearest 20 \\texttt{towns} features from each \\texttt{water} polygon"}
+opar = par(mar = rep(0, 4))
+plot(st_geometry(water[-1, ]), col = "lightblue", border = "grey")
+plot(st_geometry(towns), col = "darkgrey", add = TRUE)
+plot(st_geometry(l), col = "red", add = TRUE)
+par(opar)
 ```
 

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -188,32 +188,32 @@ of <code>x</code>). Default value (<code>0</code>) causes removing all holes.</p
 <span class='va'>x</span> <span class='op'>=</span> <span class='fu'>st_sfc</span><span class='op'>(</span><span class='va'>pol</span>, <span class='va'>pol</span> <span class='op'>*</span> <span class='fl'>0.75</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3.5</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>x</span>
 </div><div class='output co'>#&gt; Geometry set for 2 features 
-#&gt; geometry type:  POLYGON
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 0 ymin: 0 xmax: 5.75 ymax: 5
-#&gt; CRS:            NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0), (1 1, ...</span></div><div class='output co'>#&gt; <span class='message'>POLYGON ((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4.25 5,...</span></div><div class='input'><span class='va'>result</span> <span class='op'>=</span> <span class='fu'>st_remove_holes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+#&gt; Geometry type: POLYGON
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 5.75 ymax: 5
+#&gt; CRS:           NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0), (1 1, ...</span></div><div class='output co'>#&gt; <span class='message'>POLYGON ((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4.25 5,...</span></div><div class='input'><span class='va'>result</span> <span class='op'>=</span> <span class='fu'>st_remove_holes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 <span class='va'>result</span>
 </div><div class='output co'>#&gt; Geometry set for 2 features 
-#&gt; geometry type:  POLYGON
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 0 ymin: 0 xmax: 5.75 ymax: 5
-#&gt; CRS:            NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0))</span></div><div class='output co'>#&gt; <span class='message'>POLYGON ((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4.25 5,...</span></div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, col <span class='op'>=</span> <span class='st'>"#FF000033"</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
+#&gt; Geometry type: POLYGON
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 5.75 ymax: 5
+#&gt; CRS:           NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0))</span></div><div class='output co'>#&gt; <span class='message'>POLYGON ((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4.25 5,...</span></div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, col <span class='op'>=</span> <span class='st'>"#FF000033"</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
 <span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>result</span>, col <span class='op'>=</span> <span class='st'>"#FF000033"</span>, main <span class='op'>=</span> <span class='st'>"After"</span><span class='op'>)</span>
 </div><div class='img'><img src='st_remove_holes-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Example with 'sfc' - MULTIPOLYGON</span>
 <span class='va'>x</span> <span class='op'>=</span> <span class='fu'>st_sfc</span><span class='op'>(</span><span class='va'>pol</span>, <span class='va'>mpol</span> <span class='op'>*</span> <span class='fl'>0.75</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3.5</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>x</span>
 </div><div class='output co'>#&gt; Geometry set for 2 features 
-#&gt; geometry type:  GEOMETRY
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
-#&gt; CRS:            NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0), (1 1, ...</span></div><div class='output co'>#&gt; <span class='message'>MULTIPOLYGON (((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4...</span></div><div class='input'><span class='va'>result</span> <span class='op'>=</span> <span class='fu'>st_remove_holes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+#&gt; Geometry type: GEOMETRY
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
+#&gt; CRS:           NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0), (1 1, ...</span></div><div class='output co'>#&gt; <span class='message'>MULTIPOLYGON (((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4...</span></div><div class='input'><span class='va'>result</span> <span class='op'>=</span> <span class='fu'>st_remove_holes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 <span class='va'>result</span>
 </div><div class='output co'>#&gt; Geometry set for 2 features 
-#&gt; geometry type:  GEOMETRY
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
-#&gt; CRS:            NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0))</span></div><div class='output co'>#&gt; <span class='message'>MULTIPOLYGON (((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4...</span></div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, col <span class='op'>=</span> <span class='st'>"#FF000033"</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
+#&gt; Geometry type: GEOMETRY
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
+#&gt; CRS:           NA</div><div class='output co'>#&gt; <span class='message'>POLYGON ((0 0, 1 0, 3 2, 2 4, 1 4, 0 0))</span></div><div class='output co'>#&gt; <span class='message'>MULTIPOLYGON (((3.5 2, 4.25 2, 5.75 3.5, 5 5, 4...</span></div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, col <span class='op'>=</span> <span class='st'>"#FF000033"</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
 <span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>result</span>, col <span class='op'>=</span> <span class='st'>"#FF000033"</span>, main <span class='op'>=</span> <span class='st'>"After"</span><span class='op'>)</span>
 </div><div class='img'><img src='st_remove_holes-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span>
@@ -224,10 +224,10 @@ of <code>x</code>). Default value (<code>0</code>) causes removing all holes.</p
 <span class='va'>result</span> <span class='op'>=</span> <span class='fu'>st_remove_holes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 <span class='va'>result</span>
 </div><div class='output co'>#&gt; Simple feature collection with 2 features and 1 field
-#&gt; geometry type:  GEOMETRY
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
-#&gt; CRS:            NA
+#&gt; Geometry type: GEOMETRY
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
+#&gt; CRS:           NA
 #&gt;   id                           geom
 #&gt; 1  1 POLYGON ((0 0, 1 0, 3 2, 2 ...
 #&gt; 2  2 MULTIPOLYGON (((3.5 2, 4.25...</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
@@ -239,10 +239,10 @@ of <code>x</code>). Default value (<code>0</code>) causes removing all holes.</p
 <span class='va'>result</span> <span class='op'>=</span> <span class='fu'>st_remove_holes</span><span class='op'>(</span><span class='va'>x</span>, max_area <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span>
 <span class='va'>result</span>
 </div><div class='output co'>#&gt; Simple feature collection with 2 features and 1 field
-#&gt; geometry type:  GEOMETRY
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
-#&gt; CRS:            NA
+#&gt; Geometry type: GEOMETRY
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
+#&gt; CRS:           NA
 #&gt;   id                           geom
 #&gt; 1  1 POLYGON ((0 0, 1 0, 3 2, 2 ...
 #&gt; 2  2 MULTIPOLYGON (((3.5 2, 4.25...</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
