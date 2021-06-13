@@ -104,7 +104,7 @@
 
 ## nngeo 0.4.3
 
-* Modified vignette, added an example of adding "distance to nearest" column
+* Modified vignette, with an example of adding "distance to nearest" column
 
 ## Other ideas
 
