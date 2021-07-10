@@ -6,6 +6,8 @@
 #' @param progress Display progress bar? (default \code{TRUE})
 #' @return	An \code{sf} layer of type \code{LINESTRING} where each segment is represented by a separate feature
 #'
+#' @importFrom data.table rbindlist
+#'
 #' @examples
 #' # Sample geometries
 #' s1 = rbind(c(0,3),c(0,4),c(1,5),c(2,5))
@@ -165,7 +167,13 @@ st_segments = function(x, progress = TRUE) {
   if(progress) cat("\n")
 
   # Combine
-  if(!is.null(dat)) final = do.call(rbind, final) else final = do.call(c, final)
+  if(!is.null(dat)) {
+    final = st_as_sf(data.table::rbindlist(final))
+    final = final[1:nrow(final), ]
+    class(final) = c("sf", "data.frame")
+  } else {
+    final = do.call(c, final)
+  }
 
   # Return result
   return(final)
