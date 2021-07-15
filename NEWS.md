@@ -106,6 +106,10 @@
 
 * Modified vignette, with an example of adding "distance to nearest" column
 
+## nngeo 0.4.4
+
+* Improved 'st_segments' using 'data.table' (Attilio Benini)
+
 ## Other ideas
 
 * Check if 'max_area' in 'st_remove_holes' works with 'units'
