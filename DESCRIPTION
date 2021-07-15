@@ -17,7 +17,8 @@ Imports:
     methods,
     lwgeom,
     parallel,
-    s2
+    s2,
+    data.table
 Depends:
     R (>= 3.5.0),
     sf (>= 0.6)
