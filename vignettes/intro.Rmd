@@ -183,7 +183,7 @@ nn
 
 ## Search radius
 
-Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 2,000 meters (2 kilometers). Note that no neighbors are found within the search radius for `cities[3, ]`, therefore the third lest element is a zero-length vector of indices:
+Finally, the search for nearest neighbors can be limited to a **search radius** using `maxdist`. In the following example, the search radius is set to 2,000 meters (2 kilometers). Note that no neighbors are found within the search radius for `cities[3, ]`, therefore the third list element is a zero-length vector of indices:
 
 ```{r}
 nn = st_nn(cities, towns, k = 1, maxdist = 2000, progress = FALSE)

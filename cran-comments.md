@@ -6,4 +6,4 @@
 There were no ERRORs or WARNINGs
 
 ## Downstream dependencies
-I have also run R CMD check on downstream dependency of nngeo (starsExtra)
+I have also run R CMD check on downstream dependencies of nngeo (osmgeosample, starsExtra)

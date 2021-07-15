@@ -86,7 +86,7 @@
 </h1>
                         <h4 class="author">Michael Dorman</h4>
             
-            <h4 class="date">2021-06-13</h4>
+            <h4 class="date">2021-06-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/michaeldorman/nngeo/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -309,7 +309,7 @@ Nearest 10  features from each  feature
 <div id="search-radius" class="section level2">
 <h2 class="hasAnchor">
 <a href="#search-radius" class="anchor"></a>Search radius</h2>
-<p>Finally, the search for nearest neighbors can be limited to a <strong>search radius</strong> using <code>maxdist</code>. In the following example, the search radius is set to 2,000 meters (2 kilometers). Note that no neighbors are found within the search radius for <code>cities[3, ]</code>, therefore the third lest element is a zero-length vector of indices:</p>
+<p>Finally, the search for nearest neighbors can be limited to a <strong>search radius</strong> using <code>maxdist</code>. In the following example, the search radius is set to 2,000 meters (2 kilometers). Note that no neighbors are found within the search radius for <code>cities[3, ]</code>, therefore the third list element is a zero-length vector of indices:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="../reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">1</span>, maxdist <span class="op">=</span> <span class="fl">2000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; lon-lat points</span>

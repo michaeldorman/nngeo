@@ -44,7 +44,7 @@ Returns the indices of layer \code{y} which are nearest neighbors of each featur
 The function has three modes of operation:
 \itemize{
 \item{lon-lat points—Calculation using C code from \code{GeographicLib}, similar to \code{sf::st_distance}}
-\item{projected points—Calculation using \code{nabor::knn}, a fast search method based on the libnabo C++ library}
+\item{projected points—Calculation using \code{nabor::knn}, a fast search method based on the \code{libnabo} C++ library}
 \item{lines or polygons, either lon-lat or projected—Calculation based on \code{sf::st_distance}}
 }
 }

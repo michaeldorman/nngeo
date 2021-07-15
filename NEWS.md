@@ -102,7 +102,7 @@
 
 * Minor fixes in vignette
 
-## nngeo 0.4.3
+## nngeo 0.4.3 (2021-06-13)
 
 * Modified vignette, with an example of adding "distance to nearest" column
 
