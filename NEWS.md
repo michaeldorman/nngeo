@@ -109,6 +109,7 @@
 ## nngeo 0.4.4
 
 * Improved 'st_segments' using 'data.table' (Attilio Benini)
+* In 'st_remove_holes', when polygons are in lat/lon, 'lwgeoim::st_geod_area' is used automatically instead of 'sf::st_area' (Arnaud Tarroux)
 
 ## Other ideas
 
