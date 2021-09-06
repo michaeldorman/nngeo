@@ -113,7 +113,6 @@
 
 ## Other ideas
 
-* Check if 'max_area' in 'st_remove_holes' works with 'units'
 * Keep 'x' and 'y' attributes in output of 'st_connect'
 * http://r-posts.com/isovists-using-uniform-ray-casting-in-r/
 * Add 'data-raw'
