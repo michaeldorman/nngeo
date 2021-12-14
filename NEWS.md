@@ -106,10 +106,14 @@
 
 * Modified vignette, with an example of adding "distance to nearest" column
 
-## nngeo 0.4.4
+## nngeo 0.4.4 (2021-09-06)
 
 * Improved 'st_segments' using 'data.table' (Attilio Benini)
 * In 'st_remove_holes', when polygons are in lat/lon, 'lwgeoim::st_geod_area' is used automatically instead of 'sf::st_area' (Arnaud Tarroux)
+
+## nngeo 0.4.5
+
+* Fixed 'st_nn' error when units are 'us-ft'
 
 ## Other ideas
 

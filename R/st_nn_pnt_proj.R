@@ -1,3 +1,28 @@
+# Based on 'sf:::udunits_from_proj'
+udunits_from_proj = list(
+	`km` =     units::as_units("km"),
+	`m` =      units::as_units("m"),
+	`dm` =     units::as_units("dm"),
+	`cm` =     units::as_units("cm"),
+	`mm` =     units::as_units("mm"),
+	`kmi` =    units::as_units("nautical_mile"),
+	`in` =     units::as_units("in"),
+	`ft` =     units::as_units("ft"),
+	`yd` =     units::as_units("yd"),
+	`mi` =     units::as_units("mi"),
+	`fath` =   units::as_units("fathom"),
+	`ch` =     units::as_units("chain"),
+	`link` =   units::as_units("link", check_is_valid = FALSE), 
+  `us-in` =  units::as_units("us_in", check_is_valid = FALSE),
+	`us-ft` =  units::as_units("US_survey_foot"),
+	`us-yd` =  units::as_units("US_survey_yard"),
+	`us-ch` =  units::as_units("chain"),
+	`us-mi` =  units::as_units("US_survey_mile"),
+	`ind-yd` = units::as_units("ind_yd", check_is_valid = FALSE),
+	`ind-ft` = units::as_units("ind_ft", check_is_valid = FALSE),
+	`ind-ch` = units::as_units("ind_ch", check_is_valid = FALSE)
+)
+
 .st_nn_pnt_proj = function(x, y, k, maxdist) {
 
   x_coord = sf::st_coordinates(x)
@@ -34,7 +59,7 @@
 
   # Convert to meters
   if(!is.na(crs_units) & crs_units != "m") {
-    dists = lapply(dists, units::set_units, crs_units, mode = "standard")
+    dists = lapply(dists, units::set_units, udunits_from_proj[[st_crs(x)$units]], mode = "standard")
     dists = lapply(dists, units::set_units, "m", mode = "standard")
     dists = lapply(dists, as.numeric)
   }
