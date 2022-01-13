@@ -1,2 +1,0 @@
-CC=gcc -std=gnu99 -std=gnu11
-CFLAGS=-g -O2 -fdebug-prefix-map=/build/r-base-i2PIHO/r-base-4.1.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g
