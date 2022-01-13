@@ -1,0 +1,41 @@
+Package: nngeo
+Type: Package
+Title: k-Nearest Neighbor Join for Spatial Data
+Version: 0.4.4
+Authors@R: c(
+    person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
+    person("Johnathan", "Rush", email = "johnathan.rush@mssm.edu", role = c("ctb")),
+    person("Ian", "Hough", email = "hough@post.bgu.ac.il", role = c("ctb")),
+    person("Dominic", "Russel", email = "domrussel@gmail.com", role = c("ctb")),
+    person("Luigi", "Ranghetti", email = "luigi.ranghetti@gmail.com", role = c("ctb")),
+    person("Attilio", "Benini", email = "attilio.benini@gmx", role = c("ctb")),
+    person("Arnaud", "Tarroux", email = "arnaud.tarroux@nina.no", role = c("ctb")),
+    person("Charles", "F.F Karney", role = c("ctb", "cph"), 
+        comment="Author of included C code from 'GeographicLib' for geodesic distance"))
+Description: K-nearest neighbor search for projected and non-projected 'sf' spatial layers. Nearest neighbor search uses (1) C code from 'GeographicLib' for lon-lat point layers, (2) function knn() from package 'nabor' for projected point layers, or (3) function st_distance() from package 'sf' for line or polygon layers. The package also includes several other utility functions for spatial analysis.
+Imports: nabor, units, methods, lwgeom, parallel, s2, data.table
+Depends: R (>= 3.5.0), sf (>= 0.6)
+License: MIT + file LICENSE
+LazyData: TRUE
+RoxygenNote: 7.1.1
+Suggests: DBI, RPostgreSQL, stars, knitr, rmarkdown, tinytest
+VignetteBuilder: knitr
+URL: https://michaeldorman.github.io/nngeo/,
+        https://github.com/michaeldorman/nngeo/
+BugReports: https://github.com/michaeldorman/nngeo/issues/
+Encoding: UTF-8
+NeedsCompilation: yes
+Packaged: 2021-09-06 09:48:07 UTC; michael
+Author: Michael Dorman [aut, cre],
+  Johnathan Rush [ctb],
+  Ian Hough [ctb],
+  Dominic Russel [ctb],
+  Luigi Ranghetti [ctb],
+  Attilio Benini [ctb],
+  Arnaud Tarroux [ctb],
+  Charles F.F Karney [ctb, cph] (Author of included C code from
+    'GeographicLib' for geodesic distance)
+Maintainer: Michael Dorman <dorman@post.bgu.ac.il>
+Repository: CRAN
+Date/Publication: 2021-09-06 10:20:05 UTC
+Built: R 4.1.2; x86_64-pc-linux-gnu; 2022-01-13 13:07:55 UTC; unix

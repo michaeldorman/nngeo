@@ -1,0 +1,13 @@
+cities                  Point layer of the three largest cities in
+                        Israel
+line                    Sample network dataset: lines
+pnt                     Sample network dataset: points
+st_azimuth              Calculate the azimuth between pairs of points
+st_connect              Create lines between features of two layers
+st_ellipse              Calculate ellipse polygon
+st_nn                   Nearest Neighbor Search for Simple Features
+st_postgis              Send 'sf' layer to a PostGIS query
+st_remove_holes         Remove polygon holes
+st_segments             Split polygons or lines to segments
+towns                   Point layer of towns in Israel
+water                   Polygonal layer of water bodies in Israel

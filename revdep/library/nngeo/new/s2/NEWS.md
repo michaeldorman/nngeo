@@ -1,0 +1,80 @@
+# s2 1.0.7
+
+- Update the internal copy of s2geometry to use updated Abseil,
+  fixing a compiler warning on gcc-11 (#79, #134).
+
+# s2 1.0.6
+
+- Added support for `STRICT_R_HEADERS` (@eddelbuettel, #118).
+- Fixed a bug where the result of `s2_centroid_agg()` did not
+  behave like a normal point in distance calculations (#119, #121).
+- Fixed a Windows UCRT check failure and updated openssl linking
+  (@jeroen, #122).
+
+# s2 1.0.5
+
+* Added `s2_projection_filter()` and `s2_unprojection_filter()` to
+  expose the S2 edge tessellator, which can be used to make Cartesian
+  or great circle assumptions of line segments explicit by adding
+  points where necessary (#115).
+* Added an `s2_cell()` vector class to expose a subset of the S2
+  indexing system to R users (#85, #114).
+* Added `s2_closest_edges()` to make k-nearest neighbours calculation
+  possible on the sphere (#111, #112).
+* Added `s2_interpolate()`, `s2_interpolate_normalized()`, 
+  `s2_project()`, and `s2_project_normalized()` to provide linear
+  referencing support on the sphere (#96, #110).
+* Fixed import of empty points from WKB (#109).
+* Added argument `dimensions` to `s2_options()` to constrain the
+  output dimensions of a boolean or rebuild operation (#105, #104, #110).
+* Added `s2_is_valid()` and `s2_is_valid_detail()` to help find invalid
+  spherical geometries when importing data into S2 (#100).
+* Improved error messages when importing and processing data such that
+  errors can be debugged more readily (#100, #98).
+* The unary version of `s2_union()` can now handle MULTIPOLYGON
+  geometries with overlapping rings in addition to other invalid
+  polygons. `s2_union()` can now sanitize
+  almost any input to be valid spherical geometry with
+  minimal modification (#100, #99).
+* Renamed the existing implementation of `s2_union_agg()` to
+  `s2_coverage_union_agg()` to make clear that the function only
+  works when the individual geometries do not have overlapping
+  interiors. `s2_union_agg()` was replaced with a
+  true aggregate union that can handle unions of most geometries
+  (#100, #97).
+* Added `s2_rebuild_agg()` to match `s2_union_agg()`. Like
+  `s2_rebuild()`, `s2_rebuild_agg()` collects the edges in the input
+  and builds them into a feature, optionally snapping or simplifying
+  vertices in the process (#100).
+
+# s2 1.0.4
+
+* Fixed errors that resulted from compilation on clang 12.2 (#88, #89).
+
+# s2 1.0.3
+
+* Fixed CRAN check errors (#80).
+
+# s2 1.0.2
+
+* Fixed CRAN check errors (#71, #75, #72).
+
+# s2 1.0.1
+
+* Added layer creation options to `s2_options()`, which now uses strings
+  rather than numeric codes to specify boolean operation options, geography
+  construction options, and builder options (#70).
+* Added `s2_rebuild()` and `s2_simplify()`, which wrap the S2 C++ `S2Builder`
+  class to provide simplification and fixing of invalid geographies (#70).
+* The s2 package now builds and passes the CMD check on Solaris (#66, #67).
+* Renamed `s2_latlng()` to `s2_lnglat()` to keep axis order consistent
+  throughout the package (#69).
+* Added `s2_bounds_cap()` and `s2_bounds_rect()` to compute bounding areas
+  using geographic coordinates (@edzer, #63).
+* `s2_*_matrix()` predicates now efficiently use indexing to compute the 
+  results of many predicate comparisons (#61).
+
+# s2 1.0.0
+
+This version is a complete rewrite of the former s2 CRAN package, entirely 
+backwards incompatible with previous versions.

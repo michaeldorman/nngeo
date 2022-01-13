@@ -1,0 +1,46 @@
+Package: s2
+Title: Spherical Geometry Operators Using the S2 Geometry Library
+Version: 1.0.7
+Authors@R: c(
+     person(given = "Dewey",
+           family = "Dunnington",
+           role = c("aut"),
+           email = "dewey@fishandwhistle.net",
+           comment = c(ORCID = "0000-0002-9415-4582")),
+     person(given = "Edzer",
+             family = "Pebesma",
+             role = c("aut", "cre"),
+             email = "edzer.pebesma@uni-muenster.de",
+             comment = c(ORCID = "0000-0001-8049-7069")),
+    person("Ege", "Rubak", email="rubak@math.aau.dk", role = c("aut")),
+    person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = "ctb", comment = "configure script"),
+    person(family = "Google, Inc.", role = "cph", comment = "Original s2geometry.io source code")
+  )
+Description: Provides R bindings for Google's s2 library for geometric calculations on
+    the sphere. High-performance constructors and exporters provide high compatibility
+    with existing spatial packages, transformers construct new geometries from existing
+    geometries, predicates provide a means to select geometries based on spatial 
+    relationships, and accessors extract information about geometries.
+License: Apache License (== 2.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+SystemRequirements: OpenSSL >= 1.0.1
+LinkingTo: Rcpp, wk
+Imports: Rcpp, wk (>= 0.5.0)
+Suggests: testthat, vctrs
+URL: https://r-spatial.github.io/s2/, https://github.com/r-spatial/s2,
+        https://s2geometry.io/
+BugReports: https://github.com/r-spatial/s2/issues
+Depends: R (>= 3.0.0)
+NeedsCompilation: yes
+Packaged: 2021-09-22 15:42:08 UTC; edzer
+Author: Dewey Dunnington [aut] (<https://orcid.org/0000-0002-9415-4582>),
+  Edzer Pebesma [aut, cre] (<https://orcid.org/0000-0001-8049-7069>),
+  Ege Rubak [aut],
+  Jeroen Ooms [ctb] (configure script),
+  Google, Inc. [cph] (Original s2geometry.io source code)
+Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>
+Repository: CRAN
+Date/Publication: 2021-09-28 09:40:02 UTC
+Built: R 4.1.2; x86_64-pc-linux-gnu; 2022-01-13 13:11:37 UTC; unix

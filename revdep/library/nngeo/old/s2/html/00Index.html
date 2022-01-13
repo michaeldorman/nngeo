@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>R: Spherical Geometry Operators Using the S2 Geometry Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+<h1> Spherical Geometry Operators Using the S2 Geometry Library
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;s2&rsquo; version 1.0.7</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<p style="text-align: center;">
+<a href="#A">A</a>
+<a href="#N">N</a>
+<a href="#S">S</a>
+</p>
+
+
+<h2><a name="A">-- A --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as.data.frame.s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as.data.frame.s2_point</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as.matrix.s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as.matrix.s2_point</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">as_s2_cell</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">as_s2_cell.character</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">as_s2_cell.s2_cell</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">as_s2_cell.s2_geography</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">as_s2_cell.s2_lnglat</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">as_s2_cell.s2_point</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.blob</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.character</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.logical</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.s2_geography</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.s2_lnglat</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.s2_point</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.WKB</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.wk_wkb</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_s2_geography.wk_wkt</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_s2_lnglat.matrix</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_s2_lnglat.s2_geography</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_s2_lnglat.s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_s2_lnglat.s2_point</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as_s2_point</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as_s2_point.matrix</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as_s2_point.s2_geography</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as_s2_point.s2_lnglat</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">as_s2_point.s2_point</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_wkb.s2_geography</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_wkb.s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">as_wkt.s2_geography</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">as_wkt.s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+</table>
+
+<h2><a name="N">-- N --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="s2_cell.html">new_s2_cell</a></td>
+<td>Create S2 Cell vectors</td></tr>
+</table>
+
+<h2><a name="S">-- S --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_area</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_as_binary</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_as_text</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_boundary</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_bounds_cap.html">s2_bounds_cap</a></td>
+<td>Compute feature-wise and aggregate bounds</td></tr>
+<tr><td style="width: 25%;"><a href="s2_bounds_cap.html">s2_bounds_rect</a></td>
+<td>Compute feature-wise and aggregate bounds</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_buffer_cells</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">s2_cell</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_area</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_area_approx</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_boundary</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_center</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_child</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_contains</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_debug_string</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_distance</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_edge_neighbour</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">s2_cell_invalid</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_is_face</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_is_leaf</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_is_valid</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_level</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_max_distance</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_may_intersect</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_parent</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_polygon</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell.html">s2_cell_sentinel</a></td>
+<td>Create S2 Cell vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_to_lnglat</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_cell_is_valid.html">s2_cell_vertex</a></td>
+<td>S2 cell operators</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_centroid</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_centroid_agg</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_closest_edges</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_closest_feature</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_closest_point</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_contains</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_contains_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_coverage_union_agg</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_covered_by</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_covered_by_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_covers</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_covers_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_data_tbl_countries.html">s2_data_cities</a></td>
+<td>Low-resolution world boundaries, timezones, and cities</td></tr>
+<tr><td style="width: 25%;"><a href="s2_data_tbl_countries.html">s2_data_countries</a></td>
+<td>Low-resolution world boundaries, timezones, and cities</td></tr>
+<tr><td style="width: 25%;"><a href="s2_data_tbl_countries.html">s2_data_tbl_cities</a></td>
+<td>Low-resolution world boundaries, timezones, and cities</td></tr>
+<tr><td style="width: 25%;"><a href="s2_data_tbl_countries.html">s2_data_tbl_countries</a></td>
+<td>Low-resolution world boundaries, timezones, and cities</td></tr>
+<tr><td style="width: 25%;"><a href="s2_data_tbl_countries.html">s2_data_tbl_timezones</a></td>
+<td>Low-resolution world boundaries, timezones, and cities</td></tr>
+<tr><td style="width: 25%;"><a href="s2_data_tbl_countries.html">s2_data_timezones</a></td>
+<td>Low-resolution world boundaries, timezones, and cities</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_difference</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_dimension</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_disjoint</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_disjoint_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_distance</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_distance_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_dwithin</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_dwithin_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_earth_radius_meters.html">s2_earth_radius_meters</a></td>
+<td>Earth Constants</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_equals</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_equals_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_farthest_feature</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="as_s2_geography.html">s2_geography</a></td>
+<td>Create an S2 Geography Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_geog_from_text</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_geog_from_wkb</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_geog_point</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_interpolate.html">s2_interpolate</a></td>
+<td>Linear referencing</td></tr>
+<tr><td style="width: 25%;"><a href="s2_interpolate.html">s2_interpolate_normalized</a></td>
+<td>Linear referencing</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_intersection</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_intersects</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_intersects_box</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_intersects_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_is_collection</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_is_empty</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_is_valid</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_is_valid_detail</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_length</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_lnglat.html">s2_lnglat</a></td>
+<td>Create an S2 LngLat Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_make_line</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_geog_point.html">s2_make_polygon</a></td>
+<td>Create and Format Geography Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_max_distance</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_max_distance_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_may_intersect_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_minimum_clearance_line_between</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_num_points</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_options.html">s2_options</a></td>
+<td>Geography Operation Options</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_perimeter</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_point.html">s2_point</a></td>
+<td>Create an S2 Point Vector</td></tr>
+<tr><td style="width: 25%;"><a href="s2_interpolate.html">s2_project</a></td>
+<td>Linear referencing</td></tr>
+<tr><td style="width: 25%;"><a href="s2_unprojection_filter.html">s2_projection_filter</a></td>
+<td>Low-level wk filters and handlers</td></tr>
+<tr><td style="width: 25%;"><a href="s2_unprojection_filter.html">s2_projection_mercator</a></td>
+<td>Low-level wk filters and handlers</td></tr>
+<tr><td style="width: 25%;"><a href="s2_unprojection_filter.html">s2_projection_plate_carree</a></td>
+<td>Low-level wk filters and handlers</td></tr>
+<tr><td style="width: 25%;"><a href="s2_interpolate.html">s2_project_normalized</a></td>
+<td>Linear referencing</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_rebuild</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_rebuild_agg</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_simplify</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_options.html">s2_snap_distance</a></td>
+<td>Geography Operation Options</td></tr>
+<tr><td style="width: 25%;"><a href="s2_options.html">s2_snap_identity</a></td>
+<td>Geography Operation Options</td></tr>
+<tr><td style="width: 25%;"><a href="s2_options.html">s2_snap_level</a></td>
+<td>Geography Operation Options</td></tr>
+<tr><td style="width: 25%;"><a href="s2_options.html">s2_snap_precision</a></td>
+<td>Geography Operation Options</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_snap_to_grid</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_sym_difference</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_touches</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_touches_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_union</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_boundary.html">s2_union_agg</a></td>
+<td>S2 Geography Transformations</td></tr>
+<tr><td style="width: 25%;"><a href="s2_unprojection_filter.html">s2_unprojection_filter</a></td>
+<td>Low-level wk filters and handlers</td></tr>
+<tr><td style="width: 25%;"><a href="s2_contains.html">s2_within</a></td>
+<td>S2 Geography Predicates</td></tr>
+<tr><td style="width: 25%;"><a href="s2_closest_feature.html">s2_within_matrix</a></td>
+<td>Matrix Functions</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_x</a></td>
+<td>S2 Geography Accessors</td></tr>
+<tr><td style="width: 25%;"><a href="s2_is_collection.html">s2_y</a></td>
+<td>S2 Geography Accessors</td></tr>
+</table>
+</div></body></html>
