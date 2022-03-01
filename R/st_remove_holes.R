@@ -131,12 +131,3 @@ st_remove_holes = function(x, max_area = 0) {
 
 }
 
-
-
-
-
-
-
-
-
-

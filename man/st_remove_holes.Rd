@@ -18,8 +18,7 @@ Object of same class as \code{x}, with holes removed
 The function removes all polygon holes and return the modified layer
 }
 \note{
-See function \code{\link[sfheaders:sf_remove_holes]{sfheaders::sf_remove_holes}} for a highly-optimized faster alternative 
-if you don't need the argument \code{max_area}: \url{https://github.com/dcooley/sfheaders}
+See function \code{\link[sfheaders:sf_remove_holes]{sfheaders::sf_remove_holes}} for a highly-optimized faster alternative if you don't need the argument \code{max_area}: \url{https://github.com/dcooley/sfheaders}
 }
 \examples{
 opar = par(mfrow = c(1, 2))

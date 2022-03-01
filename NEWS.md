@@ -115,6 +115,10 @@
 
 * Fixed 'st_nn' error when units are 'us-ft'
 
+## nngeo 0.4.6
+
+* Renamed geometry column name from 'geom' to 'geometry' in 'st_remove_holes'
+
 ## Other ideas
 
 * Keep 'x' and 'y' attributes in output of 'st_connect'

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.5</span>
       </span>
     </div>
 
@@ -152,8 +152,7 @@
     <p>Object of same class as <code>x</code>, with holes removed</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>See function <code>sfheaders::st_remove_holes</code> for highly-optimized faster alternative:</p>
-<p><a href='https://github.com/dcooley/sfheaders'>https://github.com/dcooley/sfheaders</a></p>
+    <p>See function <code><a href='https://dcooley.github.io/sfheaders/reference/sf_remove_holes.html'>sfheaders::sf_remove_holes</a></code> for a highly-optimized faster alternative if you don't need the argument <code>max_area</code>: <a href='https://github.com/dcooley/sfheaders'>https://github.com/dcooley/sfheaders</a></p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Following the StackOverflow answer by user <code>lbusett</code>:</p>
@@ -227,7 +226,7 @@
 #&gt; Dimension:     XY
 #&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
 #&gt; CRS:           NA
-#&gt;   id                           geom
+#&gt;   id                       geometry
 #&gt; 1  1 POLYGON ((0 0, 1 0, 3 2, 2 ...
 #&gt; 2  2 MULTIPOLYGON (((3.5 2, 4.25...</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
 </div><div class='img'><img src='st_remove_holes-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>result</span>, main <span class='op'>=</span> <span class='st'>"After"</span><span class='op'>)</span>
@@ -242,7 +241,7 @@
 #&gt; Dimension:     XY
 #&gt; Bounding box:  xmin: 0 ymin: 0 xmax: 6.5 ymax: 5
 #&gt; CRS:           NA
-#&gt;   id                           geom
+#&gt;   id                       geometry
 #&gt; 1  1 POLYGON ((0 0, 1 0, 3 2, 2 ...
 #&gt; 2  2 MULTIPOLYGON (((3.5 2, 4.25...</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, main <span class='op'>=</span> <span class='st'>"Before"</span><span class='op'>)</span>
 </div><div class='img'><img src='st_remove_holes-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/stars/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>result</span>, main <span class='op'>=</span> <span class='st'>"After"</span><span class='op'>)</span>

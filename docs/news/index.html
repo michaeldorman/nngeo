@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.5</span>
       </span>
     </div>
 
@@ -227,7 +227,7 @@
 <ul>
 <li>‘st_nn’ with ‘returnDist=TRUE’ returns named list with elements ‘nn’ and ‘dist’</li>
 <li>Replaced ‘towns’ dataset</li>
-<li>Removed ’raster_*" functions (moved to package ‘geobgu’)</li>
+<li>Removed ’raster_*” functions (moved to package ‘geobgu’)</li>
 <li>Added ‘focal2’ function (a 3x3 focal filter on ‘stars’)</li>
 <li>Added ‘line’ and ‘pnt’ sample data (based on pgRouting tutorial)</li>
 <li>Added ‘st_split_junctions’ function</li>
@@ -291,12 +291,19 @@
 <li>Modified vignette, with an example of adding “distance to nearest” column</li>
 </ul>
 </div>
-    <div id="nngeo-044" class="section level2">
+    <div id="nngeo-044-2021-09-06" class="section level2">
 <h2 class="hasAnchor">
-<a href="#nngeo-044" class="anchor"></a>nngeo 0.4.4</h2>
+<a href="#nngeo-044-2021-09-06" class="anchor"></a>nngeo 0.4.4 (2021-09-06)</h2>
 <ul>
 <li>Improved ‘st_segments’ using ‘data.table’ (Attilio Benini)</li>
 <li>In ‘st_remove_holes’, when polygons are in lat/lon, ‘lwgeoim::st_geod_area’ is used automatically instead of ‘sf::st_area’ (Arnaud Tarroux)</li>
+</ul>
+</div>
+    <div id="nngeo-045-2022-01-13" class="section level2">
+<h2 class="hasAnchor">
+<a href="#nngeo-045-2022-01-13" class="anchor"></a>nngeo 0.4.5 (2022-01-13)</h2>
+<ul>
+<li>Fixed ‘st_nn’ error when units are ‘us-ft’</li>
 </ul>
 </div>
   </div>
