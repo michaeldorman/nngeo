@@ -9,9 +9,8 @@
 #' \url{https://stackoverflow.com/questions/52654701/removing-holes-from-polygons-in-r-sf}
 #' @note
 #'
-#' See function \code{sfheaders::st_remove_holes} for highly-optimized faster alternative:
-#'
-#' \url{https://github.com/dcooley/sfheaders}
+#' See function \code{\link[sfheaders:sf_remove_holes]{sfheaders::sf_remove_holes}} for a highly-optimized faster alternative 
+#' if you don't need the argument \code{max_area}: \url{https://github.com/dcooley/sfheaders}
 #'
 #' @export
 #'
