@@ -126,7 +126,7 @@ st_remove_holes = function(x, max_area = 0) {
   if(type_is_sfg) geom = geom[[1]]
 
   # To 'sf'
-  if(type_is_sf) geom = st_sf(dat, geom)
+  if(type_is_sf) geom = st_sf(dat, geometry = geom)
 
   # Return result
   return(geom)
