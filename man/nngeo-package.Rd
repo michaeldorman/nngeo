@@ -26,7 +26,7 @@ Other contributors:
   \item Ian Hough \email{hough@post.bgu.ac.il} [contributor]
   \item Dominic Russel \email{domrussel@gmail.com} [contributor]
   \item Luigi Ranghetti \email{luigi.ranghetti@gmail.com} [contributor]
-  \item Attilio Benini \email{attilio.benini@gmx} [contributor]
+  \item Attilio Benini \email{attilio.benini@gmx.net} [contributor]
   \item Arnaud Tarroux \email{arnaud.tarroux@nina.no} [contributor]
   \item Charles F.F Karney (Author of included C code from 'GeographicLib' for geodesic distance) [contributor, copyright holder]
 }

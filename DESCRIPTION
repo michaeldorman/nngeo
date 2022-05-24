@@ -8,7 +8,7 @@ Authors@R: c(
     person("Ian", "Hough", email = "hough@post.bgu.ac.il", role = c("ctb")),
     person("Dominic", "Russel", email = "domrussel@gmail.com", role = c("ctb")),
     person("Luigi", "Ranghetti", email = "luigi.ranghetti@gmail.com", role = c("ctb")),
-    person("Attilio", "Benini", email = "attilio.benini@gmx", role = c("ctb")),
+    person("Attilio", "Benini", email = "attilio.benini@gmx.net", role = c("ctb")),
     person("Arnaud", "Tarroux", email = "arnaud.tarroux@nina.no", role = c("ctb")),
     person("Charles", "F.F Karney", role = c("ctb", "cph"), 
         comment="Author of included C code from 'GeographicLib' for geodesic distance"))
