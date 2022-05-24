@@ -118,6 +118,7 @@
 ## nngeo 0.4.6
 
 * Renamed geometry column name from 'geom' to 'geometry' in 'st_remove_holes'
+* Fixed e-mail and example ((Attilio Benini))
 
 ## Other ideas
 
