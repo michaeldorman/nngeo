@@ -17,16 +17,14 @@ Imports:
     nabor,
     units,
     methods,
-    lwgeom,
     parallel,
-    s2,
     data.table
 Depends:
     R (>= 3.5.0),
     sf (>= 0.6)
 License: MIT + file LICENSE
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 Suggests:
     DBI,    
     RPostgreSQL,
