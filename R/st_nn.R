@@ -171,8 +171,10 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
           mc.cores = parallel
         )
       } else {
+        cl = parallel::makeCluster(parallel)
+        on.exit(parallel::stopCluster(cl))
         result = parallel::parLapply(
-          parallel::makeCluster(parallel),
+          cl,
           split(x, 1:length(x)),
           function(i) .st_nn_poly(i, y, k, maxdist, progress = FALSE)
         )
@@ -187,8 +189,10 @@ st_nn = function(x, y, sparse = TRUE, k = 1, maxdist = Inf, returnDist = FALSE, 
             mc.cores = parallel
           )
         } else {
+          cl = parallel::makeCluster(parallel)
+          on.exit(parallel::stopCluster(cl))
           result = parallel::parLapply(
-            parallel::makeCluster(parallel),
+            cl,
             split(x, 1:length(x)),
             function(i) .st_nn_pnt_geo(i, y, k, maxdist, progress = FALSE)
           )
