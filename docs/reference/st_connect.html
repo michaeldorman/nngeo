@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.7</span>
       </span>
     </div>
 
@@ -63,25 +63,38 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">st_connect</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, ids <span class="op">=</span> <span class="cn">NULL</span>, progress <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">st_connect</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, ids <span class="op">=</span> <span class="cn">NULL</span>, progress <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Object of class <code>sf</code> or <code>sfc</code></p></dd>
+
+
 <dt>y</dt>
 <dd><p>Object of class <code>sf</code> or <code>sfc</code></p></dd>
+
+
 <dt>ids</dt>
 <dd><p>A sparse list representation of features to connect such as returned by function <code><a href="st_nn.html">st_nn</a></code>. If <code>NULL</code> the function automatically calculates <code>ids</code> using <code><a href="st_nn.html">st_nn</a></code></p></dd>
+
+
 <dt>progress</dt>
 <dd><p>Display progress bar? (default <code>TRUE</code>)</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed to <code>st_nn</code> when calculating <code>ids</code>, such as <code>k</code> and <code>maxdist</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Object of class <code>sfc</code> with geometry type <code>LINESTRING</code></p>
+    
+
+<p>Object of class <code>sfc</code> with geometry type <code>LINESTRING</code></p>
+
+
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -90,47 +103,47 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Nearest 'city' per 'town'</span></span>
-<span class="r-in"><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">towns</span>, <span class="va">cities</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Nearest 'city' per 'town'</span></span></span>
+<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">towns</span>, <span class="va">cities</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> lon-lat points</span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="st_connect-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Ten nearest 'towns' per 'city'</span></span>
-<span class="r-in"><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">10</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Ten nearest 'towns' per 'city'</span></span></span>
+<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">10</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> lon-lat points</span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="st_connect-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Nearest 'city' per 'town', search radius of 30 km</span></span>
-<span class="r-in"><span class="va">cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">cities</span>, <span class="fl">32636</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">towns</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">towns</span>, <span class="fl">32636</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, maxdist <span class="op">=</span> <span class="fl">30000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, <span class="fu">units</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">30</span>, <span class="va">km</span><span class="op">)</span><span class="op">)</span>, border <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The 20-nearest towns for each water body, search radius of 100 km</span></span>
-<span class="r-in"><span class="va">water</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">water</span>, <span class="fl">32636</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">20</span>, maxdist <span class="op">=</span> <span class="fl">100000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The 2-nearest water bodies for each town, search radius of 100 km</span></span>
-<span class="r-in"><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">towns</span>, <span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, maxdist <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, border <span class="op">=</span> <span class="cn">NA</span>, extent <span class="op">=</span> <span class="va">l</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/stars/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Nearest 'city' per 'town', search radius of 30 km</span></span></span>
+<span class="r-in"><span><span class="va">cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">cities</span>, <span class="fl">32636</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">towns</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">towns</span>, <span class="fl">32636</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, maxdist <span class="op">=</span> <span class="fl">30000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, <span class="fu">units</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">30</span>, <span class="va">km</span><span class="op">)</span><span class="op">)</span>, border <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The 20-nearest towns for each water body, search radius of 100 km</span></span></span>
+<span class="r-in"><span><span class="va">water</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">water</span>, <span class="fl">32636</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">20</span>, maxdist <span class="op">=</span> <span class="fl">100000</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The 2-nearest water bodies for each town, search radius of 100 km</span></span></span>
+<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">st_connect</span><span class="op">(</span><span class="va">towns</span>, <span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span>, k <span class="op">=</span> <span class="fl">2</span>, maxdist <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">water</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, border <span class="op">=</span> <span class="cn">NA</span>, extent <span class="op">=</span> <span class="va">l</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">l</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -145,7 +158,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

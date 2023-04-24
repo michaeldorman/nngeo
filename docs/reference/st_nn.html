@@ -23,7 +23,7 @@ lines or polygons, either lon-lat or projected—Calculation based on sf::st_dis
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.7</span>
       </span>
     </div>
 
@@ -72,40 +72,57 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 </ul></div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">st_nn</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  sparse <span class="op">=</span> <span class="cn">TRUE</span>,
-  k <span class="op">=</span> <span class="fl">1</span>,
-  maxdist <span class="op">=</span> <span class="cn">Inf</span>,
-  returnDist <span class="op">=</span> <span class="cn">FALSE</span>,
-  progress <span class="op">=</span> <span class="cn">TRUE</span>,
-  parallel <span class="op">=</span> <span class="fl">1</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">st_nn</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  sparse <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  maxdist <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  returnDist <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Object of class <code>sf</code> or <code>sfc</code></p></dd>
+
+
 <dt>y</dt>
 <dd><p>Object of class <code>sf</code> or <code>sfc</code></p></dd>
+
+
 <dt>sparse</dt>
 <dd><p><code>logical</code>; should a sparse index list be returned (<code>TRUE</code>, the default) or a dense logical matrix? See "Value" section below.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>The maximum number of nearest neighbors to compute. Default is <code>1</code>, meaning that only a single point (nearest neighbor) is returned.</p></dd>
+
+
 <dt>maxdist</dt>
 <dd><p>Search radius (<strong>in meters</strong>). Points farther than search radius are not considered. Default is <code>Inf</code>, meaning that search is unconstrained.</p></dd>
+
+
 <dt>returnDist</dt>
 <dd><p><code>logical</code>; whether to return a second <code>list</code> with the distances between detected neighbors.</p></dd>
+
+
 <dt>progress</dt>
 <dd><p>Display progress bar? The default is <code>TRUE</code>. When using <code>parallel&gt;1</code> or when input is projected points, a progress bar is not displayed regardless of <code>progress</code> argument.</p></dd>
+
+
 <dt>parallel</dt>
 <dd><p>Number of parallel processes. The default <code>parallel=1</code> implies ordinary non-parallel processing. Parallel processing is not applicable for projected points, where calculation is already highly optimized through the use of <code><a href="https://rdrr.io/pkg/nabor/man/knn.html" class="external-link">nabor::knn</a></code>. Parallel processing is done with the <code>parallel</code> package.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <ul><li><p>If <code>sparse=TRUE</code> (the default), a sparse <code>list</code> with list element <code>i</code> being a numeric vector with the indices <code>j</code> of neighboring features from <code>y</code> for the feature <code>x[i,]</code>, or an empty vector (<code>integer(0)</code>) in case there are no neighbors.</p></li>
+    
+
+<ul><li><p>If <code>sparse=TRUE</code> (the default), a sparse <code>list</code> with list element <code>i</code> being a numeric vector with the indices <code>j</code> of neighboring features from <code>y</code> for the feature <code>x[i,]</code>, or an empty vector (<code>integer(0)</code>) in case there are no neighbors.</p></li>
 <li><p>If <code>sparse=FALSE</code>, a <code>logical</code> matrix with element <code>[i,j]</code> being <code>TRUE</code> when <code>y[j,]</code> is a neighbor of <code>x[i]</code>.</p></li>
 <li><p>If <code>returnDists=TRUE</code> the function returns a <code>list</code>, with the first element as specified above, and the second element a sparse <code>list</code> with the distances (as <code>units</code> vectors, <strong>in meters</strong>) between each pair of detected neighbors corresponding to the sparse <code>list</code> of indices.</p></li>
 </ul></div>
@@ -116,15 +133,15 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">cities</span>, <span class="fl">32636</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">towns</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">towns</span>, <span class="fl">32636</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">water</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">water</span>, <span class="fl">32636</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Nearest town</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">cities</span>, <span class="fl">32636</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">towns</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">towns</span>, <span class="fl">32636</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">water</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">water</span>, <span class="fl">32636</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Nearest town</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> projected points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 70</span>
@@ -135,9 +152,9 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Using 'sfc' objects</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using 'sfc' objects</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> projected points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 70</span>
@@ -148,7 +165,7 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> projected points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 70</span>
@@ -159,7 +176,7 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, <span class="va">towns</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, <span class="va">towns</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> projected points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 70</span>
@@ -170,9 +187,9 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># With distances</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, returnDist <span class="op">=</span> <span class="cn">TRUE</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># With distances</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, returnDist <span class="op">=</span> <span class="cn">TRUE</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> projected points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nn</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nn[[1]]</span>
@@ -196,81 +213,81 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2878.653</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Distance limit</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, maxdist <span class="op">=</span> <span class="fl">7200</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">3</span>, maxdist <span class="op">=</span> <span class="fl">12000</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">3</span>, maxdist <span class="op">=</span> <span class="fl">12000</span>, returnDist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># 3 nearest towns</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Spatial join</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">1</span>, maxdist <span class="op">=</span> <span class="fl">7200</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">towns</span>, <span class="va">cities</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Polygons to polygons</span></span>
-<span class="r-in"><span class="fu">st_nn</span><span class="op">(</span><span class="va">water</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Large example - Geo points</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">=</span> <span class="fl">1000</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">  lon <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span>,</span>
-<span class="r-in">  lat <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">x</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">result1</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Large example - Geo points - Parallel processing</span></span>
-<span class="r-in"><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">result2</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span>, parallel <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">result1</span>, <span class="va">result2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Large example - Proj points</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">=</span> <span class="fl">1000</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span>,</span>
-<span class="r-in">  y <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">x</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">32630</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">result</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Large example - Polygons</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">=</span> <span class="fl">150</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">  lon <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span>,</span>
-<span class="r-in">  lat <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">x</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">32630</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1000000</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">result1</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Large example - Polygons - Parallel processing</span></span>
-<span class="r-in"><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">result2</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span>, parallel <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">result1</span>, <span class="va">result2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Distance limit</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, maxdist <span class="op">=</span> <span class="fl">7200</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">3</span>, maxdist <span class="op">=</span> <span class="fl">12000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">3</span>, maxdist <span class="op">=</span> <span class="fl">12000</span>, returnDist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># 3 nearest towns</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Spatial join</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">1</span>, maxdist <span class="op">=</span> <span class="fl">7200</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">towns</span>, <span class="va">cities</span>, <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Polygons to polygons</span></span></span>
+<span class="r-in"><span><span class="fu">st_nn</span><span class="op">(</span><span class="va">water</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Large example - Geo points</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">=</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  lon <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span>,</span></span>
+<span class="r-in"><span>  lat <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">x</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">result1</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Large example - Geo points - Parallel processing</span></span></span>
+<span class="r-in"><span><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">result2</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span>, parallel <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">result1</span>, <span class="va">result2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Large example - Proj points</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">=</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span>,</span></span>
+<span class="r-in"><span>  y <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">x</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">32630</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">result</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Large example - Polygons</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">=</span> <span class="fl">150</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  lon <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span>,</span></span>
+<span class="r-in"><span>  lat <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">70</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">x</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">32630</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1000000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">result1</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Large example - Polygons - Parallel processing</span></span></span>
+<span class="r-in"><span><span class="va">start</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">result2</span> <span class="op">=</span> <span class="fu">st_nn</span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span>, k <span class="op">=</span> <span class="fl">3</span>, parallel <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">result1</span>, <span class="va">result2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -285,7 +302,7 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

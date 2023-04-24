@@ -1,7 +1,7 @@
 Package: nngeo
 Type: Package
 Title: k-Nearest Neighbor Join for Spatial Data
-Version: 0.4.6
+Version: 0.4.7
 Authors@R: c(
     person("Michael", "Dorman", email = "dorman@post.bgu.ac.il", role = c("aut", "cre")),
     person("Johnathan", "Rush", email = "johnathan.rush@mssm.edu", role = c("ctb")),
@@ -24,7 +24,7 @@ Depends:
     sf (>= 0.6)
 License: MIT + file LICENSE
 LazyData: TRUE
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Suggests:
     DBI,    
     RPostgreSQL,

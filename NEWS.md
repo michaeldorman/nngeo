@@ -115,12 +115,16 @@
 
 * Fixed 'st_nn' error when units are 'us-ft'
 
-## nngeo 0.4.6
+## nngeo 0.4.6 (2022-05-29)
 
 * Renamed geometry column name from 'geom' to 'geometry' in 'st_remove_holes'
 * Fixed e-mail and example ((Attilio Benini))
 
-## Other ideas
+## nngeo 0.4.7
+
+* Fixed C warning
+
+Other ideas:
 
 * Keep 'x' and 'y' attributes in output of 'st_connect'
 * http://r-posts.com/isovists-using-uniform-ray-casting-in-r/

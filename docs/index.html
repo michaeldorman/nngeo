@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nngeo</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.7</span>
       </span>
     </div>
 
@@ -88,11 +88,11 @@
 </h2>
 <p>CRAN version:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nngeo"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nngeo"</span><span class="op">)</span></span></code></pre></div>
 <p>GitHub version:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"michaeldorman/nngeo"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"michaeldorman/nngeo"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
@@ -104,68 +104,68 @@
 </h2>
 <p>Once installed, the library can be loaded as follows.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://michaeldorman.github.io/nngeo/" class="external-link">nngeo</a></span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: sf</span>
-<span class="co">#&gt; Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://michaeldorman.github.io/nngeo/" class="external-link">nngeo</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: sf</span></span>
+<span><span class="co">#&gt; Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>The following code section finds the 20-nearest towns for each city using function <code>st_nn</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>
-<span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">20</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; lon-lat points</span>
-<span class="va">nn</span>
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt;  [1]  70  99  60  15  36  56 193 142  90  82  17  93  44  13  32   9 172  34 103</span>
-<span class="co">#&gt; [20] 132</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt;  [1] 145 175  57 144  29  55  21  64 138  24 121 146  53 126 160  31  62 187  85</span>
-<span class="co">#&gt; [20]  83</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt;  [1]  59 179 137 114 141 134  67 152  41 133   6 140  23 166  66   2 189  73 173</span>
-<span class="co">#&gt; [20] 147</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span></span>
+<span><span class="va">nn</span> <span class="op">=</span> <span class="fu"><a href="reference/st_nn.html">st_nn</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, k <span class="op">=</span> <span class="fl">20</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; lon-lat points</span></span>
+<span><span class="va">nn</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt;  [1]  70  99  60  15  36  56 193 142  90  82  17  93  44  13  32   9 172  34 103</span></span>
+<span><span class="co">#&gt; [20] 132</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt;  [1] 145 175  57 144  29  55  21  64 138  24 121 146  53 126 160  31  62 187  85</span></span>
+<span><span class="co">#&gt; [20]  83</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt;  [1]  59 179 137 114 141 134  67 152  41 133   6 140  23 166  66   2 189  73 173</span></span>
+<span><span class="co">#&gt; [20] 147</span></span></code></pre></div>
 <p>By default, the result is a sparse list with the neighbor IDs.</p>
 <p>The <code>st_nn</code> function can also be used as a <strong>geometry predicate function</strong> when performing spatial join with <code><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">sf::st_join</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, join <span class="op">=</span> <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">3</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; lon-lat points</span>
-<span class="co">#&gt; Simple feature collection with 9 features and 5 fields</span>
-<span class="co">#&gt; geometry type:  POINT</span>
-<span class="co">#&gt; dimension:      XY</span>
-<span class="co">#&gt; bbox:           xmin: 34.78177 ymin: 31.76832 xmax: 35.21371 ymax: 32.79405</span>
-<span class="co">#&gt; geographic CRS: WGS 84</span>
-<span class="co">#&gt;        name.x            name.y country.etc    pop capital</span>
-<span class="co">#&gt; 1   Jerusalem         Jerusalem      Israel 731731       1</span>
-<span class="co">#&gt; 1.1 Jerusalem Mevasserat Ziyyon      Israel  22470       0</span>
-<span class="co">#&gt; 1.2 Jerusalem          Har Adar      Israel   2101       0</span>
-<span class="co">#&gt; 2    Tel-Aviv         Ramat Gan      Israel 128583       0</span>
-<span class="co">#&gt; 2.1  Tel-Aviv     Tel Aviv-Yafo      Israel 384276       0</span>
-<span class="co">#&gt; 2.2  Tel-Aviv        Giv'atayim      Israel  48882       0</span>
-<span class="co">#&gt; 3       Haifa             Haifa      Israel 266418       0</span>
-<span class="co">#&gt; 3.1     Haifa      Tirat Karmel      Israel  19080       0</span>
-<span class="co">#&gt; 3.2     Haifa    Qiryat Motzkin      Israel  39413       0</span>
-<span class="co">#&gt;                      geometry</span>
-<span class="co">#&gt; 1   POINT (35.21371 31.76832)</span>
-<span class="co">#&gt; 1.1 POINT (35.21371 31.76832)</span>
-<span class="co">#&gt; 1.2 POINT (35.21371 31.76832)</span>
-<span class="co">#&gt; 2    POINT (34.78177 32.0853)</span>
-<span class="co">#&gt; 2.1  POINT (34.78177 32.0853)</span>
-<span class="co">#&gt; 2.2  POINT (34.78177 32.0853)</span>
-<span class="co">#&gt; 3   POINT (34.98957 32.79405)</span>
-<span class="co">#&gt; 3.1 POINT (34.98957 32.79405)</span>
-<span class="co">#&gt; 3.2 POINT (34.98957 32.79405)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_join.html" class="external-link">st_join</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, join <span class="op">=</span> <span class="va">st_nn</span>, k <span class="op">=</span> <span class="fl">3</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; lon-lat points</span></span>
+<span><span class="co">#&gt; Simple feature collection with 9 features and 5 fields</span></span>
+<span><span class="co">#&gt; geometry type:  POINT</span></span>
+<span><span class="co">#&gt; dimension:      XY</span></span>
+<span><span class="co">#&gt; bbox:           xmin: 34.78177 ymin: 31.76832 xmax: 35.21371 ymax: 32.79405</span></span>
+<span><span class="co">#&gt; geographic CRS: WGS 84</span></span>
+<span><span class="co">#&gt;        name.x            name.y country.etc    pop capital</span></span>
+<span><span class="co">#&gt; 1   Jerusalem         Jerusalem      Israel 731731       1</span></span>
+<span><span class="co">#&gt; 1.1 Jerusalem Mevasserat Ziyyon      Israel  22470       0</span></span>
+<span><span class="co">#&gt; 1.2 Jerusalem          Har Adar      Israel   2101       0</span></span>
+<span><span class="co">#&gt; 2    Tel-Aviv         Ramat Gan      Israel 128583       0</span></span>
+<span><span class="co">#&gt; 2.1  Tel-Aviv     Tel Aviv-Yafo      Israel 384276       0</span></span>
+<span><span class="co">#&gt; 2.2  Tel-Aviv        Giv'atayim      Israel  48882       0</span></span>
+<span><span class="co">#&gt; 3       Haifa             Haifa      Israel 266418       0</span></span>
+<span><span class="co">#&gt; 3.1     Haifa      Tirat Karmel      Israel  19080       0</span></span>
+<span><span class="co">#&gt; 3.2     Haifa    Qiryat Motzkin      Israel  39413       0</span></span>
+<span><span class="co">#&gt;                      geometry</span></span>
+<span><span class="co">#&gt; 1   POINT (35.21371 31.76832)</span></span>
+<span><span class="co">#&gt; 1.1 POINT (35.21371 31.76832)</span></span>
+<span><span class="co">#&gt; 1.2 POINT (35.21371 31.76832)</span></span>
+<span><span class="co">#&gt; 2    POINT (34.78177 32.0853)</span></span>
+<span><span class="co">#&gt; 2.1  POINT (34.78177 32.0853)</span></span>
+<span><span class="co">#&gt; 2.2  POINT (34.78177 32.0853)</span></span>
+<span><span class="co">#&gt; 3   POINT (34.98957 32.79405)</span></span>
+<span><span class="co">#&gt; 3.1 POINT (34.98957 32.79405)</span></span>
+<span><span class="co">#&gt; 3.2 POINT (34.98957 32.79405)</span></span></code></pre></div>
 <p>A helper function <code>st_connect</code> can be used to draw lines according to joined feature IDs. This may be useful for visualization or for network analysis.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, ids <span class="op">=</span> <span class="va">nn</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">l</span>, col <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>  <span class="co"># For setting the extent</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">l</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="reference/st_connect.html">st_connect</a></span><span class="op">(</span><span class="va">cities</span>, <span class="va">towns</span>, ids <span class="op">=</span> <span class="va">nn</span>, progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">l</span>, col <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>  <span class="co"># For setting the extent</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">towns</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"darkgrey"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">l</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="README-readme-plot-1.png" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -226,7 +226,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

@@ -54,7 +54,7 @@ static unsigned digits, maxit1, maxit2;
 static real epsilon, realmin, pi, degree, NaN,
   tiny, tol0, tol1, tol2, tolb, xthresh;
 
-static void Init() {
+static void Init(void) {
   if (!init) {
 #if defined(__DBL_MANT_DIG__)
     digits = __DBL_MANT_DIG__;
