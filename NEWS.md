@@ -120,9 +120,13 @@
 * Renamed geometry column name from 'geom' to 'geometry' in 'st_remove_holes'
 * Fixed e-mail and example ((Attilio Benini))
 
-## nngeo 0.4.7
+## nngeo 0.4.7 (2023-04-24)
 
 * Fixed C warning
+
+## nngeo 0.4.8
+
+* Fixed error when using CRS where units can't be accessed through 'sf'
 
 Other ideas:
 

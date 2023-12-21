@@ -58,7 +58,7 @@ udunits_from_proj = list(
   crs_units = st_crs(x)$units
 
   # Convert to meters
-  if(!is.na(crs_units) & crs_units != "m") {
+  if(!is.null(crs_units) && !is.na(crs_units) && crs_units != "m") {
     dists = lapply(dists, units::set_units, udunits_from_proj[[st_crs(x)$units]], mode = "standard")
     dists = lapply(dists, units::set_units, "m", mode = "standard")
     dists = lapply(dists, as.numeric)

@@ -28,6 +28,7 @@ Other contributors:
   \item Luigi Ranghetti \email{luigi.ranghetti@gmail.com} [contributor]
   \item Attilio Benini \email{attilio.benini@gmx.net} [contributor]
   \item Arnaud Tarroux \email{arnaud.tarroux@nina.no} [contributor]
+  \item Felipe Matas \email{felipematas@yahoo.com} [contributor]
   \item Charles F.F Karney (Author of included C code from 'GeographicLib' for geodesic distance) [contributor, copyright holder]
 }
 
