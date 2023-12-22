@@ -124,7 +124,7 @@ The function has three modes of operation:</p><ul><li><p>lon-lat points—Calcul
 
 <ul><li><p>If <code>sparse=TRUE</code> (the default), a sparse <code>list</code> with list element <code>i</code> being a numeric vector with the indices <code>j</code> of neighboring features from <code>y</code> for the feature <code>x[i,]</code>, or an empty vector (<code>integer(0)</code>) in case there are no neighbors.</p></li>
 <li><p>If <code>sparse=FALSE</code>, a <code>logical</code> matrix with element <code>[i,j]</code> being <code>TRUE</code> when <code>y[j,]</code> is a neighbor of <code>x[i]</code>.</p></li>
-<li><p>If <code>returnDists=TRUE</code> the function returns a <code>list</code>, with the first element as specified above, and the second element a sparse <code>list</code> with the distances (as <code>units</code> vectors, <strong>in meters</strong>) between each pair of detected neighbors corresponding to the sparse <code>list</code> of indices.</p></li>
+<li><p>If <code>returnDists=TRUE</code> the function returns a <code>list</code>, with the first element as specified above, and the second element a sparse <code>list</code> with the distances (as <code>numeric</code> vectors, <strong>in meters</strong>) between each pair of detected neighbors corresponding to the sparse <code>list</code> of indices.</p></li>
 </ul></div>
     <div id="references">
     <h2>References</h2>
